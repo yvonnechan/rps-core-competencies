@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="BonMod">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>PlangularJS</title>
+
+<style>
+* {
+	font-family:Calibri;
+}
+table {
+
+	border-collapse:collapse;
+	width:80%;
+	margin: 20px;
+}
+th {
+	font-size:24px;
+	color:white;
+	background-color:black;
+	padding: .25em;
+}
+td{
+	padding: 5px;
+}
+/*table subhead colors*/
+
+.reading-sub{
+	background-color:#0CF;
+}
+.writing-sub{
+	background-color:#00FFFF;
+}
+.speakinglistening-sub{
+	background-color:#CC00FF;
+}
+.language-sub{
+	background-color:#FFFF33;
+}
+.problemsolving-sub{
+	background-color:#FF9900;
+}
+.responsibility-sub{
+	background-color:#FF3333;
+}
+</style>
+</head>
+
+<body ng-controller="PlanningGuideCtrl">
+	<table border="1" id="reading-tab">
+		<th>READING</th>
+   	<tr>
+   		<td class="reading-sub">Key Ideas and Details</td>
+    </tr>
+    <tr ng-repeat="x in core.reading.ki">
+    	<td>{{x}}</td>
+		</tr>
+    <tr>
+   		<td class="reading-sub">Craft and Structure</td>
+    </tr>
+    <tr ng-repeat="x in core.reading.cs">
+    	<td>{{x}}</td>
+		</tr>
+    <tr>
+   		<td class="reading-sub">Integration of Knowledge and Ideas</td>
+    </tr>
+    <tr ng-repeat="x in core.reading.ik">
+    	<td>{{x}}</td>
+		</tr>
+    <tr>
+   		<td class="reading-sub">Range of Reading and Level of Text Complexity</td>
+    </tr>
+    <tr ng-repeat="x in core.reading.rr">
+    	<td>{{x}}</td>
+		</tr>
+	</table>
+  
+	<table border="1" id="writing-tab">
+		<th>WRITING</th>
+   	<tr>
+   		<td class="writing-sub">Text Types and Purpose</td>
+    </tr>
+    <tr ng-repeat="x in core.writing.tt">
+    	<td>{{x}}</td>
+		</tr>
+    <tr>
+   		<td class="writing-sub">Production and Distribution of Writing</td>
+    </tr>
+    <tr ng-repeat="x in core.writing.pd">
+    	<td>{{x}}</td>
+		</tr>
+    <tr>
+   		<td class="writing-sub">Research to Build and Present Knowledge</td>
+    </tr>
+    <tr ng-repeat="x in core.writing.rb">
+    	<td>{{x}}</td>
+		</tr>
+    <tr>
+   		<td class="writing-sub">Range of Writing</td>
+    </tr>
+    <tr ng-repeat="x in core.writing.rw">
+    	<td>{{x}}</td>
+		</tr>
+	</table>
+  
+  <table border="1" id="speakinglistening-tab">
+		<th>SPEAKING and LISTENING</th>
+   	<tr>
+   		<td class="speakinglistening-sub">Comprehension and Collaboration</td>
+    </tr>
+    <tr ng-repeat="x in core.speakingListening.cc">
+    	<td>{{x}}</td>
+		</tr>
+    <tr>
+   		<td class="speakinglistening-sub">Presentation of Knowledge and Ideas</td>
+    </tr>
+    <tr ng-repeat="x in core.speakingListening.pk">
+    	<td>{{x}}</td>
+		</tr>
+	</table>
+
+  
+  <table border="1" id="language-tab">
+		<th>LANGUAGE</th>
+   	<tr>
+   		<td class="language-sub">Standard Language Conventions</td>
+    </tr>
+    <tr ng-repeat="x in core.language.sl">
+    	<td>{{x}}</td>
+		</tr>
+    <tr>
+   		<td class="language-sub">Knowledge of Lanaguage</td>
+    </tr>
+    <tr ng-repeat="x in core.language.kl">
+    	<td>{{x}}</td>
+		</tr>
+    <tr>
+   		<td class="language-sub">Vocabulary Acquisition and Use</td>
+    </tr>
+    <tr ng-repeat="x in core.language.va">
+    	<td>{{x}}</td>
+		</tr>
+	</table>
+  
+  <table border="1" id="problemsolving-tab">
+		<th>CREATIVE PROBLEM SOLVING</th>
+   	<tr>
+   		<td class="problemsolving-sub">Knowledge</td>
+    </tr>
+    <tr ng-repeat="x in core.problemSolving.kn">
+    	<td>{{x}}</td>
+		</tr>
+    <tr>
+   		<td class="problemsolving-sub">Process</td>
+    </tr>
+    <tr ng-repeat="x in core.problemSolving.co">
+    	<td>{{x}}</td>
+		</tr>
+    <tr>
+   		<td class="problemsolving-sub">Communication</td>
+    </tr>
+    <tr ng-repeat="x in core.problemSolving.co">
+    	<td>{{x}}</td>
+		</tr>
+	</table>  
+  
+  <table border="1" id="responsibility-tab">
+		<th>CIVIC and SOCIAL RESPONSIBILITY</th>
+   	<tr>
+   		<td class="responsibility-sub">Civic Responsibility</td>
+    </tr>
+    <tr ng-repeat="x in core.responsibility.cr">
+    	<td>{{x}}</td>
+		</tr>
+    <tr>
+   		<td class="responsibility-sub">Social Responsibilty</td>
+    </tr>
+    <tr ng-repeat="x in core.responsibility.sr">
+    	<td>{{x}}</td>
+		</tr>
+    <tr>
+   		<td class="responsibility-sub">Personal Responsibility</td>
+    </tr>
+    <tr ng-repeat="x in core.responsibility.ir">
+    	<td>{{x}}</td>
+		</tr>
+	</table>  
+	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="script.js"></script>
+
+</body>
+</html>
