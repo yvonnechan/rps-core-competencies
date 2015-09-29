@@ -4,15 +4,21 @@
 
 var app = angular.module('BonMod', []);
 
-app.controller('PlanningGuideCtrl', function($scope, $http) {
+app.controller('PlanningGuideCtrl', function($scope, $http, FetchStandards) {
 	
-	$scope.core = [];
 	
-	$http.get('standards.json').success(function(data){
-		$scope.core = data;
+	FetchStandards.list(function(lit){
+		$scope.core = lit;
 	});
-
+});
+app.factory('FetchStandards', function($http){
+	return{
+		list: function(callback){
+			$http.get('standards.json').success(callback);
+		}
+	}
 	
+});
 /*	
 	$scope.reading =  
 	[
@@ -207,4 +213,3 @@ app.controller('PlanningGuideCtrl', function($scope, $http) {
     	}
 	];
 */
-});
