@@ -26,22 +26,60 @@ app.config(
 
 app.controller('HomeCtrl', function($scope, $http, FetchStandards) {
 	//google : initialize js array of a certain value
-	var config = {
-		ki: [],
-		st: [],
+	var selectedStandards = {
+		//reading
+		ki: [false, false, false],
+		cs: [false, false, false],
+		ik: [false, false, false],
+		rr: [false],
+		//writing
+		tt: [false, false, false],
+		pd: [false, false, false],
+		rd: [false, false, false],
+		rw: [false],
+		//speaking and listening
+		cc: [false, false, false],
+		pk: [false, false, false],
+		//language
+		sl: [false, false],
+		kl: [false],
+		va: [false, false, false],
+		//creative problem solving
+		kn: [false, false, false],
+		pr: [false, false, false],
+		co: [false, false],
+		//responsibility
+		cr: [false],
+		sr: [false, false, false],
+		ir: [false, false, false]
 	};
 	
-	FetchStandards.StandardsList(function(lit){
+	FetchStandards.getStandardsList(function(lit){
 		$scope.core = lit;
 	});
 	
-	$scope.standardClicked = function(x, y) {
-		config[y].push(x);
-		console.log(y, x);
+	$scope.standardClicked = function(key, index) {
+		selectedStandards[key][index] = !selectedStandards[key][index];
+		console.log(selectedStandards[key]);
+		console.log(selectedStandards);
 	}
+	$scope.planningClicked = function() {
+		FetchStandards.save(selectedStandards);
+	}
+	
+	
 });
 
-app.controller('PlanningCtrl', function() {
+app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
+	
+	var passed = FetchStandards.retrieve();
+	console.log(passed);
+		
+	FetchStandards.getDetailsList(function(det){
+		
+		//everything in details.json
+		$scope.planningData = det;
+	});
 
 });
 
@@ -50,23 +88,24 @@ app.controller('ScoringCtrl', function() {
 });
 
 app.factory('FetchStandards', function($http){
-	var standardsConfig;
+	var standardsPass;
 	
 	return {
 		//getting standards.json
-		standardsList: function(callback){
+		getStandardsList: function(callback){
 			$http.get('standards.json').success(callback);
 		},
 		//saving what user clicked
-		save: function(config) {
-			standardsConfig = config;
+		save: function(selection) {
+			standardsPass = selection;
+			console.log("Saved standards object!:" + standardsPass);
 		},
 		//retrieving what user clicked
 		retrieve: function() {
-			return standardsConfig;
+			return standardsPass;
 		},
 		//getting details.json
-		detailsList: function(callback){
+		getDetailsList: function(callback){
 			$http.get('details.json').success(callback);
 		}
 	}

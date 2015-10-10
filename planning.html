@@ -1,12 +1,94 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml"  ng-app="BonMod">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>My Planning Guide</title>
+
+<style>
+* {
+	font-family:Calibri;
+}
+table {
+	border-collapse:collapse;
+	width:80%;
+	margin: 20px;
+}
+th {
+	font-size:24px;
+	color:white;
+	background-color:black;
+	padding: .25em;
+}
+td{
+	padding: 5px;
+}
+
+/*table subhead colors*/
+
+.reading-sub{
+	background-color:#0CF;
+}
+.writing-sub{
+	background-color:#00FFFF;
+}
+.speakinglistening-sub{
+	background-color:#CC00FF;
+}
+.language-sub{
+	background-color:#FFFF33;
+}
+.problemsolving-sub{
+	background-color:#FF9900;
+}
+.responsibility-sub{
+	background-color:#FF3333;
+}
+</style>
+
 </head>
 
-<body>
+<body ng-controller="PlanningCtrl">
 
 Planning guide yo.
+
+	<table border="1" id="reading-tab">
+		<th>READING</th>
+   	<tr>
+   		<td class="reading-sub">Key Ideas and Details</td>
+    </tr>
+    <tr ng-repeat="x in planningData.ki">
+    	<td>
+      	{{x.text}}<br />
+      	<ul>
+        	<li ng-repeat="y in x.det">{{y}}</li>
+        </ul>
+        <div ng-if="x.det1112">
+        <em>In addition, students in grades 11-12 will be able to:</em>
+        <ul>
+        	<li ng-repeat="z in x.det1112">{{z}}</li>
+        </ul>
+        </div>
+      </td>
+		</tr>
+    
+   	<tr>
+   		<td class="reading-sub">Key Ideas and Details</td>
+    </tr>
+    <tr ng-repeat="x in planningData.ki">
+    	<td>
+      	{{x.text}}<br />
+      	<ul>
+        	<li ng-repeat="y in x.det">{{y}}</li>
+        </ul>
+        <div ng-if="x.det1112">
+        <em>In addition, students in grades 11-12 will be able to:</em>
+        <ul>
+        	<li ng-repeat="z in x.det1112">{{z}}</li>
+        </ul>
+        </div>
+      </td>
+		</tr>
+
+	</table>
 </body>
 </html>
