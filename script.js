@@ -35,7 +35,7 @@ app.controller('HomeCtrl', function($scope, $http, FetchStandards) {
 		//writing
 		tt: [false, false, false],
 		pd: [false, false, false],
-		rd: [false, false, false],
+		rb: [false, false, false],
 		rw: [false],
 		//speaking and listening
 		cc: [false, false, false],
@@ -60,8 +60,6 @@ app.controller('HomeCtrl', function($scope, $http, FetchStandards) {
 	
 	$scope.standardClicked = function(key, index) {
 		selectedStandards[key][index] = !selectedStandards[key][index];
-		console.log(selectedStandards[key]);
-		console.log(selectedStandards);
 	}
 	$scope.planningClicked = function() {
 		FetchStandards.save(selectedStandards);
@@ -72,12 +70,57 @@ app.controller('HomeCtrl', function($scope, $http, FetchStandards) {
 
 app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
 	
-	var passed = FetchStandards.retrieve();
-	console.log(passed);
+	$scope.passed = FetchStandards.retrieve();
+	//check if any of the reading subhead arrays contain true
+	$scope.anyReading = function(){
+		//if those arrays are !empty then returns a true for the ng-if 
+		return !_.isEmpty(
+							// _.compact returns array with all false/null values removed so this will return a true of ANY of the reading subhead arrays contain a true
+							_.compact([].concat($scope.passed.ki, $scope.passed.cs, $scope.passed.ik, $scope.passed.rr))
+							);
+	}
+	$scope.anyKI = function(){
+		//if those arrays are !empty then returns a true for the ng-if 
+		return !_.isEmpty(
+							// _.compact returns array with all false/null values removed so this will return a true of ANY of the reading subhead arrays contain a true
+							_.compact($scope.passed.ki)
+							);
+	}
+	$scope.anyWriting = function(){
+		return !_.isEmpty(
+							_.compact([].concat($scope.passed.tt, $scope.passed.pd, $scope.passed.rb, $scope.passed.rw))
+							);
+	}
+	$scope.anySpeakingListening = function(){
+		return !_.isEmpty(
+							_.compact([].concat($scope.passed.cc, $scope.passed.pk))
+							);
+	}
+	$scope.anyLanguage = function(){
+		return !_.isEmpty(
+							_.compact([].concat($scope.passed.sl, $scope.passed.kl, $scope.passed.va))
+							);
+	}
+	$scope.anyCreative = function(){
+		return !_.isEmpty(
+							_.compact([].concat($scope.passed.kn, $scope.passed.pr, $scope.passed.co))
+							);
+	}
+	$scope.anyResponsibility = function(){
+		return !_.isEmpty(
+							_.compact([].concat($scope.passed.cr, $scope.passed.sr, $scope.passed.ir))
+							);
+	}
+	
+	Array.prototype.contains = function ( needle ) {
+   for (i in this) {
+       if (this[i] == needle) return true;
+   }
+   return false;
+	}
 		
 	FetchStandards.getDetailsList(function(det){
-		
-		//everything in details.json
+		//everything in details.json into planningData 
 		$scope.planningData = det;
 	});
 

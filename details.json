@@ -146,6 +146,7 @@
             "pro": ""
         }
     ],
+		"_comment": " writing",
     "tt": [
         {
             "sub": "Text Types and Purposes",
@@ -317,10 +318,11 @@
             "pro": ""
         }
     ],
+		"_comment": " speaking and listening",
     "cc": [
         {
             "sub": "Comprehension and Collaboration",
-            "text": "1. Prepare to participate in collegial, civil, democratic discussions by setting rules, goals, deadlines, and roles.",
+            "text": "1. Prepare for and participate effectively in a range of conversations and collaborations with diverse partners, building on others' ideas and expressing their own clearly and persuasively.",
             "det": [
                 "Come to discussions prepared, having read and researched material under study, explicitly drawing evidence from that preparation to stimulate a thoughtful, well-reasoned exchange of ideas.",
                 "Work with peers to set rules for academic conversations and collegial, civil, democratic discussions, setting clear goals, deadlines, and individual roles as needed.",
@@ -400,6 +402,7 @@
             "pro": "I can speak with confidence, reading minimally, making eye contact with the audience, and using appropriate language, pronunciation, volume, pace, and tone. I can use language appropriate to the task, purpose, and audience."
         }
     ],
+		"_comment": " language",
     "sl": [
         {
             "sub": "Standard Language Conventions",
@@ -491,6 +494,7 @@
             "pro": "I can use a range of words and phrases accurately, effectively, and appropriately to achieve precision and specificity."
         }
     ],
+		"_comment": " creative problem solving",
     "kn": [
         {
             "sub": "Knowledge",
@@ -624,6 +628,7 @@
             "pro": "I communicate my work accurately, fully, and honestly, integrating information while avoiding plagiarism. I address questions thoughtfully and acknowledge the limitations of my work. I demonstrate awareness of the ethical implications of my work and balance creative expression with creative responsibility."
         }
     ],
+		"_comment": "civic and social responsibility",
     "cr": [
         {
             "sub": "Civic Responsibility",
