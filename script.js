@@ -61,31 +61,44 @@ app.controller('HomeCtrl', function($scope, $http, FetchStandards) {
 	$scope.standardClicked = function(key, index) {
 		selectedStandards[key][index] = !selectedStandards[key][index];
 	}
-	$scope.planningClicked = function() {
+	$scope.navClicked = function() {
 		FetchStandards.save(selectedStandards);
 	}
-	
 	
 });
 
 app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
 	
+	//get the array object of selected standards
 	$scope.passed = FetchStandards.retrieve();
+	console.log($scope.passed);
+	/* eugene code 
+	$scope.containsAny = function(key) {
+		return !_.isEmpty($scope.passed[key]);	
+	};
+	
+	$scope.anyCategory = function(subcat) {
+		
+		return containsAny('ki') || 
+	};
+	*/
+
+	FetchStandards.getPlanningList(function(det){
+		//put everything in planning.json into planningData 
+		$scope.planningData = det;
+		console.log($scope.planningData);
+	});
+
+
+	
+
 	//check if any of the reading subhead arrays contain true
 	$scope.anyReading = function(){
-		//if those arrays are !empty then returns a true for the ng-if 
-		return !_.isEmpty(
-							// _.compact returns array with all false/null values removed so this will return a true of ANY of the reading subhead arrays contain a true
-							_.compact([].concat($scope.passed.ki, $scope.passed.cs, $scope.passed.ik, $scope.passed.rr))
-							);
+		//bif those arrays are !empty then returns a true for the ng-if 
+		// _.compact returns array with all false/null values removed so this will return a true of ANY of the reading subhead arrays contain a true
+		return !_.isEmpty(_.compact([].concat($scope.passed.ki, $scope.passed.cs, $scope.passed.ik, $scope.passed.rr)));
 	}
-	$scope.anyKI = function(){
-		//if those arrays are !empty then returns a true for the ng-if 
-		return !_.isEmpty(
-							// _.compact returns array with all false/null values removed so this will return a true of ANY of the reading subhead arrays contain a true
-							_.compact($scope.passed.ki)
-							);
-	}
+	
 	$scope.anyWriting = function(){
 		return !_.isEmpty(
 							_.compact([].concat($scope.passed.tt, $scope.passed.pd, $scope.passed.rb, $scope.passed.rw))
@@ -107,29 +120,36 @@ app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
 							);
 	}
 	$scope.anyResponsibility = function(){
-		return !_.isEmpty(
-							_.compact([].concat($scope.passed.cr, $scope.passed.sr, $scope.passed.ir))
-							);
+		return !_.isEmpty(_.compact([].concat($scope.passed.cr, $scope.passed.sr, $scope.passed.ir)));
 	}
-	
-	Array.prototype.contains = function ( needle ) {
-   for (i in this) {
-       if (this[i] == needle) return true;
-   }
-   return false;
+	$scope.subCheck = function(key){
+		return !_.isEmpty(_.compact($scope.passed[key])); 
 	}
 		
-	FetchStandards.getDetailsList(function(det){
-		//everything in details.json into planningData 
-		$scope.planningData = det;
+
+
+});
+
+app.controller('ScoringCtrl', function($scope, $http, FetchStandards) {
+	FetchStandards.getScoringList(function(det){
+		//put everything in scoring.json into scoringData 
+		$scope.scoringData = det;
 	});
 
+	$scope.passed = FetchStandards.retrieve();
+	//concatinate all substandards of the same standard together (to match with scoring.json structure)
+	$scope.passedConcat = {
+		"allReading" : [].concat($scope.passed.ki, $scope.passed.cs, $scope.passed.ik, $scope.passed.rr),
+		"allWriting" : [].concat($scope.passed.tt, $scope.passed.pd, $scope.passed.rb, $scope.passed.rw),
+		"allSpeakingListening" : [].concat($scope.passed.cc, $scope.passed.pk),
+		"allLanguage" : [].concat($scope.passed.sl, $scope.passed.kl, $scope.passed.va),
+		"allCreative" : [].concat($scope.passed.kn, $scope.passed.pr, $scope.passed.co),
+		"allResponsibility" : [].concat($scope.passed.cr, $scope.passed.sr, $scope.passed.ir)
+	};
+
+
+
 });
-
-app.controller('ScoringCtrl', function() {
-
-});
-
 app.factory('FetchStandards', function($http){
 	var standardsPass;
 	
@@ -141,15 +161,18 @@ app.factory('FetchStandards', function($http){
 		//saving what user clicked
 		save: function(selection) {
 			standardsPass = selection;
-			console.log("Saved standards object!:" + standardsPass);
 		},
 		//retrieving what user clicked
 		retrieve: function() {
 			return standardsPass;
 		},
-		//getting details.json
-		getDetailsList: function(callback){
-			$http.get('details.json').success(callback);
+		//getting planning.json
+		getPlanningList: function(callback){
+			$http.get('planning.json').success(callback);
+		},
+		//getting scoring.json
+		getScoringList: function(callback){
+			$http.get('scoring.json').success(callback);
 		}
 	}
 });

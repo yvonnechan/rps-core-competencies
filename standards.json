@@ -11,12 +11,12 @@
             "6. Assess how point of view or purpose shapes the content and style of a text."
         ],
         "ik": [
-            "7. Evaluate and synthesize content presented in diverse media and formats, including visually and quantitatively, as well as in words.",
+            "7. Integrate and evaluate content presented in diverse media and formats, including visually and quantitatively, as well as in words.",
             "8. Evaluate the argument and specific claims in a text, including the validity of the reasoning and the relevance and sufficiency of the evidence.",
             "9. Analyze how two or more texts address similar themes or topics in order to build knowledge or to compare the approaches the authors take."
         ],
         "rr": [
-            "10. Read and comprehend a range of complex literary and informational texts independently and proficiently."
+            "10. Read and comprehend complex literary and informational texts independently and proficiently."
         ]
     },
     "writing": {
@@ -33,7 +33,7 @@
         "rb": [
             "7. Conduct short as well as more sustained research projects based on focused questions, demonstrating understanding of the subject under investigation.",
             "8. Gather relevant information from multiple print and digital sources, assess the credibility and accuracy of each source, and integrate the information while avoiding plagiarism.",
-            "9. Draw evidence from literary or informational texts to support analysis, reflection, and research. (See RHS Planning Guide for Reading standard 1)"
+            "9. Draw evidence from literary or informational texts to support analysis, reflection, and research."
         ],
         "rw": [
             "10. Write routinely over extended time frames (time for research, reflection, and revision) and shorter time frames (a single sitting or a day or two) for a range of tasks, purposes, and audiences."
@@ -41,14 +41,14 @@
     },
     "speakingListening": {
         "cc": [
-            "1. Prepare to participate in collegial, civil, democratic discussions by setting rules, goals, deadlines, and roles.",
-            "2. Participate by posing and responding to questions, engaging others into the discussion, and evaluating comments, claims, and evidence.",
-            "3. Comprehend ideas and conclusions by paraphrasing, summarizing, and making new connections."
+            "1. Prepare for and participate effectively in a range of conversations and collaborations with diverse partners, building on others’ ideas and expressing their own clearly and persuasively.",
+            "2. Integrate and evaluate information presented in diverse media and formats, including visually, quantitatively, and orally.",
+            "3. Evaluate a speaker’s point of view, reasoning, and use of evidence and rhetoric."
         ],
         "pk": [
-            "4. Deliver knowledge and ideas clearly, confidently, and precisely, and respond thoughtfully to questions and comments posed by the audience.",
-            "5. Communicate content clearly and effectively, aligning content to task, purpose, and audience and incorporating media to enhance meaning and add interest.",
-            "6. Listen actively, analyzing and evaluating the content and style of a presentation, posing thoughtful questions and offering constructive feedback to the speaker or performer."
+            "4. Present information, findings, and supporting evidence such that listeners can follow the line of reasoning and the organization, development, and style are appropriate to task, purpose, and audience.",
+            "5. Make strategic use of digital media and visual displays of data to express information and enhance understanding of presentations.",
+            "6. Adapt speech to a variety of contexts and communicative tasks, demonstrating command of formal English when indicated or appropriate."
         ]
     },
     "language": {
@@ -60,7 +60,7 @@
             "3. Apply knowledge of language to understand how language functions in different contexts, to make effective choices for meaning or style, and to comprehend more fully when reading or listening."
         ],
         "va": [
-            "4. Determine or clarify the meaning of unknown and multiple-meaning words and phrases (based on grade-appropriate reading and content) by using context clues, analyzing meaningful word parts, and consulting general and specialized reference materials, as appropriate.",
+            "4. Determine or clarify the meaning of unknown and multiple-meaning words and phrases by using context clues, analyzing meaningful word parts, and consulting general and specialized reference materials, as appropriate.",
             "5. Demonstrate understanding of figurative language, word relationships, and nuances in word meanings.",
             "6. Acquire and use accurately a range of general academic and domain-specific words and phrases sufficient for reading, writing, speaking, and listening at the college and career readiness level; demonstrate independence in gathering vocabulary knowledge when encountering an unknown term important to comprehension or expression."
         ]
@@ -83,7 +83,7 @@
     },
     "responsibility": {
         "cr": [
-            "1. Take an active role in the school's democratic process; prepare for the role of self-governing citizen of the United States of America."
+            "1. Take an active role in the school's democratic process; prepare for the role of self-governing citizen of the United States."
         ],
         "sr": [
             "2. Collaborate with others and contribute to the construction of shared meaning, solutions, and conclusions.",

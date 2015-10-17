@@ -3,25 +3,42 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>PlangularJS</title>
-
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
 <style>
 * {
-	font-family:Calibri;
+	font-family: Calibri;
 }
 table {
 	border-collapse:collapse;
-	width:80%;
-	margin: 20px;
+	border-spacing: 0;
 }
 th {
 	font-size:24px;
 	color:white;
 	background-color:black;
 	padding: .25em;
+	text-align: center;
+	border: 1px black solid;
 }
+
 td{
 	padding: 5px;
+	border: 1px black solid;
 }
+
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    padding-top:120px;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 /*table subhead colors*/
 
 .reading-sub{
@@ -50,10 +67,16 @@ td{
 <div ng-view></div>
   
 	<script src="bower_components/jquery/dist/jquery.js"></script>
+	<script src="bower_components/bootstrap/js/tooltip.js"></script>
+	<script src="bower_components/bootstrap/js/popover.js"></script>
 	<script src="bower_components/angular/angular.js"></script>
-  <script src="bower_components/angular-route/angular-route.js"></script>
-  <script src="bower_components/lodash/lodash.js"></script>
+  	<!-- angular-route for ng-route to switch between pages -->
+  	<script src="bower_components/angular-route/angular-route.js"></script>
+  	<!-- lodash for _.compact in PlanningCtrl -->
+  	<script src="bower_components/lodash/lodash.js"></script>
 	<script src="script.js"></script>
+
+
 
 </body>
 </html>

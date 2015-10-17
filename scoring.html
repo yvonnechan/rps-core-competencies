@@ -1,12 +1,136 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="BonMod">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>My Scoring Guide</title>
+
+<style>
+
+.navbar-fixed-top {
+  color:#fff;
+  background-color:#333333;
+  text-align: center;
+}
+
+
+.navbar-fixed-bottom {
+  color:#fff;
+  text-align: center;
+  margin: auto;
+  background-color:#333333;
+}
+
+.navbar-btn{
+
+  background-color:red;
+  color:#fff;
+}
+
+#lastrow{
+	  padding-bottom: 65px ;
+}
+
+tr{
+	vertical-align: top;
+}
+
+td{
+	width:25%;
+}
+
+.text-center{
+	font-style: italic;
+}
+
+</style>
+
 </head>
 
 <body>
 
-Scoring Guide yo.
+<nav class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <h4>College and Career Readiness Anchor Standards | Revere High School Core Competencies</h4>
+  </div>
+</nav>
+
+ <div class="container-fluid">
+  <div class="row" id="lastrow">
+<table border="1" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
+<th width="25%" style="border-right: 1px solid #FFF; text-align:left;">Competency</th>
+<th width="75%" colspan="3">Performance Criteria</th>
+<tr ng-repeat="x in scoringData.reading" ng-if="passedConcat.allReading[$index]">
+	<td><b>Reading ({{x.sub}})</b><br><br>
+		{{x.text}}
+	</td>
+	<td class="text-center">Approaches expectations</td>
+	<td><div class="text-center">Meets expectations</div><br>
+		{{x.pro}}</td>
+	<td class="text-center">Exceeds expectations</td>
+
+</tr>
+<tr ng-repeat="x in scoringData.writing" ng-if="passedConcat.allWriting[$index]">
+	<td><b>Writing ({{x.sub}})</b><br><br>
+		{{x.text}}
+	</td>
+	<td  class="text-center">Approaches expectations</td>
+	<td><div class="text-center">Meets expectations</div><br>
+		{{x.pro}}</td>
+	<td  class="text-center">Exceeds expectations</td>
+
+</tr>
+<tr ng-repeat="x in scoringData.speakingListening" ng-if="passedConcat.allSpeakingListening[$index]">
+	<td><b>Speaking and Listening ({{x.sub}})</b><br><br>
+		{{x.text}}
+	</td>
+	<td  class="text-center">Approaches expectations</td>
+	<td><div class="text-center">Meets expectations</div><br>
+		{{x.pro}}</td>
+	<td  class="text-center">Exceeds expectations</td>
+
+</tr>
+<tr ng-repeat="x in scoringData.language" ng-if="passedConcat.allLanguage[$index]">
+	<td><b>Language ({{x.sub}})</b><br><br>
+		{{x.text}}
+	</td>
+	<td class="text-center">Approaches expectations</td>
+	<td><div class="text-center">Meets expectations</div><br>
+		{{x.pro}}</td>
+	<td  class="text-center">Exceeds expectations</td>
+
+</tr>
+
+<tr ng-repeat="x in scoringData.creative" ng-if="passedConcat.allCreative[$index]">
+	<td><b>Creative Problem Solving ({{x.sub}})</b><br><br>
+		{{x.text}}
+	</td>
+	<td  class="text-center">Approaches expectations</td>
+	<td><div class="text-center">Meets expectations</div><br>
+		{{x.pro}}</td>
+	<td class="text-center">Exceeds expectations</td>
+
+</tr>
+<tr ng-repeat="x in scoringData.responsibility" ng-if="passedConcat.allResponsibility[$index]">
+	<td><b>Civic and Social Responsibility ({{x.sub}})</b><br><br>
+		{{x.text}}
+	</td>
+	<td><div class="expect">Approaches expectations</div></td>
+	<td><div class="text-center">Meets expectations</div><br>
+		{{x.pro}}</td>
+	<td class="text-center">Exceeds expectations</td>
+
+</tr>
+</table>
+</div>
+</div>
+
+<nav class="navbar navbar-fixed-bottom navbar-inverse">
+  <div class="container">
+    <a class="btn navbar-btn" ng-click="" type="button" href="#/planning">Generate planning guide</a>
+    <a class="btn navbar-btn" ng-click="" type="button" href="#">Print</a>
+  </div>
+</nav>
+
+
 </body>
 </html>

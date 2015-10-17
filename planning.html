@@ -1,5 +1,5 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"  ng-app="BonMod">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="BonMod">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>My Planning Guide</title>
@@ -9,15 +9,16 @@
 	font-family:Calibri;
 }
 table {
-	border-collapse:collapse;
-	width:80%;
-	margin: 20px;
+  border-collapse:collapse;
+  margin-top: 0px;
+
 }
 th {
 	font-size:24px;
-	color:white;
+	color: #fff;
 	background-color:black;
 	padding: .25em;
+  text-align: center;
 }
 td{
 	padding: 5px;
@@ -43,369 +44,422 @@ td{
 .responsibility-sub{
 	background-color:#FF3333;
 }
+
+
+
+.navbar-fixed-top {
+  color:#fff;
+  background-color:#333333;
+  text-align: center;
+}
+
+
+.navbar-fixed-bottom {
+  color:#fff;
+  text-align: center;
+  margin: auto;
+  background-color:#333333;
+}
+
+.navbar-btn{
+
+  background-color:red;
+  color:#fff;
+}
 </style>
 
 </head>
 
 <body ng-controller="PlanningCtrl">
+<nav class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <h2>College and Career Readiness Anchor Standards | Revere High School Core Competencies</h2>
+    <h3><em>Planning Guide</em></h3>
+  </div>
+</nav>
 
-Planning guide yo.
 <!--Reading table -->
+
+<div class="container-fluid">
+  <div class="row">
 	<!--print table if there is any true value in array of reading standards -->
-	<table border="1" id="reading-tab" ng-if="anyReading()">
-		<th>READING</th>
-    <!--print subhead if there is any true value in array of reading standards sub-sections -->
-   	<tr ng-if="passed.ki.contains(true)">
-   		<td class="reading-sub">Key Ideas and Details</td>
-    </tr>
-    <!--print standards for that have been selected, or true in array -->
-    <tr ng-if="passed.ki[$index]" ng-repeat="x in planningData.ki">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-    
-   	<tr ng-if="passed.cs.contains(true)">
-   		<td class="reading-sub">Craft and Structure</td>
-    </tr>
-    <tr ng-if="passed.cs[$index]" ng-repeat="x in planningData.cs">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-    
-   	<tr ng-if="passed.ik.contains(true)">
-   		<td class="reading-sub">Integration of Knowledge and Ideas</td>
-    </tr>
-    <tr ng-if="passed.ik[$index]" ng-repeat="x in planningData.ik">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-    
-    <tr ng-if="passed.rr.contains(true)">
-   		<td class="reading-sub">Range of Reading and Level of Text Complexity</td>
-    </tr>
-    <tr ng-if="passed.rr[$index]" ng-repeat="x in planningData.rr">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-    
-	</table>
+  	<table border="1" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" id="reading-tab">
+  		<th  ng-if="anyReading()">READING</th>
+      <!--print subhead if there is any true value in array of reading standards sub-sections -->
+     	<tr ng-if="subCheck('ki')">
+     		<td class="reading-sub">Key Ideas and Details</td>
+      </tr>
+      <!--print standards for that have been selected, or true in array -->
+      <tr ng-if="passed.ki[$index]" ng-repeat="x in planningData.ki">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+      
+     	<tr ng-if="subCheck('cs')">
+     		<td class="reading-sub">Craft and Structure</td>
+      </tr>
+      <tr ng-if="passed.cs[$index]" ng-repeat="x in planningData.cs">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+      
+     	<tr ng-if="subCheck('ik')">
+     		<td class="reading-sub">Integration of Knowledge and Ideas</td>
+      </tr>
+      <tr ng-if="passed.ik[$index]" ng-repeat="x in planningData.ik">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+      
+      <tr ng-if="subCheck('rr')">
+     		<td class="reading-sub">Range of Reading and Level of Text Complexity</td>
+      </tr>
+      <tr ng-if="passed.rr[$index]" ng-repeat="x in planningData.rr">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+  	</table>
+  </div>
+  
+  
 <!--Writing table -->
-  <table border="1" id="writing-tab" ng-if="anyWriting()">
-		<th>WRITING</th>
-   	<tr>
-   		<td class="writing-sub">Text Types and Purpose</td>
-    </tr>
-    <tr ng-repeat="x in planningData.tt">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-    <tr>
-   		<td class="writing-sub">Production and Distribution of Writing</td>
-    </tr>
-    <tr ng-repeat="x in planningData.pd">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-    <tr>
-   		<td class="writing-sub">Research to Build and Present Knowledge</td>
-    </tr>
-        <tr ng-repeat="x in planningData.rb">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-    <tr>
-   		<td class="writing-sub">Range of Writing</td>
-    </tr>
-    </tr>
-        <tr ng-repeat="x in planningData.rw">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-	</table>
-<!--Speaking and Listening table -->
-  <table border="1" id="speakinglistening-tab" ng-if="anySpeakingListening()">
-		<th>SPEAKING and LISTENING</th>
-   	<tr>
-   		<td class="speakinglistening-sub">Comprehension and Collaboration</td>
-    </tr>
-    </tr>
-    <tr ng-repeat="x in planningData.cc">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-    <tr>
-   		<td class="speakinglistening-sub">Presentation of Knowledge and Ideas</td>
-    </tr>
-    <tr ng-repeat="x in planningData.pk">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-	</table>
-<!--Language table --> 
-  <table border="1" id="language-tab" ng-if="anyLanguage()">
-		<th>LANGUAGE</th>
-   	<tr>
-   		<td class="language-sub">Standard Language Conventions</td>
-    </tr>
-    <tr ng-repeat="x in planningData.sl">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-    <tr>
-   		<td class="language-sub">Knowledge of Lanaguage</td>
-    </tr>
-    <tr ng-repeat="x in planningData.kl">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-    <tr>
-   		<td class="language-sub">Vocabulary Acquisition and Use</td>
-    </tr>
-    <tr ng-repeat="x in planningData.va">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-	</table>
-<!--Creative Problem Solving table -->  
-  <table border="1" id="problemsolving-tab" ng-if="anyCreative()">
-		<th>CREATIVE PROBLEM SOLVING</th>
-   	<tr>
-   		<td class="problemsolving-sub">Knowledge</td>
-    </tr>
-    <tr ng-repeat="x in planningData.kn">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-    <tr>
-   		<td class="problemsolving-sub">Process</td>
-    </tr>
-    <tr ng-repeat="x in planningData.pr">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-    <tr>
-   		<td class="problemsolving-sub">Communication</td>
-    </tr>
-    <tr ng-repeat="x in planningData.co">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-	</table>  
-<!--Civic and Social Responsibility table -->  
-  <table border="1" id="responsibility-tab" ng-if="anyResponsibility()">
-		<th>CIVIC and SOCIAL RESPONSIBILITY</th>
-   	<tr>
-   		<td class="responsibility-sub">Civic Responsibility</td>
-    </tr>
-    <tr ng-repeat="x in planningData.cr">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-    <tr>
-   		<td class="responsibility-sub">Social Responsibilty</td>
-    </tr>
-    <tr ng-repeat="x in planningData.sr">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-    <tr>
-   		<td class="responsibility-sub">Individual Responsibility</td>
-    </tr>
-    <tr ng-repeat="x in planningData.ir">
-    	<td>
-      	{{x.text}}<br />
-      	<ul>
-        	<li ng-repeat="y in x.det">{{y}}</li>
-        </ul>
-        <div ng-if="x.det1112">
-        <em>In addition, students in grades 11-12 will be able to:</em>
-        <ul>
-        	<li ng-repeat="z in x.det1112">{{z}}</li>
-        </ul>
-        </div>
-      </td>
-		</tr>
-	</table>  
-     
+<div class="row">
+    <table border="1" id="writing-tab" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" ng-if="anyWriting()">
+  		<th>WRITING</th>
+     	<tr ng-if="subCheck('tt')">
+     		<td class="writing-sub">Text Types and Purpose</td>
+      </tr>
+      <tr ng-if="passed.tt[$index]" ng-repeat="x in planningData.tt">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('pd')">
+     		<td class="writing-sub">Production and Distribution of Writing</td>
+      </tr>
+      <tr ng-if="passed.pd[$index]" ng-repeat="x in planningData.pd">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('rb')">
+     		<td class="writing-sub">Research to Build and Present Knowledge</td>
+      </tr>
+      <tr ng-if="passed.rb[$index]" ng-repeat="x in planningData.rb">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('rw')">
+     		<td class="writing-sub">Range of Writing</td>
+      </tr>
+      </tr>
+      <tr ng-if="passed.rw[$index]" ng-repeat="x in planningData.rw">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+  	</table>
+</div>
+
+<div class="row">
+  <!--Speaking and Listening table -->
+    <table  class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" border="1" id="speakinglistening-tab" ng-if="anySpeakingListening()">
+  		<th>SPEAKING and LISTENING</th>
+     	<tr ng-if="subCheck('cc')">
+     		<td class="speakinglistening-sub">Comprehension and Collaboration</td>
+      </tr>
+      </tr>
+      <tr ng-if="passed.cc[$index]" ng-repeat="x in planningData.cc">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('pk')">
+     		<td class="speakinglistening-sub">Presentation of Knowledge and Ideas</td>
+      </tr>
+      <tr ng-if="passed.pk[$index]" ng-repeat="x in planningData.pk">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+  	</table>
+</div>
+<div class="row">
+  <!--Language table --> 
+    <table border="1"  class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" id="language-tab" ng-if="anyLanguage()">
+  		<th>LANGUAGE</th>
+     	<tr ng-if="subCheck('sl')">
+     		<td class="language-sub">Standard Language Conventions</td>
+      </tr>
+      <tr ng-if="passed.sl[$index]" ng-repeat="x in planningData.sl">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('kl')">
+     		<td class="language-sub">Knowledge of Lanaguage</td>
+      </tr>
+      <tr ng-if="passed.kl[$index]" ng-repeat="x in planningData.kl">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('va')">
+     		<td class="language-sub">Vocabulary Acquisition and Use</td>
+      </tr>
+      <tr ng-if="passed.va[$index]" ng-repeat="x in planningData.va">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+  	</table>
+    </div>
+
+  <!--Creative Problem Solving table -->  
+  <div class="row">
+    <table border="1"  class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" id="problemsolving-tab" ng-if="anyCreative()">
+  		<th>CREATIVE PROBLEM SOLVING</th>
+     	<tr ng-if="subCheck('kn')">
+     		<td class="problemsolving-sub">Knowledge</td>
+      </tr>
+      <tr ng-if="passed.kn[$index]" ng-repeat="x in planningData.kn">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('pr')">
+     		<td class="problemsolving-sub">Process</td>
+      </tr>
+      <tr ng-if="passed.pr[$index]" ng-repeat="x in planningData.pr">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('co')">
+     		<td class="problemsolving-sub">Communication</td>
+      </tr>
+      <tr ng-if="passed.co[$index]" ng-repeat="x in planningData.co">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+  	</table>  
+    </div>
+  <!--Civic and Social Responsibility table -->  
+  <div class="row">
+    <table  class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" border="1" id="responsibility-tab" ng-if="anyResponsibility()">
+  		<th>CIVIC and SOCIAL RESPONSIBILITY</th>
+     	<tr ng-if="subCheck('cr')">
+     		<td class="responsibility-sub">Civic Responsibility</td>
+      </tr>
+      <tr ng-if="passed.cr[$index]" ng-repeat="x in planningData.cr">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('sr')">
+     		<td class="responsibility-sub">Social Responsibilty</td>
+      </tr>
+      <tr ng-if="passed.sr[$index]" ng-repeat="x in planningData.sr">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('ir')">
+     		<td class="responsibility-sub">Individual Responsibility</td>
+      </tr>
+      <tr ng-if="passed.ir[$index]" ng-repeat="x in planningData.ir">
+      	<td>
+        	{{x.text}}<br />
+        	<ul>
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul>
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+        </td>
+  		</tr>
+  	</table> 
+
+    </div> 
+    </div>
+    </div> 
+
+<nav class="navbar navbar-fixed-bottom navbar-inverse">
+  <div class="container">
+    <a class="btn navbar-btn" ng-click="" type="button" href="#/scoring">Generate scoring guide</a>
+    <a class="btn navbar-btn" ng-click="" type="button" href="#">Print</a>
+  </div>
+</nav>
 </body>
 </html>
