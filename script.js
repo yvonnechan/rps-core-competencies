@@ -25,8 +25,9 @@ app.config(
 	});
 
 app.controller('HomeCtrl', function($scope, $http, FetchStandards) {
+
 	//google : initialize js array of a certain value
-	var selectedStandards = {
+	var initalConfig = {
 		//reading
 		ki: [false, false, false],
 		cs: [false, false, false],
@@ -58,13 +59,25 @@ app.controller('HomeCtrl', function($scope, $http, FetchStandards) {
 		$scope.core = lit;
 	});
 	
-	$scope.standardClicked = function(key, index) {
-		selectedStandards[key][index] = !selectedStandards[key][index];
+	$scope.standardClicked =  function(key, index) {
+		$scope.selectedStandards[key][index] = !$scope.selectedStandards[key][index];
+		console.log(_.isEmpty(_.compact([].concat($scope.selectedStandards.ki, $scope.selectedStandards.cs))));
 	}
 	$scope.navClicked = function() {
-		FetchStandards.save(selectedStandards);
+		FetchStandards.save($scope.selectedStandards);
 	}
-	
+
+	$scope.anyClicked = function(){
+		// if those arrays are empty then returns a true for the ng-if 
+		// _.compact returns array with all false/null values removed so this will return a true of ANY of the reading subhead arrays contain a true
+		return _.isEmpty(_.compact([].concat($scope.selectedStandards.ki, $scope.selectedStandards.cs, $scope.selectedStandards.ik, $scope.selectedStandards.rr, $scope.selectedStandards.tt, $scope.selectedStandards.pd, $scope.selectedStandards.rb, $scope.selectedStandards.rw, $scope.selectedStandards.cc, $scope.selectedStandards.pk, $scope.selectedStandards.sl, $scope.selectedStandards.kl, $scope.selectedStandards.va, $scope.selectedStandards.kn, $scope.selectedStandards.pr, $scope.selectedStandards.co, $scope.selectedStandards.cr, $scope.selectedStandards.sr, $scope.selectedStandards.ir)));
+	}
+	$scope.clearButton = function(){
+		$scope.selectedStandards = initalConfig;
+	}	
+
+	$scope.clearButton();
+
 });
 
 app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
@@ -94,7 +107,7 @@ app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
 
 	//check if any of the reading subhead arrays contain true
 	$scope.anyReading = function(){
-		//bif those arrays are !empty then returns a true for the ng-if 
+		// if those arrays are !empty then returns a true for the ng-if 
 		// _.compact returns array with all false/null values removed so this will return a true of ANY of the reading subhead arrays contain a true
 		return !_.isEmpty(_.compact([].concat($scope.passed.ki, $scope.passed.cs, $scope.passed.ik, $scope.passed.rr)));
 	}
