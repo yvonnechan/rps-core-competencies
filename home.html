@@ -14,30 +14,34 @@
   clear:both;
 }
 
-
 .navbar-fixed-top {
   color:#fff;
   background-color:#333333;
   text-align: center;
 }
 
-.navbar-btn{
-
+.navbar-btn {
   background-color:red;
   color:#fff;
 }
-#footer{
+
+#footer {
   position:fixed;
   clear:both;
   bottom:0;
   width:100%;
 }
 
-#lastrow{
+#lastrow {
   padding-bottom: 65px ;
 }
-.row-highlight{
+
+.row-highlight {
   background-color:#ffff00;
+}
+
+.row-clear {
+  background-color:#ffffff;
 }
 
 </style>
@@ -50,7 +54,7 @@
 <nav class="navbar navbar-fixed-top navbar-inverse">
 <div class="container">
     <h3>College and Career Readiness Anchor Standards | Revere High School Core Competencies</h3>
-     <button type="button" class="btn btn-link" data-container="body" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="Select the core skills in a unit of study by clicking each one. To unselect a core skill, click again. To print, click the 'Generate planning guide' button at the bottom.">How does this work?</button>
+     <button style="float:right" type="button" class="btn btn-link" data-container="body" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="Select the core skills in a unit of study by clicking each one. To unselect a core skill, click again. To print, click the 'Generate planning guide' button at the bottom.">How does this work?</button>
 
 </div>
 </nav>
@@ -65,7 +69,7 @@
          		<td class="reading-sub">Key Ideas and Details</td>
           </tr>
           <tr ng-repeat="x in core.reading.ki">
-          	<td ng-class="{'row-highlight': selectedStandards.ki[$index]}" ng-click="standardClicked('ki', $index);" >{{x}}</td>
+          	<td ng-class="{ 'row-highlight': selectedStandards.ki[$index] }" ng-click="standardClicked('ki', $index);" >{{x}}</td>
       		</tr>
           <tr>
          		<td class="reading-sub">Craft and Structure</td>

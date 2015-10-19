@@ -61,7 +61,6 @@ app.controller('HomeCtrl', function($scope, $http, FetchStandards) {
 	
 	$scope.standardClicked =  function(key, index) {
 		$scope.selectedStandards[key][index] = !$scope.selectedStandards[key][index];
-		console.log(_.isEmpty(_.compact([].concat($scope.selectedStandards.ki, $scope.selectedStandards.cs))));
 	}
 	$scope.navClicked = function() {
 		FetchStandards.save($scope.selectedStandards);
@@ -73,7 +72,7 @@ app.controller('HomeCtrl', function($scope, $http, FetchStandards) {
 		return _.isEmpty(_.compact([].concat($scope.selectedStandards.ki, $scope.selectedStandards.cs, $scope.selectedStandards.ik, $scope.selectedStandards.rr, $scope.selectedStandards.tt, $scope.selectedStandards.pd, $scope.selectedStandards.rb, $scope.selectedStandards.rw, $scope.selectedStandards.cc, $scope.selectedStandards.pk, $scope.selectedStandards.sl, $scope.selectedStandards.kl, $scope.selectedStandards.va, $scope.selectedStandards.kn, $scope.selectedStandards.pr, $scope.selectedStandards.co, $scope.selectedStandards.cr, $scope.selectedStandards.sr, $scope.selectedStandards.ir)));
 	}
 	$scope.clearButton = function(){
-		$scope.selectedStandards = initalConfig;
+		$scope.selectedStandards = _.cloneDeep(initalConfig);
 	}	
 
 	$scope.clearButton();
@@ -84,7 +83,6 @@ app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
 	
 	//get the array object of selected standards
 	$scope.passed = FetchStandards.retrieve();
-	console.log($scope.passed);
 	/* eugene code 
 	$scope.containsAny = function(key) {
 		return !_.isEmpty($scope.passed[key]);	
@@ -99,7 +97,6 @@ app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
 	FetchStandards.getPlanningList(function(det){
 		//put everything in planning.json into planningData 
 		$scope.planningData = det;
-		console.log($scope.planningData);
 	});
 
 
