@@ -1,99 +1,99 @@
 {
     "reading": {
         "ki": [
-            "1. Read closely to determine what the text says explicitly and to make logical inferences from it; cite specific textual evidence when writing or speaking to support conclusions drawn from text.",
-            "2. Determine central ideas or themes of a text and analyze their development; summarize the key supporting details and ideas.",
-            "3. Analyze how and why individuals, events, and ideas develop and interact over the course of a text."
+            "R1. Read closely to determine what the text says explicitly and to make logical inferences from it; cite specific textual evidence when writing or speaking to support conclusions drawn from text.",
+            "R2. Determine central ideas or themes of a text and analyze their development; summarize the key supporting details and ideas.",
+            "R3. Analyze how and why individuals, events, and ideas develop and interact over the course of a text."
         ],
         "cs": [
-            "4. Interpret words and phrases as they are used in a text, including technical, connotative, and figurative meanings; analyze how specific word choices shape meaning and tone.",
-            "5. Analyze the structure of texts, including how specific sentences, paragraphs, and larger portions of the text (e.g., a section, chapter, scene, or stanza) relate to each other and the whole.",
-            "6. Assess how point of view or purpose shapes the content and style of a text."
+            "R4. Interpret words and phrases as they are used in a text, including technical, connotative, and figurative meanings; analyze how specific word choices shape meaning and tone.",
+            "R5. Analyze the structure of texts, including how specific sentences, paragraphs, and larger portions of the text (e.g., a section, chapter, scene, or stanza) relate to each other and the whole.",
+            "R6. Assess how point of view or purpose shapes the content and style of a text."
         ],
         "ik": [
-            "7. Integrate and evaluate content presented in diverse media and formats, including visually and quantitatively, as well as in words.",
-            "8. Delineate and evaluate the argument and specific claims in a text, including the validity of the reasoning and the relevance and sufficiency of the evidence.",
-            "9. Analyze how two or more texts address similar themes or topics in order to build knowledge or to compare the approaches the authors take."
+            "R7. Integrate and evaluate content presented in diverse media and formats, including visually and quantitatively, as well as in words.",
+            "R8. Delineate and evaluate the argument and specific claims in a text, including the validity of the reasoning and the relevance and sufficiency of the evidence.",
+            "R9. Analyze how two or more texts address similar themes or topics in order to build knowledge or to compare the approaches the authors take."
         ],
         "rr": [
-            "10. Read and comprehend complex literary and informational texts independently and proficiently."
+            "R10. Read and comprehend complex literary and informational texts independently and proficiently."
         ]
     },
     "writing": {
         "tt": [
-            "1. Write arguments to support claims in an analysis of substantive topics or texts, using valid reasoning and relevant and sufficient evidence.",
-            "2. Write informative/explanatory texts to examine and convey complex ideas and information clearly and accurately through effective selection, organization, and analysis of content.",
-            "3. Write narratives to develop real or imagined experiences or events using effective technique, well-chosen details, and well-structured event sequences."
+            "W1. Write arguments to support claims in an analysis of substantive topics or texts, using valid reasoning and relevant and sufficient evidence.",
+            "W2. Write informative/explanatory texts to examine and convey complex ideas and information clearly and accurately through effective selection, organization, and analysis of content.",
+            "W3. Write narratives to develop real or imagined experiences or events using effective technique, well-chosen details, and well-structured event sequences."
         ],
         "pd": [
-            "4. Produce clear and coherent writing in which the development, organization, and style are appropriate to task, purpose, and audience.",
-            "5. Develop and strengthen writing as needed by planning, revising, editing, rewriting, or trying a new approach.",
-            "6. Use technology, including the Internet, to produce and publish writing and to interact and collaborate with others."
+            "W4. Produce clear and coherent writing in which the development, organization, and style are appropriate to task, purpose, and audience.",
+            "W5. Develop and strengthen writing as needed by planning, revising, editing, rewriting, or trying a new approach.",
+            "W6. Use technology, including the Internet, to produce and publish writing and to interact and collaborate with others."
         ],
         "rb": [
-            "7. Conduct short as well as more sustained research projects based on focused questions, demonstrating understanding of the subject under investigation.",
-            "8. Gather relevant information from multiple print and digital sources, assess the credibility and accuracy of each source, and integrate the information while avoiding plagiarism.",
-            "9. Draw evidence from literary or informational texts to support analysis, reflection, and research."
+            "W7. Conduct short as well as more sustained research projects based on focused questions, demonstrating understanding of the subject under investigation.",
+            "W8. Gather relevant information from multiple print and digital sources, assess the credibility and accuracy of each source, and integrate the information while avoiding plagiarism.",
+            "W9. Draw evidence from literary or informational texts to support analysis, reflection, and research."
         ],
         "rw": [
-            "10. Write routinely over extended time frames (time for research, reflection, and revision) and shorter time frames (a single sitting or a day or two) for a range of tasks, purposes, and audiences."
+            "W10. Write routinely over extended time frames (time for research, reflection, and revision) and shorter time frames (a single sitting or a day or two) for a range of tasks, purposes, and audiences."
         ]
     },
     "speakingListening": {
         "cc": [
-            "1. Prepare for and participate effectively in a range of conversations and collaborations with diverse partners, building on others’ ideas and expressing their own clearly and persuasively.",
-            "2. Integrate and evaluate information presented in diverse media and formats, including visually, quantitatively, and orally.",
-            "3. Evaluate a speaker’s point of view, reasoning, and use of evidence and rhetoric."
+            "SL1. Prepare for and participate effectively in a range of conversations and collaborations with diverse partners, building on others’ ideas and expressing their own clearly and persuasively.",
+            "SL2. Integrate and evaluate information presented in diverse media and formats, including visually, quantitatively, and orally.",
+            "SL3. Evaluate a speaker’s point of view, reasoning, and use of evidence and rhetoric."
         ],
         "pk": [
-            "4. Present information, findings, and supporting evidence such that listeners can follow the line of reasoning and the organization, development, and style are appropriate to task, purpose, and audience.",
-            "5. Make strategic use of digital media and visual displays of data to express information and enhance understanding of presentations.",
-            "6. Adapt speech to a variety of contexts and communicative tasks, demonstrating command of formal English when indicated or appropriate."
+            "SL4. Present information, findings, and supporting evidence such that listeners can follow the line of reasoning and the organization, development, and style are appropriate to task, purpose, and audience.",
+            "SL5. Make strategic use of digital media and visual displays of data to express information and enhance understanding of presentations.",
+            "SL6. Adapt speech to a variety of contexts and communicative tasks, demonstrating command of formal English when indicated or appropriate."
         ]
     },
     "language": {
         "sl": [
-            "1. Demonstrate command of the conventions of standard grammar and usage when writing or speaking.",
-            "2. Demonstrate command of the conventions of standard capitalization, punctuation, and spelling when writing."
+            "L1. Demonstrate command of the conventions of standard grammar and usage when writing or speaking.",
+            "L2. Demonstrate command of the conventions of standard capitalization, punctuation, and spelling when writing."
         ],
         "kl": [
-            "3. Apply knowledge of language to understand how language functions in different contexts, to make effective choices for meaning or style, and to comprehend more fully when reading or listening."
+            "L3. Apply knowledge of language to understand how language functions in different contexts, to make effective choices for meaning or style, and to comprehend more fully when reading or listening."
         ],
         "va": [
-            "4. Determine or clarify the meaning of unknown and multiple-meaning words and phrases by using context clues, analyzing meaningful word parts, and consulting general and specialized reference materials, as appropriate.",
-            "5. Demonstrate understanding of figurative language, word relationships, and nuances in word meanings.",
-            "6. Acquire and use accurately a range of general academic and domain-specific words and phrases sufficient for reading, writing, speaking, and listening at the college and career readiness level; demonstrate independence in gathering vocabulary knowledge when encountering an unknown term important to comprehension or expression."
+            "L4. Determine or clarify the meaning of unknown and multiple-meaning words and phrases by using context clues, analyzing meaningful word parts, and consulting general and specialized reference materials, as appropriate.",
+            "L5. Demonstrate understanding of figurative language, word relationships, and nuances in word meanings.",
+            "L6. Acquire and use accurately a range of general academic and domain-specific words and phrases sufficient for reading, writing, speaking, and listening at the college and career readiness level; demonstrate independence in gathering vocabulary knowledge when encountering an unknown term important to comprehension or expression."
         ]
     },
     "problemSolving": {
         "kn": [
-            "1. Identify and analyze a problem, challenge, or theme and generate questions and ideas.",
-            "2. Break down the problem, challenge, or theme into a sequence of steps, events, or parts.",
-            "3. Gather, organize, and utilize feedback, information, materials, and instruments."
+            "CPS1. Identify and analyze a problem, challenge, or theme and generate questions and ideas.",
+            "CPS2. Break down the problem, challenge, or theme into a sequence of steps, events, or parts.",
+            "CPS3. Gather, organize, and utilize feedback, information, materials, and instruments."
         ],
         "pr": [
-            "4. Analyze information.",
-            "5. Identify and overcome obstacles.",
-            "6. Use results to formulate a solution or to reach a conclusion."
+            "CPS4. Analyze information.",
+            "CPS5. Identify and overcome obstacles.",
+            "CPS6. Use results to formulate a solution or to reach a conclusion."
         ],
         "co": [
-            "7. Produce and publish results using technology and materials appropriate to the task, purpose, and audience.",
-            "8. Present work that demonstrates understanding, craftsmanship, originality, and individual responsibility."
+            "CPS7. Produce and publish results using technology and materials appropriate to the task, purpose, and audience.",
+            "CPS8. Present work that demonstrates understanding, craftsmanship, originality, and individual responsibility."
         ]
     },
     "responsibility": {
         "cr": [
-            "1. Take an active role in the school's democratic process; prepare for the role of self-governing citizen of the United States."
+            "CSR1. Take an active role in the school's democratic process; prepare for the role of self-governing citizen of the United States."
         ],
         "sr": [
-            "2. Collaborate with others and contribute to the construction of shared meaning, solutions, and conclusions.",
-            "3. Lead and exert a positive social influence on others.",
-            "4. Demonstrate respect for diverse perspectives."
+            "CSR2. Collaborate with others and contribute to the construction of shared meaning, solutions, and conclusions.",
+            "CSR3. Lead and exert a positive social influence on others.",
+            "CSR4. Demonstrate respect for diverse perspectives."
         ],
         "ir": [
-            "5. Prepare for learning in school.",
-            "6. Manage time productively.",
-            "7. Take ownership of learning, setting worthwhile goals and working purposefully to achieve them."
+            "CSR5. Prepare for learning in school.",
+            "CSR6. Manage time productively.",
+            "CSR7. Take ownership of learning, setting worthwhile goals and working purposefully to achieve them."
         ]
     }
 }

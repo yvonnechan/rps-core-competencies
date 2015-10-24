@@ -157,6 +157,9 @@ app.controller('ScoringCtrl', function($scope, $http, FetchStandards) {
 		"allResponsibility" : [].concat($scope.passed.cr, $scope.passed.sr, $scope.passed.ir)
 	};
 
+$scope.anyCheck = function (head){
+	return !_.isEmpty(_.compact(head));
+}
 
 
 });
