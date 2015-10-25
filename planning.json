@@ -16,6 +16,7 @@
             "det1112": null
         },
         {
+            "id": "R2",
             "text": "Determine central ideas or themes of a text and analyze their development; summarize the key supporting details and ideas.",
             "det": [
                 "Determine how the central ideas, themes, events, or conclusions emerge and are shaped and refined by specific details in the text.",
@@ -27,6 +28,7 @@
             ]
         },
         {
+            "id": "R3",
             "text": "Analyze how and why individuals, events, and ideas develop and interact over the course of a text.",
             "det": [
                 "Analyze in detail a series of ideas or events, including the order in which they occur, how they develop, and how they are connected.",
@@ -42,6 +44,7 @@
     ],
     "cs": [
         {
+            "id": "R4",
             "text": "Interpret words and phrases as they are used in a text, including technical, connotative, and figurative meanings; analyze how specific word choices shape meaning and tone.",
             "det": [
                 "Determine the meaning and connotations of domain-specific words, phrases, figures of speech, and symbols as they are used in context.",
@@ -52,6 +55,7 @@
             ]
         },
         {
+            "id": "R5",
             "text": "Analyze the structure of texts, including how specific sentences, paragraphs, and larger portions of the text (e.g., a section, chapter, scene, or stanza) relate to each other and the whole.",
             "det": [
                 "Analyze in detail how the ideas and concepts in a text are developed, refined, emphasized, or connected by particular sentences, paragraphs, or sections of a text (e.g., a section, chapter, scene, stanza, image, graphic, or audio-video link).",
@@ -65,6 +69,7 @@
             ]
         },
         {
+            "id": "R6",
             "text": "Assess how point of view or purpose shapes the content and style of a text.",
             "det": [
                 "Determine an author's point of view or purpose by defining the question the author seeks to address or the problem the author seeks to understand and/or resolve.",
@@ -80,6 +85,7 @@
     ],
     "ik": [
         {
+            "id": "R7",
             "text": "Integrate and evaluate content presented in diverse media and formats, including visually and quantitatively, as well as in words.",
             "det": [
                 "Compare and contrast the representation of a subject in 2+ different media, determining what is emphasized, modified, or omitted in each.",
@@ -91,6 +97,7 @@
             ]
         },
         {
+            "id": "R8",
             "text": "Delineate and evaluate the argument and specific claims in a text, including the validity of the reasoning and the relevance and sufficiency of the evidence. ",
             "det": [
                 "Relate fiction, poetry, or drama to the ideas of its time.",
@@ -103,6 +110,7 @@
             ]
         },
         {
+            "id": "R9",
             "text": "Analyze how two or more texts address similar themes or topics in order to build knowledge or to compare the approaches the authors take.",
             "det": [
                 "Analyze how an author draws on and transforms source material.",
@@ -116,6 +124,7 @@
     ],
     "rr": [
         {
+            "id": "R10",
             "text": "Read and comprehend complex literary and informational texts independently and proficiently.",
             "det": [
                 "Synthesize information from a range of complex texts into a coherent understanding of a theme, event, idea, process, phenomenon, or concept, noting discrepancies and resolving conflicting information when possible.",
@@ -150,6 +159,7 @@
             ]
         },
         {
+            "id": "W2",
             "text": "Write informative/explanatory texts to examine and convey complex ideas and information clearly and accurately through effective selection, organization, and analysis of content.",
             "det": [
                 "Introduce a topic; organize complex ideas, concepts, and information to make important connections and distinctions.",
@@ -170,6 +180,7 @@
             ]
         },
         {
+            "id": "W3",
             "text": "Write narratives to develop real or imagined experiences or events using effective technique, well-chosen details, and well-structured event sequences.",
             "det": [
                 "Introduce a problem, situation, or observation, establishing conflicts and characters that engage and orient the reader.",
@@ -190,6 +201,7 @@
     ],
     "pd": [
         {
+            "id": "W4",
             "text": "Produce clear and coherent writing in which the development, organization, and style are appropriate to task, purpose, and audience.",
             "det": [
                 "Gain understanding of complex topics and tasks by engaging in a variety of pre-writing routines including annotation, outlines, notes, summaries, paraphrases, graphic organizers, diagrams, labels, content-related lists, forms, cloze passages, sentence starters, etc.",
@@ -203,6 +215,7 @@
             "det1112": null
         },
         {
+            "id": "W5",
             "text": "Develop and strengthen writing as needed by planning, revising, editing, rewriting, or trying a new approach.",
             "det": [
                 "Engage in a variety of pre-writing strategies; draft a preliminary outline.",
@@ -215,6 +228,7 @@
             "det1112": null
         },
         {
+            "id": "W6",
             "text": "Use technology, including the Internet, to produce and publish writing and to interact and collaborate with others.",
             "det": [
                 "Display information clearly, flexibly, and dynamically. Include formatting, graphics, symbols, and multimedia when useful to the reader's comprehension.",
@@ -228,6 +242,7 @@
     ],
     "rb": [
         {
+            "id": "W7",
             "text": "Conduct short as well as more sustained research projects based on focused questions, demonstrating understanding of the subject under investigation.",
             "det": [
                 "Analyze questions (e.g., comprehension questions, interpretation questions, extension questions) and formulate self-generated questions.",
@@ -238,6 +253,7 @@
             "det1112": null
         },
         {
+            "id": "W8",
             "text": "Gather relevant information from multiple print and digital sources, assess the credibility and accuracy of each source, and integrate the information while avoiding plagiarism.",
             "det": [
                 "Use advanced searches effectively (e.g., Google Scholar, Boston Public Library online resources, Gale resources).",
@@ -257,6 +273,7 @@
             ]
         },
         {
+            "id": "W9",
             "text": "Draw evidence from literary or informational texts to support analysis, reflection, and research.",
             "det": [
                 "Read closely to notice, understand, and interpret the language choices, structural patterns, and point of view of literary or informational texts.",
@@ -271,6 +288,7 @@
     ],
     "rw": [
         {
+            "id": "W10",
             "text": "Write routinely over extended time frames (time for research, reflection, and revision) and shorter time frames (a single sitting or a day or two) for a range of tasks, purposes, and audiences.",
             "det": [
                 "In addition to the types of informal and formal writing activities named in standards 1-9 above, refer to the 'Writing Is…' page at www.rhscontentliteracies.org for a wide range of formative and summative writing activities."
@@ -301,6 +319,7 @@
             ]
         },
         {
+            "id": "SL2",
             "text": "Integrate and evaluate information presented in diverse media and formats, including visually, quantitatively, and orally.",
             "det": [
                 "Explicitly draw evidence from multiple visual, quantitative, and oral sources of information presented in diverse media and formats to stimulate a thoughtful, well-reasoned exchange of ideas.",
@@ -311,6 +330,7 @@
             ]
         },
         {
+            "id": "SL3",
             "text": "Evaluate a speaker's point of view, reasoning, and use of evidence and rhetoric.",
             "det": [
                 "Analyze the speaker's or performer's background and level of expertise.",
@@ -324,6 +344,7 @@
     ],
     "pk": [
         {
+            "id": "SL4",
             "text": "Present information, findings, and supporting evidence such that listeners can follow the line of reasoning and the organization, development, and style are appropriate to task, purpose, and audience.",
             "det": [
                 "Communicate meaning clearly, concisely, and logically so that listeners can follow the reasoning and the organization.",
@@ -336,6 +357,7 @@
             ]
         },
         {
+            "id": "SL5",
             "text": "Make strategic use of digital media and visual displays of data to express information and enhance understanding of presentations.",
             "det": [
                 "Incorporate digital media (textual, graphical, audio, visual, and interactive elements) to enhance understanding of findings, reasoning, and evidence and to add interest."
@@ -343,6 +365,7 @@
             "det1112": null
         },
         {
+            "id": "SL6",
             "text": "Adapt speech to a variety of contexts and communicative tasks, demonstrating command of formal English when indicated or appropriate.",
             "det": [
                 "Speak clearly by using appropriate pronunciation, volume, pace and tone to engage the audience.",
@@ -374,6 +397,7 @@
             ]
         },
         {
+            "id": "L2",
             "text": "Demonstrate command of the conventions of standard capitalization, punctuation, and spelling when writing.",
             "det": [
                 "Use punctuation (e.g., commas, parentheses, dashes) to separate items in a series and to set off nonrestrictive/parenthetical elements (i.e., words and phrases not essential to understanding).",
@@ -389,6 +413,7 @@
     ],
     "kl": [
         {
+            "id": "L3",
             "text": "Apply knowledge of language to understand how language functions in different contexts, to make effective choices for meaning or style, and to comprehend more fully when reading or listening.",
             "det": [
                 "Choose words, phrases, and punctuation to convey ideas precisely and to create an effect appropriate to the context, audience, and task.",
@@ -405,6 +430,7 @@
     ],
     "va": [
         {
+            "id": "L4",
             "text": "Determine or clarify the meaning of unknown and multiple-meaning words and phrases by using context clues, analyzing meaningful word parts, and consulting general and specialized reference materials, as appropriate.",
             "det": [
                 "Apply knowledge of word parts (i.e., roots, prefixes, suffixes) to decode complex vocabulary.",
@@ -414,6 +440,7 @@
             "det1112": null
         },
         {
+            "id": "L5",
             "text": "Demonstrate understanding of figurative language, word relationships, and nuances in word meanings.",
             "det": [
                 "Identify and interpret figures of speech (e.g., euphemism, oxymoron, hyperbole, paradox) in context and analyze their role in the text.",
@@ -422,6 +449,7 @@
             "det1112": null
         },
         {
+            "id": "L6",
             "text": "Acquire and use accurately a range of general academic and domain-specific words and phrases sufficient for reading, writing, speaking, and listening at the college and career readiness level; demonstrate independence in gathering vocabulary knowledge when encountering an unknown term important to comprehension or expression.",
             "det": [
                 "Develop an interest and awareness in words including but not limited to assigned vocabulary lists.",
@@ -448,6 +476,7 @@
             ]
         },
         {
+            "id": "CPS2",
             "text": "Break down the problem, challenge, or theme into a sequence of steps, events, or parts.",
             "det": [
                 "Identify, plan, and assign specialized procedures or instructions to address each step, event, or part.",
@@ -460,6 +489,7 @@
             ]
         },
         {
+            "id": "CPS3",
             "text": "Gather, organize, and utilize feedback, information, materials, and instruments.",
             "det": [
                 "Determine additional materials, instruments, and/or relevant and credible information conveyed in a variety of media and formats to address the task.",
@@ -475,6 +505,7 @@
     ],
     "pr": [
         {
+            "id": "CPS4",
             "text": "Analyze information.",
             "det": [
                 "Identify patterns in the information or create patterns based on the information.",
@@ -491,6 +522,7 @@
             ]
         },
         {
+            "id": "CPS5",
             "text": "Identify and overcome obstacles.",
             "det": [
                 "Collaborate and exchange feedback with others.",
@@ -503,6 +535,7 @@
             ]
         },
         {
+            "id": "CPS6",
             "text": "Use results to formulate a solution or to reach a conclusion.",
             "det": [
                 "Use results to support, refute, or qualify the hypotheses, predictions, or claims.",
@@ -516,6 +549,7 @@
     ],
     "co": [
         {
+            "id": "CPS7",
             "text": "Produce and publish results using technology and materials appropriate to the task, purpose, and audience.",
             "det": [
                 "Effectively utilize and adapt tools, processes, and media appropriate to the task and purpose for expressive intent.",
@@ -530,6 +564,7 @@
             ]
         },
         {
+            "id": "CPS8",
             "text": "Present work that demonstrates understanding, craftsmanship, originality, and individual responsibility.",
             "det": [
                 "Organize materials, information, evidence, and reasoning to address all parts of the task.",
@@ -563,6 +598,7 @@
     ],
     "sr": [
         {
+            "id": "CSR2",
             "text": "Collaborate with others and contribute to the construction of shared meaning, solutions, and conclusions.",
             "det": [
                 "Work cooperatively as a member of a team, establishing shared goals, fulfilling individual responsibilities, and giving and accepting constructive criticism.",
@@ -572,6 +608,7 @@
             "det1112": null
         },
         {
+            "id": "CSR3",
             "text": "Lead and exert a positive social influence on others.",
             "det": [
                 "Identify and address relevant school-wide, local, regional, national or global problems and conflicts by actively and effectively planning, modifying, and executing solutions.",
@@ -584,6 +621,7 @@
             "det1112": null
         },
         {
+            "id": "CSR4",
             "text": "Demonstrate respect for diverse perspectives.",
             "det": [
                 "Demonstrate multicultural sensitivity and respect for all races, religions, ages, cultures, sexual orientations, gender identities, and learning styles.",
@@ -596,6 +634,7 @@
     ],
     "ir": [
         {
+            "id": "CSR5",
             "text": "Prepare for learning in school.",
             "det": [
                 "Attend classes, consistently arriving on time and with organized class materials (e.g., notes, books, iPad / electronic devices, calculator, writing utensil).",
@@ -605,6 +644,7 @@
             "det1112": null
         },
         {
+            "id": "CSR6",
             "text": "Manage time productively.",
             "det": [
                 "Prioritize responsibilities, using time efficiently and appropriately and managing distractions.",
@@ -615,6 +655,7 @@
             "det1112": null
         },
         {
+            "id": "CSR7",
             "text": "Take ownership of learning, setting worthwhile goals and working purposefully to achieve them.",
             "det": [
                 "Set and self-monitor challenging and assessable learning targets and goals.",

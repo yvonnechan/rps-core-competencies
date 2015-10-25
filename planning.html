@@ -13,14 +13,13 @@ table {
   margin-top: 0px;
 
 }
-th {
+.tab-head {
 	font-size:24px;
 	color: #fff;
 	background-color:black;
-	padding: .25em;
   text-align: center;
 }
-td{
+td, th{
 	padding: 5px;
 }
 
@@ -66,6 +65,10 @@ td{
   background-color:red;
   color:#fff;
 }
+
+#info-pad{
+  padding-bottom: 25px;
+}
 </style>
 
 </head>
@@ -74,17 +77,36 @@ td{
 <nav class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <h4>College and Career Readiness Anchor Standards | Revere High School Core Competencies</h4>
-    <h3><em>Planning guide</em></h3>
   </div>
 </nav>
 
 <!--Reading table -->
 
 <div class="container-fluid">
+  <div class="row" id="info-pad">
+    <table border="1" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12">
+      <tr>
+        <th width="50%">
+          Planning Guide<br>
+          Adapted from the RHS Core Competencies
+        </th>
+        <th width="25%" style="border-right: 0">
+          Teacher Name: <br>
+          Unit of Study:
+        </th>
+        <th width="25%" style="border-left: 0">
+          <br>
+          Date: 
+        </th>
+      </tr>
+    </table>
+  </div>
+
+
   <div class="row">
 	<!--print table if there is any true value in array of reading standards -->
-  	<table border="1" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" id="reading-tab">
-  		<th  ng-if="anyReading()">READING</th>
+  	<table border="1" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" id="reading-tab" ng-if="anyReading()">
+  		<th class="tab-head">READING</th>
       <!--print subhead if there is any true value in array of reading standards sub-sections -->
      	<tr ng-if="subCheck('ki')">
      		<td class="reading-sub">Key Ideas and Details</td>
@@ -92,7 +114,7 @@ td{
       <!--print standards for that have been selected, or true in array -->
       <tr ng-if="passed.ki[$index]" ng-repeat="x in planningData.ki">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -110,7 +132,7 @@ td{
       </tr>
       <tr ng-if="passed.cs[$index]" ng-repeat="x in planningData.cs">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -128,7 +150,7 @@ td{
       </tr>
       <tr ng-if="passed.ik[$index]" ng-repeat="x in planningData.ik">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -146,7 +168,7 @@ td{
       </tr>
       <tr ng-if="passed.rr[$index]" ng-repeat="x in planningData.rr">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -165,13 +187,13 @@ td{
 <!--Writing table -->
 <div class="row">
     <table border="1" id="writing-tab" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" ng-if="anyWriting()">
-  		<th>WRITING</th>
+  		<th class="tab-head">WRITING</th>
      	<tr ng-if="subCheck('tt')">
      		<td class="writing-sub">Text Types and Purpose</td>
       </tr>
       <tr ng-if="passed.tt[$index]" ng-repeat="x in planningData.tt">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -188,7 +210,7 @@ td{
       </tr>
       <tr ng-if="passed.pd[$index]" ng-repeat="x in planningData.pd">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -205,7 +227,7 @@ td{
       </tr>
       <tr ng-if="passed.rb[$index]" ng-repeat="x in planningData.rb">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -223,7 +245,7 @@ td{
       </tr>
       <tr ng-if="passed.rw[$index]" ng-repeat="x in planningData.rw">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -241,14 +263,14 @@ td{
 <div class="row">
   <!--Speaking and Listening table -->
     <table  class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" border="1" id="speakinglistening-tab" ng-if="anySpeakingListening()">
-  		<th>SPEAKING and LISTENING</th>
+  		<th class="tab-head">SPEAKING and LISTENING</th>
      	<tr ng-if="subCheck('cc')">
      		<td class="speakinglistening-sub">Comprehension and Collaboration</td>
       </tr>
       </tr>
       <tr ng-if="passed.cc[$index]" ng-repeat="x in planningData.cc">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -265,7 +287,7 @@ td{
       </tr>
       <tr ng-if="passed.pk[$index]" ng-repeat="x in planningData.pk">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -282,13 +304,13 @@ td{
 <div class="row">
   <!--Language table --> 
     <table border="1"  class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" id="language-tab" ng-if="anyLanguage()">
-  		<th>LANGUAGE</th>
+  		<th class="tab-head">LANGUAGE</th>
      	<tr ng-if="subCheck('sl')">
      		<td class="language-sub">Standard Language Conventions</td>
       </tr>
       <tr ng-if="passed.sl[$index]" ng-repeat="x in planningData.sl">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -305,7 +327,7 @@ td{
       </tr>
       <tr ng-if="passed.kl[$index]" ng-repeat="x in planningData.kl">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -322,7 +344,7 @@ td{
       </tr>
       <tr ng-if="passed.va[$index]" ng-repeat="x in planningData.va">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -340,13 +362,13 @@ td{
   <!--Creative Problem Solving table -->  
   <div class="row">
     <table border="1"  class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" id="problemsolving-tab" ng-if="anyCreative()">
-  		<th>CREATIVE PROBLEM SOLVING</th>
+  		<th class="tab-head">CREATIVE PROBLEM SOLVING</th>
      	<tr ng-if="subCheck('kn')">
      		<td class="problemsolving-sub">Knowledge</td>
       </tr>
       <tr ng-if="passed.kn[$index]" ng-repeat="x in planningData.kn">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -363,7 +385,7 @@ td{
       </tr>
       <tr ng-if="passed.pr[$index]" ng-repeat="x in planningData.pr">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -380,7 +402,7 @@ td{
       </tr>
       <tr ng-if="passed.co[$index]" ng-repeat="x in planningData.co">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -397,13 +419,13 @@ td{
   <!--Civic and Social Responsibility table -->  
   <div class="row">
     <table  class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" border="1" id="responsibility-tab" ng-if="anyResponsibility()">
-  		<th>CIVIC and SOCIAL RESPONSIBILITY</th>
+  		<th class="tab-head">CIVIC and SOCIAL RESPONSIBILITY</th>
      	<tr ng-if="subCheck('cr')">
      		<td class="responsibility-sub">Civic Responsibility</td>
       </tr>
       <tr ng-if="passed.cr[$index]" ng-repeat="x in planningData.cr">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -420,7 +442,7 @@ td{
       </tr>
       <tr ng-if="passed.sr[$index]" ng-repeat="x in planningData.sr">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>
@@ -437,7 +459,7 @@ td{
       </tr>
       <tr ng-if="passed.ir[$index]" ng-repeat="x in planningData.ir">
       	<td>
-        	{{x.text}}<br />
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
         	<ul>
           	<li ng-repeat="y in x.det">{{y}}</li>
           </ul>

@@ -1,99 +1,240 @@
 {
     "reading": {
         "ki": [
-            "R1. Read closely to determine what the text says explicitly and to make logical inferences from it; cite specific textual evidence when writing or speaking to support conclusions drawn from text.",
-            "R2. Determine central ideas or themes of a text and analyze their development; summarize the key supporting details and ideas.",
-            "R3. Analyze how and why individuals, events, and ideas develop and interact over the course of a text."
+            {
+                "id": "R1",
+                "text": "Read closely to determine what the text says explicitly and to make logical inferences from it; cite specific textual evidence when writing or speaking to support conclusions drawn from text."
+            },
+            {
+                "id": "R2",
+                "text": "Determine central ideas or themes of a text and analyze their development; summarize the key supporting details and ideas."
+            },
+            {
+                "id": "R3",
+                "text": "Analyze how and why individuals, events, and ideas develop and interact over the course of a text."
+            }
         ],
         "cs": [
-            "R4. Interpret words and phrases as they are used in a text, including technical, connotative, and figurative meanings; analyze how specific word choices shape meaning and tone.",
-            "R5. Analyze the structure of texts, including how specific sentences, paragraphs, and larger portions of the text (e.g., a section, chapter, scene, or stanza) relate to each other and the whole.",
-            "R6. Assess how point of view or purpose shapes the content and style of a text."
+            {
+                "id": "R4",
+                "text": "Interpret words and phrases as they are used in a text, including technical, connotative, and figurative meanings; analyze how specific word choices shape meaning and tone."
+            },
+            {
+                "id": "R5",
+                "text": "Analyze the structure of texts, including how specific sentences, paragraphs, and larger portions of the text (e.g., a section, chapter, scene, or stanza) relate to each other and the whole."
+            },
+            {
+                "id": "R6",
+                "text": "Assess how point of view or purpose shapes the content and style of a text."
+            }
         ],
         "ik": [
-            "R7. Integrate and evaluate content presented in diverse media and formats, including visually and quantitatively, as well as in words.",
-            "R8. Delineate and evaluate the argument and specific claims in a text, including the validity of the reasoning and the relevance and sufficiency of the evidence.",
-            "R9. Analyze how two or more texts address similar themes or topics in order to build knowledge or to compare the approaches the authors take."
+            {
+                "id": "R7",
+                "text": "Integrate and evaluate content presented in diverse media and formats, including visually and quantitatively, as well as in words."
+            },
+            {
+                "id": "R8",
+                "text": "Delineate and evaluate the argument and specific claims in a text, including the validity of the reasoning and the relevance and sufficiency of the evidence."
+            },
+            {
+                "id": "R9",
+                "text": "Analyze how two or more texts address similar themes or topics in order to build knowledge or to compare the approaches the authors take."
+            }
         ],
         "rr": [
-            "R10. Read and comprehend complex literary and informational texts independently and proficiently."
+            {
+                "id": "R10",
+                "text": "Read and comprehend complex literary and informational texts independently and proficiently."
+            }
         ]
     },
     "writing": {
         "tt": [
-            "W1. Write arguments to support claims in an analysis of substantive topics or texts, using valid reasoning and relevant and sufficient evidence.",
-            "W2. Write informative/explanatory texts to examine and convey complex ideas and information clearly and accurately through effective selection, organization, and analysis of content.",
-            "W3. Write narratives to develop real or imagined experiences or events using effective technique, well-chosen details, and well-structured event sequences."
+            {
+                "id": "W1",
+                "text": "Write arguments to support claims in an analysis of substantive topics or texts, using valid reasoning and relevant and sufficient evidence."
+            },
+            {
+                "id": "W2",
+                "text": "Write informative/explanatory texts to examine and convey complex ideas and information clearly and accurately through effective selection, organization, and analysis of content."
+            },
+            {
+                "id": "W3",
+                "text": "Write narratives to develop real or imagined experiences or events using effective technique, well-chosen details, and well-structured event sequences."
+            }
         ],
         "pd": [
-            "W4. Produce clear and coherent writing in which the development, organization, and style are appropriate to task, purpose, and audience.",
-            "W5. Develop and strengthen writing as needed by planning, revising, editing, rewriting, or trying a new approach.",
-            "W6. Use technology, including the Internet, to produce and publish writing and to interact and collaborate with others."
+            {
+                "id": "W4",
+                "text": "Produce clear and coherent writing in which the development, organization, and style are appropriate to task, purpose, and audience."
+            },
+            {
+                "id": "W5",
+                "text": "Develop and strengthen writing as needed by planning, revising, editing, rewriting, or trying a new approach."
+            },
+            {
+                "id": "W6",
+                "text": "Use technology, including the Internet, to produce and publish writing and to interact and collaborate with others."
+            }
         ],
         "rb": [
-            "W7. Conduct short as well as more sustained research projects based on focused questions, demonstrating understanding of the subject under investigation.",
-            "W8. Gather relevant information from multiple print and digital sources, assess the credibility and accuracy of each source, and integrate the information while avoiding plagiarism.",
-            "W9. Draw evidence from literary or informational texts to support analysis, reflection, and research."
+            {
+                "id": "W7",
+                "text": "Conduct short as well as more sustained research projects based on focused questions, demonstrating understanding of the subject under investigation."
+            },
+            {
+                "id": "W8",
+                "text": "Gather relevant information from multiple print and digital sources, assess the credibility and accuracy of each source, and integrate the information while avoiding plagiarism."
+            },
+            {
+                "id": "W9",
+                "text": "Draw evidence from literary or informational texts to support analysis, reflection, and research."
+            }
         ],
         "rw": [
-            "W10. Write routinely over extended time frames (time for research, reflection, and revision) and shorter time frames (a single sitting or a day or two) for a range of tasks, purposes, and audiences."
+            {
+                "id": "W10",
+                "text": "Write routinely over extended time frames (time for research, reflection, and revision) and shorter time frames (a single sitting or a day or two) for a range of tasks, purposes, and audiences."
+            }
         ]
     },
     "speakingListening": {
         "cc": [
-            "SL1. Prepare for and participate effectively in a range of conversations and collaborations with diverse partners, building on others’ ideas and expressing their own clearly and persuasively.",
-            "SL2. Integrate and evaluate information presented in diverse media and formats, including visually, quantitatively, and orally.",
-            "SL3. Evaluate a speaker’s point of view, reasoning, and use of evidence and rhetoric."
+            {
+                "id": "SL1",
+                "text": "Prepare for and participate effectively in a range of conversations and collaborations with diverse partners, building on others’ ideas and expressing their own clearly and persuasively."
+            },
+            {
+                "id": "SL2",
+                "text": "Integrate and evaluate information presented in diverse media and formats, including visually, quantitatively, and orally."
+            },
+            {
+                "id": "SL3",
+                "text": "Evaluate a speaker’s point of view, reasoning, and use of evidence and rhetoric."
+            }
         ],
         "pk": [
-            "SL4. Present information, findings, and supporting evidence such that listeners can follow the line of reasoning and the organization, development, and style are appropriate to task, purpose, and audience.",
-            "SL5. Make strategic use of digital media and visual displays of data to express information and enhance understanding of presentations.",
-            "SL6. Adapt speech to a variety of contexts and communicative tasks, demonstrating command of formal English when indicated or appropriate."
+            {
+                "id": "SL4",
+                "text": "Present information, findings, and supporting evidence such that listeners can follow the line of reasoning and the organization, development, and style are appropriate to task, purpose, and audience."
+            },
+            {
+                "id": "SL5",
+                "text": "Make strategic use of digital media and visual displays of data to express information and enhance understanding of presentations."
+            },
+            {
+                "id": "SL6",
+                "text": "Adapt speech to a variety of contexts and communicative tasks, demonstrating command of formal English when indicated or appropriate."
+            }
         ]
     },
     "language": {
         "sl": [
-            "L1. Demonstrate command of the conventions of standard grammar and usage when writing or speaking.",
-            "L2. Demonstrate command of the conventions of standard capitalization, punctuation, and spelling when writing."
+            {
+                "id": "L1",
+                "text": "Demonstrate command of the conventions of standard grammar and usage when writing or speaking."
+            },
+            {
+                "id": "L2",
+                "text": "Demonstrate command of the conventions of standard capitalization, punctuation, and spelling when writing."
+            }
         ],
         "kl": [
-            "L3. Apply knowledge of language to understand how language functions in different contexts, to make effective choices for meaning or style, and to comprehend more fully when reading or listening."
+            {
+                "id": "L3",
+                "text": "Apply knowledge of language to understand how language functions in different contexts, to make effective choices for meaning or style, and to comprehend more fully when reading or listening."
+            }
         ],
         "va": [
-            "L4. Determine or clarify the meaning of unknown and multiple-meaning words and phrases by using context clues, analyzing meaningful word parts, and consulting general and specialized reference materials, as appropriate.",
-            "L5. Demonstrate understanding of figurative language, word relationships, and nuances in word meanings.",
-            "L6. Acquire and use accurately a range of general academic and domain-specific words and phrases sufficient for reading, writing, speaking, and listening at the college and career readiness level; demonstrate independence in gathering vocabulary knowledge when encountering an unknown term important to comprehension or expression."
+            {
+                "id": "L4",
+                "text": "Determine or clarify the meaning of unknown and multiple-meaning words and phrases by using context clues, analyzing meaningful word parts, and consulting general and specialized reference materials, as appropriate."
+            },
+            {
+                "id": "L5",
+                "text": "Demonstrate understanding of figurative language, word relationships, and nuances in word meanings."
+            },
+            {
+                "id": "L6",
+                "text": "Acquire and use accurately a range of general academic and domain-specific words and phrases sufficient for reading, writing, speaking, and listening at the college and career readiness level; demonstrate independence in gathering vocabulary knowledge when encountering an unknown term important to comprehension or expression."
+            }
         ]
     },
     "problemSolving": {
         "kn": [
-            "CPS1. Identify and analyze a problem, challenge, or theme and generate questions and ideas.",
-            "CPS2. Break down the problem, challenge, or theme into a sequence of steps, events, or parts.",
-            "CPS3. Gather, organize, and utilize feedback, information, materials, and instruments."
+            {
+                "id": "CPS1",
+                "text": "Identify and analyze a problem, challenge, or theme and generate questions and ideas."
+            },
+            {
+                "id": "CPS2",
+                "text": "Break down the problem, challenge, or theme into a sequence of steps, events, or parts."
+            },
+            {
+                "id": "CPS3",
+                "text": "Gather, organize, and utilize feedback, information, materials, and instruments."
+            }
         ],
         "pr": [
-            "CPS4. Analyze information.",
-            "CPS5. Identify and overcome obstacles.",
-            "CPS6. Use results to formulate a solution or to reach a conclusion."
+            {
+                "id": "CPS4",
+                "text": "Analyze information."
+            },
+            {
+                "id": "CPS5",
+                "text": "Identify and overcome obstacles."
+            },
+            {
+                "id": "CPS6",
+                "text": "Use results to formulate a solution or to reach a conclusion."
+            }
         ],
         "co": [
-            "CPS7. Produce and publish results using technology and materials appropriate to the task, purpose, and audience.",
-            "CPS8. Present work that demonstrates understanding, craftsmanship, originality, and individual responsibility."
+            {
+                "id": "CPS7",
+                "text": "Produce and publish results using technology and materials appropriate to the task, purpose, and audience."
+            },
+            {
+                "id": "CPS8",
+                "text": "Present work that demonstrates understanding, craftsmanship, originality, and individual responsibility."
+            }
         ]
     },
     "responsibility": {
         "cr": [
-            "CSR1. Take an active role in the school's democratic process; prepare for the role of self-governing citizen of the United States."
+            {
+                "id": "CSR1",
+                "text": "Take an active role in the school's democratic process; prepare for the role of self-governing citizen of the United States."
+            }
         ],
         "sr": [
-            "CSR2. Collaborate with others and contribute to the construction of shared meaning, solutions, and conclusions.",
-            "CSR3. Lead and exert a positive social influence on others.",
-            "CSR4. Demonstrate respect for diverse perspectives."
+            {
+                "id": "CSR2",
+                "text": "Collaborate with others and contribute to the construction of shared meaning, solutions, and conclusions."
+            },
+            {
+                "id": "CSR3",
+                "text": "Lead and exert a positive social influence on others."
+            },
+            {
+                "id": "CSR4",
+                "text": "Demonstrate respect for diverse perspectives."
+            }
         ],
         "ir": [
-            "CSR5. Prepare for learning in school.",
-            "CSR6. Manage time productively.",
-            "CSR7. Take ownership of learning, setting worthwhile goals and working purposefully to achieve them."
+            {
+                "id": "CSR5",
+                "text": "Prepare for learning in school."
+            },
+            {
+                "id": "CSR6",
+                "text": "Manage time productively."
+            },
+            {
+                "id": "CSR7",
+                "text": "Take ownership of learning, setting worthwhile goals and working purposefully to achieve them."
+            }
         ]
     }
 }
