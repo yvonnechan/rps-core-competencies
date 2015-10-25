@@ -5,13 +5,15 @@
 <title>My Scoring Guide</title>
 
 <style>
+body{
 
+  padding-top: 75px;
+}
 .navbar-fixed-top {
   color:#fff;
   background-color:#333333;
   text-align: center;
 }
-
 
 .navbar-fixed-bottom {
   color:#fff;
@@ -25,22 +27,40 @@
   background-color:red;
   color:#fff;
 }
-
+#prompt-info{
+  padding: 10px 10px 10px 5px;
+}
 #lastrow{
 	  padding-bottom: 65px ;
 }
-
+.tab-pad-row{
+  padding-top:25px;
+}
 tr{
 	vertical-align: top;
 }
+th, td{
 
-td{
-	width:25%;
+	padding:5px;
 }
 
-.text-center{
-	font-style: italic;
+ul{
+  list-style: none;
+  padding:0;
 }
+li {
+  margin-bottom: 5px;
+}
+.stand-head, .performance-head{
+  width:25%;
+  text-align: left;
+
+}
+.criteria-head{
+  width:50%;
+  text-align: center;
+}
+
 
 </style>
 
@@ -48,89 +68,206 @@ td{
  
 <body>
 
-<nav class="navbar navbar-fixed-top navbar-inverse">
-  <div class="container">
-    <h4>College and Career Readiness Anchor Standards | Revere High School Core Competencies</h4>
-    <h3><em>Scoring guide</em></h3>
+  <nav class="navbar navbar-fixed-top navbar-inverse">
+    <div class="container">
+      <h4>College and Career Readiness Anchor Standards | Revere High School Core Competencies</h4>
+    </div>
+  </nav>
+
+  <div class = "container-fluid">
+  
+    <div class="row">
+      <table border="1" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
+        <tr>
+          <th width="50%">
+          	Scoring Guide<br>
+          	Adapted from the RHS Core Competencies
+          </th>
+          <th width="25%" style="border-right: 0">
+          	Student Name: <br>
+          	Grade:
+          </th>
+          <th width="25%" style="border-left: 0">
+            <br>
+            Date: 
+          </th>
+        </tr>
+      </table>
+    </div>
+
+    <div class="row">
+      <div id="prompt-info" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
+        Assignment: <br>
+        Prompt: <br>
+      </div>
+    </div>
+
   </div>
-</nav>
 
- <div class="container-fluid">
-  <div class="row" id="lastrow">
-<table border="1" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
-<th width="25%" style="border-right: 1px solid #FFF; text-align:left;">Competency</th>
-<th width="75%" colspan="3">Performance Criteria</th>
-<tr ng-repeat="x in scoringData.reading" ng-if="passedConcat.allReading[$index]">
-	<td><b>Reading ({{x.sub}})</b><br><br>
-		{{x.text}}
-	</td>
-	<td class="text-center">Approaches expectations</td>
-	<td><div class="text-center">Meets expectations</div><br>
-		{{x.pro}}</td>
-	<td class="text-center">Exceeds expectations</td>
+  <div class="container-fluid">
 
-</tr>
-<tr ng-repeat="x in scoringData.writing" ng-if="passedConcat.allWriting[$index]">
-	<td><b>Writing ({{x.sub}})</b><br><br>
-		{{x.text}}
-	</td>
-	<td  class="text-center">Approaches expectations</td>
-	<td><div class="text-center">Meets expectations</div><br>
-		{{x.pro}}</td>
-	<td  class="text-center">Exceeds expectations</td>
+    <div class="row tab-pad-row" ng-if="anyCheck(passedConcat.allReading)">
+      <table border="1" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
+        <tr class="reading-sub">
+          <th class="stand-head">Reading Standards</th>
+          <th class="criteria-head">Criteria for Proficiency</th>
+          <th class="performance-head">Performace Level</th>
+        </tr>
+        <tr ng-repeat="x in scoringData.reading" ng-if="passedConcat.allReading[$index]">
+        	<td><strong>{{x.sub}}</strong>. {{x.text}}</td>
+        	<td>{{x.pro}}</td>
+        	<td>
+            <ul>
+              <li>Exceeds proficiency</li>
+              <li>Proficient</li>
+              <li>Developing</li>
+              <li>Emerging</li>
+              <li>Insufficient evidence</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-</tr>
-<tr ng-repeat="x in scoringData.speakingListening" ng-if="passedConcat.allSpeakingListening[$index]">
-	<td><b>Speaking and Listening ({{x.sub}})</b><br><br>
-		{{x.text}}
-	</td>
-	<td  class="text-center">Approaches expectations</td>
-	<td><div class="text-center">Meets expectations</div><br>
-		{{x.pro}}</td>
-	<td  class="text-center">Exceeds expectations</td>
+    <div class="row tab-pad-row" ng-if="anyCheck(passedConcat.allWriting)">
+      <table border="1" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
+        <tr class="writing-sub">
+          <th class="stand-head">Writing Standards</th>
+          <th class="criteria-head">Criteria for Proficiency</th>
+          <th class="performance-head">Performace Level</th>
+        </tr>
+        <tr ng-repeat="x in scoringData.writing" ng-if="passedConcat.allWriting[$index]">
+          <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
+          <td>{{x.pro}}</td>
+          <td>
+            <ul>
+              <li>Exceeds proficiency</li>
+              <li>Proficient</li>
+              <li>Developing</li>
+              <li>Emerging</li>
+              <li>Insufficient evidence</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-</tr>
-<tr ng-repeat="x in scoringData.language" ng-if="passedConcat.allLanguage[$index]">
-	<td><b>Language ({{x.sub}})</b><br><br>
-		{{x.text}}
-	</td>
-	<td class="text-center">Approaches expectations</td>
-	<td><div class="text-center">Meets expectations</div><br>
-		{{x.pro}}</td>
-	<td  class="text-center">Exceeds expectations</td>
+    <div class="row tab-pad-row" ng-if="anyCheck(passedConcat.allSpeakingListening)">
+      <table border="1" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
+        <tr class="speakinglistening-sub">
+          <th class="stand-head">Speaking and Listening Standards</th>
+          <th class="criteria-head">Criteria for Proficiency</th>
+          <th class="performance-head">Performace Level</th>
+        </tr>
+        <tr ng-repeat="x in scoringData.speakingListening" ng-if="passedConcat.allSpeakingListening[$index]">
+          <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
+          <td>{{x.pro}}</td>
+          <td>
+            <ul>
+              <li>Exceeds proficiency</li>
+              <li>Proficient</li>
+              <li>Developing</li>
+              <li>Emerging</li>
+              <li>Insufficient evidence</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-</tr>
+    <div class="row tab-pad-row" ng-if="anyCheck(passedConcat.allLanguage)">
+      <table border="1" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
+        <tr class="language-sub" >
+          <th class="stand-head">Language Standards</th>
+          <th class="criteria-head">Criteria for Proficiency</th>
+          <th class="performance-head">Performace Level</th>
+        </tr>
+        <tr ng-repeat="x in scoringData.language" ng-if="passedConcat.allLanguage[$index]">
+          <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
+          <td>{{x.pro}}</td>
+          <td>
+            <ul>
+              <li>Exceeds proficiency</li>
+              <li>Proficient</li>
+              <li>Developing</li>
+              <li>Emerging</li>
+              <li>Insufficient evidence</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-<tr ng-repeat="x in scoringData.creative" ng-if="passedConcat.allCreative[$index]">
-	<td><b>Creative Problem Solving ({{x.sub}})</b><br><br>
-		{{x.text}}
-	</td>
-	<td  class="text-center">Approaches expectations</td>
-	<td><div class="text-center">Meets expectations</div><br>
-		{{x.pro}}</td>
-	<td class="text-center">Exceeds expectations</td>
+    <div class="row tab-pad-row" ng-if="anyCheck(passedConcat.allCreative)">
+      <table border="1" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
+        <tr class="problemsolving-sub">
+          <th class="stand-head">Creative Problem Solving Standards</th>
+          <th class="criteria-head">Criteria for Proficiency</th>
+          <th class="performance-head">Performace Level</th>
+        </tr>
+        <tr ng-repeat="x in scoringData.creative" ng-if="passedConcat.allCreative[$index]">
+          <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
+          <td>{{x.pro}}</td>
+          <td>
+            <ul>
+              <li>Exceeds proficiency</li>
+              <li>Proficient</li>
+              <li>Developing</li>
+              <li>Emerging</li>
+              <li>Insufficient evidence</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-</tr>
-<tr ng-repeat="x in scoringData.responsibility" ng-if="passedConcat.allResponsibility[$index]">
-	<td><b>Civic and Social Responsibility ({{x.sub}})</b><br><br>
-		{{x.text}}
-	</td>
-	<td><div class="expect">Approaches expectations</div></td>
-	<td><div class="text-center">Meets expectations</div><br>
-		{{x.pro}}</td>
-	<td class="text-center">Exceeds expectations</td>
+    <div class="row tab-pad-row" ng-if="anyCheck(passedConcat.allResponsibility)">
+      <table border="1" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
+        <tr class="responsibility-sub">
+          <th class="stand-head">Civic and Social Responsibility Standards</th>
+          <th class="criteria-head">Criteria for Proficiency</th>
+          <th class="performance-head">Performace Level</th>
+        </tr>
+        <tr ng-repeat="x in scoringData.responsibility" ng-if="passedConcat.allResponsibility[$index]">
+          <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
+          <td>{{x.pro}}</td>
+          <td>
+            <ul>
+              <li>Exceeds proficiency</li>
+              <li>Proficient</li>
+              <li>Developing</li>
+              <li>Emerging</li>
+              <li>Insufficient evidence</li>
+            </ul>
+          </td>
+        </tr>
+      </table>
+    </div>
 
-</tr>
-</table>
-</div>
-</div>
-
-<nav class="navbar navbar-fixed-bottom navbar-inverse">
-  <div class="container">
-    <a class="btn navbar-btn" ng-click="" type="button" href="#/planning">Generate planning guide</a>
-    <a class="btn navbar-btn" ng-click="" type="button" href="#">Print</a>
   </div>
-</nav>
+
+  <div class = "container-fluid">
+  
+    <div id="lastrow" class="row tab-pad-row">
+      <table border="1" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
+        <tr>
+          <th style="padding-bottom:50px" width="65%">
+            COMMENTS:
+          </th>
+          <th style="padding-bottom:50px" width="35%">
+            FINAL SCORE TOTAL: _____________ / 
+          </th>
+        </tr>
+      </table>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-fixed-bottom navbar-inverse">
+    <div class="container">
+      <a class="btn navbar-btn" ng-click="" type="button" href="#/planning">Generate planning guide</a>
+      <a class="btn navbar-btn" ng-click="" type="button" href="#">Print</a>
+    </div>
+  </nav>
 
 
 </body>
