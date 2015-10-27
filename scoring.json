@@ -2,51 +2,61 @@
     "reading": [
         {
             "sub": "R1",
+            "focus": "Textual Evidence",
             "text": "Read closely to determine what the text says explicitly and to make logical inferences from it; cite specific textual evidence when writing or speaking to support conclusions drawn from text.",
             "pro": "I read actively to determine the explicit and implicit meaning of text by identifying key ideas and details, and by surfacing my confusion or misconceptions. I deepen my understanding of a text by making connections to other texts or my experience. I use evidence from the text to support a larger claim."
         },
         {
             "sub": "R2",
+            "focus": "Central Ideas and Themes",
             "text": "Determine central ideas or themes of a text and analyze their development; summarize the key supporting details and ideas.",
             "pro": "I identify central ideas, themes, or events, and use specific details to analyze how they develop in the text. I can summarize a text in my own words by identifying key ideas and details, and organizing them in a logical order."
         },
         {
             "sub": "R3",
+            "focus": "Development and Sequence",
             "text": "Analyze how and why individuals, events, and ideas develop and interact over the course of a text.",
             "pro": "I determine how individuals, events, and ideas interact, trace the development of these interactions, and use textual evidence to explain why these interactions are significant to the overall theme or meaning of the text. "
         },
         {
             "sub": "R4",
+            "focus": "Diction and Syntax",
             "text": "Interpret words and phrases as they are used in a text, including technical, connotative, and figurative meanings; analyze how specific word choices shape meaning and tone.",
             "pro": "I determine the denotative definition of words, phrases, figures of speech, or symbols within a text, and when applicable, can determine connotative or figurative meaning. I can analyze an author's choice of words and phrases to explain their impact on the work as a whole. "
         },
         {
             "sub": "R5",
+            "focus": "Structure",
             "text": "Analyze the structure of texts, including how specific sentences, paragraphs, and larger portions of the text (e.g., a section, chapter, scene, or stanza) relate to each other and the whole.",
             "pro": "I analyze in detail how ideas and concepts within an entire text are structured, developed, refined, and connected. I analyze the author's choices concerning text structure and its effects on the overall work's impact and meaning. "
         },
         {
             "sub": "R6",
+            "focus": "Point of View / Purpose",
             "text": "Assess how point of view or purpose shapes the content and style of a text.",
             "pro": "I determine an author's point of view or purpose by identifying the question or problem the author seeks to understand and/or resolve. I assess how the author advances his/her point of view or purpose, and how these elements shape, inform, or limit the content of the text as a whole. "
         },
         {
             "sub": "R7",
+            "focus": "Multimedia Texts",
             "text": "Integrate and evaluate content presented in diverse media and formats, including visually and quantitatively, as well as in words.",
             "pro": "I curate information from a variety of text types and forms, evaluating each for relevant content and interpreting each for explicit and implicit meaning."
         },
         {
             "sub": "R8",
+            "focus": "Claims, Reasoning, and Evidence",
             "text": "Delineate and evaluate the argument and specific claims in a text, including the validity of the reasoning and the relevance and sufficiency of the evidence. ",
             "pro": "To validate or challenge an author's conclusions, I can 1) identify an author's argument and claims, 2) evaluate the validity of the author's reasoning, which includes identifying false or erroneous reasoning, and 3) evaluate the use of evidence within an argument to determine if it is accurate, relevant, and sufficient. "
         },
         {
             "sub": "R9",
+            "focus": "Comparative Analysis",
             "text": "Analyze how two or more texts address similar themes or topics in order to build knowledge or to compare the approaches the authors take.",
             "pro": "I analyze multiple texts of the same subject to build my understanding of a theme or topic by comparing complementary and contradictory details in the texts. I compare the approaches multiple authors take on a theme by analyzing their different uses of evidence, style, or genre, and I explain the impact of their choices."
         },
         {
             "sub": "R10",
+            "focus": "",
             "text": "Read and comprehend complex literary and informational texts independently and proficiently.",
             "pro": ""
         }
@@ -54,51 +64,61 @@
     "writing": [
         {
             "sub": "W1",
+            "focus": "Organization",
             "text": "Write arguments to support claims in an analysis of substantive topics or texts, using valid reasoning and relevant and sufficient evidence.",
-            "pro": "Organization. I can organize a structural framework with 1) an introduction that establishes a precise claim on discipline-specific content, 2) a body of valid, sufficient, and sequenced evidence and reasoning that supports the claim and responds to counterclaims, and 3) a conclusion that reinforces the claim. "
+            "pro": "I can organize a structural framework with 1) an introduction that establishes a precise claim on discipline-specific content, 2) a body of valid, sufficient, and sequenced evidence and reasoning that supports the claim and responds to counterclaims, and 3) a conclusion that reinforces the claim. "
         },
         {
             "sub": "W2",
+            "focus": "Organization",
             "text": "Write informative/explanatory texts to examine and convey complex ideas and information clearly and accurately through effective selection, organization, and analysis of content.",
-            "pro": "Organization. I can organize a structural framework with 1) an introduction that establishes the significance of the topic, 2) a body of valid, sufficient, and sequenced information and analysis, and 3) a conclusion that follows from and supports the ideas and information."
+            "pro": "I can organize a structural framework with 1) an introduction that establishes the significance of the topic, 2) a body of valid, sufficient, and sequenced information and analysis, and 3) a conclusion that follows from and supports the ideas and information."
         },
         {
             "sub": "W3",
+            "focus": "Organization",
             "text": "Write narratives to develop real or imagined experiences or events using effective technique, well-chosen details, and well-structured event sequences.",
-            "pro": "Organization. I can organize a structural framework by 1) engaging and orienting the reader in the establishment of a conflict and introducing one or more complex characters, 2) a body of sequenced events, and 3) a resolution that follows from and reflects on the content. "
+            "pro": "I can organize a structural framework by 1) engaging and orienting the reader in the establishment of a conflict and introducing one or more complex characters, 2) a body of sequenced events, and 3) a resolution that follows from and reflects on the content. "
         },
         {
             "sub": "W4",
+            "focus": "Task, Purpose, Audience",
             "text": "Produce clear and coherent writing in which the development, organization, and style are appropriate to task, purpose, and audience.",
-            "pro": "Task, Purpose, Audience. I address the task with clarity and conviction, a sense of purpose, and an awareness of the audience's needs, interests, and/or values. My work is cohesive, using language, symbols, and/or formatting to link sections, create transitions, and clarify relationships among ideas and events. My choice of words, sentence structures, and tone are appropriate to the task, purpose, and audience."
+            "pro": "I address the task with clarity and conviction, a sense of purpose, and an awareness of the audience's needs, interests, and/or values. My work is cohesive, using language, symbols, and/or formatting to link sections, create transitions, and clarify relationships among ideas and events. My choice of words, sentence structures, and tone are appropriate to the task, purpose, and audience."
         },
         {
             "sub": "W5",
+            "focus": "Process",
             "text": "Develop and strengthen writing as needed by planning, revising, editing, rewriting, or trying a new approach.",
-            "pro": "Process. I demonstrate careful planning, awareness of discipline-specific models of writing, and extended engagement in the writing process through self-edited and peer-edited drafts. My work demonstrates the ability to solve problems of content, organization, and/or style."
+            "pro": "I demonstrate careful planning, awareness of discipline-specific models of writing, and extended engagement in the writing process through self-edited and peer-edited drafts. My work demonstrates the ability to solve problems of content, organization, and/or style."
         },
         {
             "sub": "W6",
+            "focus": "Production",
             "text": "Use technology, including the Internet, to produce and publish writing and to interact and collaborate with others.",
-            "pro": "Production. I produce and publish my writing, using appropriate tools and digital technologies. I demonstrate appropriate online interaction and effective collaboration with others in the development and distribution of the writing. "
+            "pro": "I produce and publish my writing, using appropriate tools and digital technologies. I demonstrate appropriate online interaction and effective collaboration with others in the development and distribution of the writing. "
         },
         {
             "sub": "W7",
+            "focus": "Inquiry",
             "text": "Conduct short as well as more sustained research projects based on focused questions, demonstrating understanding of the subject under investigation.",
-            "pro": "Inquiry. I address a question (assigned or self-generated) or task that requires careful investigation. My work demonstrates understanding of the discipline and the topic under investigation."
+            "pro": "I address a question (assigned or self-generated) or task that requires careful investigation. My work demonstrates understanding of the discipline and the topic under investigation."
         },
         {
             "sub": "W8",
+            "focus": "Information and Citation",
             "text": "Gather relevant information from multiple print and digital sources, assess the credibility and accuracy of each source, and integrate the information while avoiding plagiarism.",
-            "pro": "Information and Citation. I consider, analyze, and evaluate multiple and varied sources through the lens of the question, task, and audience. I keep an organized account of the information. I can follow a designated citation format and avoid plagiarism."
+            "pro": "I consider, analyze, and evaluate multiple and varied sources through the lens of the question, task, and audience. I keep an organized account of the information. I can follow a designated citation format and avoid plagiarism."
         },
         {
             "sub": "W9",
+            "focus": "Textual Evidence",
             "text": "Draw evidence from literary or informational texts to support analysis, reflection, and research.",
-            "pro": "Textual Evidence. I demonstrate close reading and critical analyses of complex and varied texts for main ideas, claims, and themes, for key details, information, and events, and for significant logical, rhetorical, or aesthetic patterns that convey and intensify meaning. I synthesize information that supports and illustrates my reasoning while avoiding oversimplification and the mere summarizing of sources. I can acknowledge where the evidence leaves matters uncertain."
+            "pro": "I demonstrate close reading and critical analyses of complex and varied texts for main ideas, claims, and themes, for key details, information, and events, and for significant logical, rhetorical, or aesthetic patterns that convey and intensify meaning. I synthesize information that supports and illustrates my reasoning while avoiding oversimplification and the mere summarizing of sources. I can acknowledge where the evidence leaves matters uncertain."
         },
         {
             "sub": "W10",
+            "focus": "",
             "text": "Write routinely over extended time frames (time for research, reflection, and revision) and shorter time frames (a single sitting or a day or two) for a range of tasks, purposes, and audiences.",
             "pro": ""
         }
@@ -106,31 +126,37 @@
     "speakingListening" : [
         {
             "sub": "SL1",
+            "focus": "Preparation and Participation",
             "text": "Prepare for and participate effectively in a range of conversations and collaborations with diverse partners, building on others' ideas and expressing their own clearly and persuasively.",
             "pro": "I prepare by familiarizing myself with the rules, goals, and expectations of a discussion, debate, or collaboration. I can express my own viewpoint clearly and persuasively and build on the viewpoints of others by paraphrasing, summarizing, and connecting ideas and conclusions."
         },
         {
             "sub": "SL2",
+            "focus": "Content Integration",
             "text": "Integrate and evaluate information presented in diverse media and formats, including visually, quantitatively, and orally.",
             "pro": "I can draw evidence from multiple sources in diverse media and formats, including print, visual, quantitative, and audio texts. I can evaluate the credibility, accuracy, and usefulness of sources. "
         },
         {
             "sub": "SL3",
+            "focus": "Content Evaluation",
             "text": "Evaluate a speaker’s point of view, reasoning, and use of evidence and rhetoric.",
             "pro": "I can listen closely to the presentations of others, evaluating the viewpoint, evidence, reasoning, and style for fairness and reliability. I can pose questions and offer constructive feedback to the speaker. "
         },
         {
             "sub": "SL4",
+            "focus": "Task, Purpose, and Audience",
             "text": "Present information, findings, and supporting evidence such that listeners can follow the line of reasoning and the organization, development, and style are appropriate to task, purpose, and audience.",
             "pro": "I communicate information, findings, and evidence clearly to the audience, guided by my understanding of the task and the audience's knowledge, beliefs, and interests. I respond thoughtfully to questions and comments. I avoid plagiarism by citing my sources throughout the presentation."
         },
         {
             "sub": "SL5",
+            "focus": "Multimedia",
             "text": "Make strategic use of digital media and visual displays of data to express information and enhance understanding of presentations.",
             "pro": "I can incorporate digital media (text, graphics, video, audio) and visual displays of data to enhance the audience's understanding of the information, findings, evidence and reasoning."
         },
         {
             "sub": "SL6",
+            "focus": "Communication",
             "text": "Adapt speech to a variety of contexts and communicative tasks, demonstrating command of formal English when indicated or appropriate.",
             "pro": "I can speak with confidence, reading minimally, making eye contact with the audience, and using appropriate language, pronunciation, volume, pace, and tone. I can use language appropriate to the task, purpose, and audience."
         }
@@ -138,31 +164,37 @@
     "language" :[
         {
             "sub": "L1",
+            "focus": "Grammar and Usage",
             "text": "Demonstrate command of the conventions of standard grammar and usage when writing or speaking.",
-            "pro": "I can demonstrate command of a variety of sentence structures. I choose words selectively for clarity and expression."
+            "pro": "I understand and apply the rules of standard grammar and usage. I can demonstrate command of a variety of sentence structures. I choose words selectively for clarity and expression."
         },
         {
             "sub": "L2",
+            "focus": "Spelling and Punctuation",
             "text": "Demonstrate command of the conventions of standard capitalization, punctuation, and spelling when writing.",
             "pro": "I understand and apply the rules of standard capitalization, punctuation, and spelling."
         },
         {
             "sub": "L3",
+            "focus": "Language",
             "text": "Apply knowledge of language to understand how language functions in different contexts, to make effective choices for meaning or style, and to comprehend more fully when reading or listening.",
             "pro": "I can apply my knowledge of language to the comprehension of a variety of texts and contexts. I can identify, evaluate, and choose appropriate words and language patterns that support the meaning, tone, and style of a text or speech."
         },
         {
             "sub": "L4",
+            "focus": "Decoding",
             "text": "Determine or clarify the meaning of unknown and multiple-meaning words and phrases by using context clues, analyzing meaningful word parts, and consulting general and specialized reference materials, as appropriate.",
             "pro": "I can determine or clarify the meaning of words and phrases using context clues, word parts, dictionaries, and reference materials."
         },
         {
             "sub": "L5",
+            "focus": "Figurative Language",
             "text": "Demonstrate understanding of figurative language, word relationships, and nuances in word meanings.",
             "pro": "I can identify figures of speech and analyze their impact on a text. I demonstrate awareness of the connotations of similar words and sensitivity to the emotional overtones of language."
         },
         {
             "sub": "L6",
+            "focus": "Specialized Vocabulary",
             "text": "Acquire and use accurately a range of general academic and domain-specific words and phrases sufficient for reading, writing, speaking, and listening at the college and career readiness level; demonstrate independence in gathering vocabulary knowledge when encountering an unknown term important to comprehension or expression.",
             "pro": "I can use a range of words and phrases accurately, effectively, and appropriately to achieve precision and specificity."
         }
@@ -170,41 +202,49 @@
     "creative": [
         {
             "sub": "CPS1",
+            "focus": "Preliminary Analysis",
             "text": "Identify and analyze a problem, challenge, or theme and generate questions and ideas.",
-            "pro": "I can activate prior knowledge, decode key words, and symbols, and images, consider similar challenges, and generate questions to identify and analyze a problem, challenge, or theme."
+            "pro": "I can activate prior knowledge, decode key words, symbols, and images, consider similar challenges, and generate questions to identify and analyze a problem, challenge, or theme."
         },
         {
             "sub": "CPS2",
+            "focus": "Solution Pathway",
             "text": "Break down the problem, challenge, or theme into a sequence of steps, events, or parts.",
             "pro": "I can identify multiple approaches to the task, plan an effective solution pathway, and organize procedures to address each step."
         },
         {
             "sub": "CPS3",
+            "focus": "Solution Materials",
             "text": "Gather, organize, and utilize feedback, information, materials, and instruments.",
             "pro": "I prepare for the task by gathering sufficient and relevant information, materials, instruments, and feedback. I engage in the process with skill and precision. I monitor progress, self-reflect, and adapt."
         },
         {
             "sub": "CPS4",
+            "focus": "Analysis",
             "text": "Analyze information.",
             "pro": "I can identify patterns in the information, drawing evidence from the patterns to support a hypothesis, claim, solution, or theme. I can evaluate the evidence with reasoning. I carefully document the process."
         },
         {
             "sub": "CPS5",
+            "focus": "Perseverance",
             "text": "Identify and overcome obstacles.",
             "pro": "I can collaborate with others, exchanging and evaluating feedback. I persevere, demonstrating a variety of methods to overcome challenges."
         },
         {
             "sub": "CPS6",
+            "focus": "Reflection and Revision",
             "text": "Use results to formulate a solution or to reach a conclusion.",
             "pro": "I can use results to support, refute, or qualify my hypothesis or claim. I strengthen my work as needed by planning, revising, or trying a new approach."
         },
         {
             "sub": "CPS7",
+            "focus": "Task, Purpose, and Audience",
             "text": "Produce and publish results using technology and materials appropriate to the task, purpose, and audience.",
             "pro": "I can analyze, select, and arrange information and artifacts for a presentation, effectively utilizing technology and materials appropriate to the task, purpose, and audience."
         },
         {
             "sub": "CPS8",
+            "focus": "Presentation",
             "text": "Present work that demonstrates understanding, craftsmanship, originality, and individual responsibility.",
             "pro": "I communicate my work accurately, fully, and honestly, integrating information while avoiding plagiarism. I address questions thoughtfully and acknowledge the limitations of my work. I demonstrate awareness of the ethical implications of my work and balance creative expression with creative responsibility."
         }
@@ -212,36 +252,43 @@
     "responsibility": [
         {
             "sub": "CSR1",
+            "focus": "Community",
             "text": "Take an active role in the school's democratic process; prepare for the role of self-governing citizen of the United States.",
             "pro": "I prepare for the role of citizen by participating in school-based civic and community activities and organizations. I accept responsibility for being informed and involved in solutions to local and global issues. "
         },
         {
             "sub": "CSR2",
+            "focus": "Collaboration",
             "text": "Collaborate with others and contribute to the construction of shared meaning, solutions, and conclusions.",
             "pro": "I work with my peers to set goals, listen, make compromises, and follow through to complete work. I contribute to and participate in my group's work while sharing space for others to fully engage."
         },
         {
             "sub": "CSR3",
+            "focus": "Leadership",
             "text": "Lead and exert a positive social influence on others.",
             "pro": "I take on leadership roles by engaging others to identify problems and collaboratively develop solutions. I delegate responsibility to others and actively support others to achieve common goals. I advocate on behalf of others and intervene or seek help when I witness disrespect, bullying, vandalism, theft, or violence."
         },
         {
             "sub": "CSR4",
+            "focus": "Respect",
             "text": "Demonstrate respect for diverse perspectives.",
             "pro": "I communicate respectfully with peers, teachers, and administrators. I treat the physical materials and spaces of the school respectfully."
         },
         {
             "sub": "CSR5",
+            "focus": "Preparation",
             "text": "Prepare for learning in school.",
             "pro": "I come to class on time ready to learn, with work complete and materials prepared. When I am absent, I request and complete missed work in a timely manner."
         },
         {
             "sub": "CSR6",
+            "focus": "Productivity",
             "text": "Manage time productively.",
             "pro": "I set priorities for using my time to meet deadlines and responsibilities. I utilize available resources to help me complete my work."
         },
         {
             "sub": "CSR7",
+            "focus": "Ownership",
             "text": "Take ownership of learning, setting worthwhile goals and working purposefully to achieve them.",
             "pro": "I set high expectations and goals, reflect on my achievements and challenges, and advocate for myself with peers, teachers, and administrators. I learn from mistakes and persist to complete challenging work. My work is my own, and I will not plagiarize or cheat."
         }

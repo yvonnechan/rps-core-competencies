@@ -115,7 +115,7 @@ li {
         </tr>
         <tr ng-repeat="x in scoringData.reading" ng-if="passedConcat.allReading[$index]">
         	<td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-        	<td>{{x.pro}}</td>
+        	<td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
         	<td>
             <ul>
               <li>Exceeds proficiency</li>
@@ -138,7 +138,7 @@ li {
         </tr>
         <tr ng-repeat="x in scoringData.writing" ng-if="passedConcat.allWriting[$index]">
           <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-          <td>{{x.pro}}</td>
+          <td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
           <td>
             <ul>
               <li>Exceeds proficiency</li>
@@ -161,7 +161,7 @@ li {
         </tr>
         <tr ng-repeat="x in scoringData.speakingListening" ng-if="passedConcat.allSpeakingListening[$index]">
           <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-          <td>{{x.pro}}</td>
+          <td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
           <td>
             <ul>
               <li>Exceeds proficiency</li>
@@ -184,7 +184,7 @@ li {
         </tr>
         <tr ng-repeat="x in scoringData.language" ng-if="passedConcat.allLanguage[$index]">
           <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-          <td>{{x.pro}}</td>
+          <td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
           <td>
             <ul>
               <li>Exceeds proficiency</li>
@@ -207,7 +207,7 @@ li {
         </tr>
         <tr ng-repeat="x in scoringData.creative" ng-if="passedConcat.allCreative[$index]">
           <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-          <td>{{x.pro}}</td>
+          <td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
           <td>
             <ul>
               <li>Exceeds proficiency</li>
@@ -230,7 +230,7 @@ li {
         </tr>
         <tr ng-repeat="x in scoringData.responsibility" ng-if="passedConcat.allResponsibility[$index]">
           <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-          <td>{{x.pro}}</td>
+          <td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
           <td>
             <ul>
               <li>Exceeds proficiency</li>
