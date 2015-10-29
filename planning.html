@@ -27,21 +27,27 @@ td, th{
 
 .reading-sub{
 	background-color:#0CF;
+  font-weight: bold;
 }
 .writing-sub{
 	background-color:#00FFFF;
+  font-weight: bold;
 }
 .speakinglistening-sub{
 	background-color:#CC00FF;
+  font-weight: bold;
 }
 .language-sub{
 	background-color:#FFFF33;
+  font-weight: bold;
 }
 .problemsolving-sub{
 	background-color:#FF9900;
+  font-weight: bold;
 }
 .responsibility-sub{
 	background-color:#FF3333;
+  font-weight: bold;
 }
 
 
@@ -107,6 +113,10 @@ td, th{
 	<!--print table if there is any true value in array of reading standards -->
   	<table border="1" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" id="reading-tab" ng-if="anyReading()">
   		<th class="tab-head">READING</th>
+<<<<<<< HEAD
+=======
+      <tr><td><strong><em>Throughout this document, the term “text” refers not only to literary and informational texts, including primary and secondary sources and science and technical texts, but also to images, graphics, audio-video, mathematical, and technological communications.</em></strong></td></tr>
+>>>>>>> master
       <!--print subhead if there is any true value in array of reading standards sub-sections -->
      	<tr ng-if="subCheck('ki')">
      		<td class="reading-sub">Key Ideas and Details</td>
@@ -144,7 +154,7 @@ td, th{
           </div>
         </td>
   		</tr>
-      
+    
      	<tr ng-if="subCheck('ik')">
      		<td class="reading-sub">Integration of Knowledge and Ideas</td>
       </tr>
@@ -479,8 +489,9 @@ td, th{
 
 <nav class="navbar navbar-fixed-bottom navbar-inverse">
   <div class="container">
-    <a class="btn navbar-btn" ng-click="" type="button" href="#/scoring">Generate scoring guide</a>
-    <a class="btn navbar-btn" ng-click="" type="button" href="#">Print</a>
+    <a class="btn navbar-btn" ng-click="" type="button" href="#/scoring">Generate Scoring Guide</a>
+    <a class="btn navbar-btn" ng-click="" type="button" ng-disabled=true href="#">Print</a>
+    <a class="btn navbar-btn" ng-click="" type="button" href="#/">Start Over</a>
   </div>
 </nav>
 </body>
