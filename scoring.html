@@ -98,7 +98,6 @@ li {
     <div class="row">
       <div id="prompt-info" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
         Assignment: <br>
-        Prompt: <br>
       </div>
     </div>
 
@@ -118,7 +117,6 @@ li {
         	<td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
         	<td>
             <ul>
-              <li>Exceeds proficiency</li>
               <li>Proficient</li>
               <li>Developing</li>
               <li>Emerging</li>
@@ -141,7 +139,6 @@ li {
           <td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
           <td>
             <ul>
-              <li>Exceeds proficiency</li>
               <li>Proficient</li>
               <li>Developing</li>
               <li>Emerging</li>
@@ -164,7 +161,6 @@ li {
           <td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
           <td>
             <ul>
-              <li>Exceeds proficiency</li>
               <li>Proficient</li>
               <li>Developing</li>
               <li>Emerging</li>
@@ -187,7 +183,6 @@ li {
           <td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
           <td>
             <ul>
-              <li>Exceeds proficiency</li>
               <li>Proficient</li>
               <li>Developing</li>
               <li>Emerging</li>
@@ -210,7 +205,6 @@ li {
           <td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
           <td>
             <ul>
-              <li>Exceeds proficiency</li>
               <li>Proficient</li>
               <li>Developing</li>
               <li>Emerging</li>
@@ -233,7 +227,6 @@ li {
           <td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
           <td>
             <ul>
-              <li>Exceeds proficiency</li>
               <li>Proficient</li>
               <li>Developing</li>
               <li>Emerging</li>
@@ -255,7 +248,7 @@ li {
             COMMENTS:
           </th>
           <th style="padding-bottom:50px" width="35%">
-            FINAL SCORE TOTAL: _____________ / 
+            FINAL SCORE: 
           </th>
         </tr>
       </table>
@@ -264,8 +257,9 @@ li {
 
   <nav class="navbar navbar-fixed-bottom navbar-inverse">
     <div class="container">
-      <a class="btn navbar-btn" ng-click="" type="button" href="#/planning">Generate planning guide</a>
-      <a class="btn navbar-btn" ng-click="" type="button" href="#">Print</a>
+      <a class="btn navbar-btn" ng-click="" type="button" href="#/planning">Generate Planning Guide</a>
+      <a class="btn navbar-btn" ng-click="" type="button" ng-disabled=true href="#">Print</a>
+      <a class="btn navbar-btn" ng-click="" type="button" href="#/">Start Over</a>
     </div>
   </nav>
 

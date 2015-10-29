@@ -27,21 +27,27 @@ td, th{
 
 .reading-sub{
 	background-color:#0CF;
+  font-weight: bold;
 }
 .writing-sub{
 	background-color:#00FFFF;
+  font-weight: bold;
 }
 .speakinglistening-sub{
 	background-color:#CC00FF;
+  font-weight: bold;
 }
 .language-sub{
 	background-color:#FFFF33;
+  font-weight: bold;
 }
 .problemsolving-sub{
 	background-color:#FF9900;
+  font-weight: bold;
 }
 .responsibility-sub{
 	background-color:#FF3333;
+  font-weight: bold;
 }
 
 
@@ -145,7 +151,7 @@ td, th{
           </div>
         </td>
   		</tr>
-      
+    
      	<tr ng-if="subCheck('ik')">
      		<td class="reading-sub">Integration of Knowledge and Ideas</td>
       </tr>
@@ -480,8 +486,9 @@ td, th{
 
 <nav class="navbar navbar-fixed-bottom navbar-inverse">
   <div class="container">
-    <a class="btn navbar-btn" ng-click="" type="button" href="#/scoring">Generate scoring guide</a>
-    <a class="btn navbar-btn" ng-click="" type="button" href="#">Print</a>
+    <a class="btn navbar-btn" ng-click="" type="button" href="#/scoring">Generate Scoring Guide</a>
+    <a class="btn navbar-btn" ng-click="" type="button" ng-disabled=true href="#">Print</a>
+    <a class="btn navbar-btn" ng-click="" type="button" href="#/">Start Over</a>
   </div>
 </nav>
 </body>
