@@ -61,6 +61,24 @@ li {
   text-align: center;
 }
 
+.hover-edit {
+  position: relative;
+  padding-right: 30px;
+}
+
+.hover-edit:hover .edit {
+  display: block;
+}
+.edit {
+  padding-top: 7px; 
+  padding-right: 5px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: none;
+}
+
+
 
 </style>
 
@@ -114,7 +132,7 @@ li {
         </tr>
         <tr ng-repeat="x in scoringData.reading" ng-if="passedConcat.allReading[$index]">
         	<td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-        	<td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
+        	<td contentEditable="{{ !!isEditable[$index] }}" class="hover-edit"><strong>{{x.focus}}</strong>. {{x.pro}}<div class="edit"><a><i ng-click="isEditable[$index] = !isEditable[$index]" class="fa fa-pencil-square-o fa-lg"></i></a></div></td>
         	<td>
             <ul>
               <li>Proficient</li>
