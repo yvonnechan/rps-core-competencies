@@ -141,6 +141,9 @@ app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
 });
 
 app.controller('ScoringCtrl', function($scope, $http, FetchStandards) {
+	$scope.isEditablePro = [];
+	$scope.isEditablePer = [];
+
 	FetchStandards.getScoringList(function(det){
 		//put everything in scoring.json into scoringData 
 		$scope.scoringData = det;
@@ -157,12 +160,11 @@ app.controller('ScoringCtrl', function($scope, $http, FetchStandards) {
 		"allResponsibility" : [].concat($scope.passed.cr, $scope.passed.sr, $scope.passed.ir)
 	};
 
-$scope.anyCheck = function (head){
-	return !_.isEmpty(_.compact(head));
-}
-
-
+	$scope.anyCheck = function (head){
+		return !_.isEmpty(_.compact(head));
+	}
 });
+
 app.factory('FetchStandards', function($http){
 	var standardsPass;
 	

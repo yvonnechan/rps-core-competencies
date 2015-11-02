@@ -61,9 +61,58 @@ li {
   text-align: center;
 }
 
+.edit-pro {
+  position: relative;
+  padding-right: 30px;
+  overflow: hidden;
+}
+.edit-per {
+  position: relative;
+  padding-right: 30px;
+  overflow: hidden;
+}
+tr.reading-bg th{
+  background-color: rgb(0,204,255);
+}
+tr.reading-bg td.edit-pro:hover {
+  background-color: rgba(0,204,255,0.15);
+}
+tr.reading-bg td.edit-per:hover {
+  background-color: rgba(0,204,255,0.15);
+}
+tr.writing-bg th{
+  background-color: rgb(0,255,255);
+}
+tr.writing-bg td.edit-pro:hover {
+  background-color: rgba(0,255,255,0.15);
+}
+tr.writing-bg td.edit-per:hover {
+  background-color: rgba(0,255,255,0.15);
+}
+.edit-pro:hover .edit-icon {
+  transition: 0.75s;
+  width: 35px;
+  right: 0;
+}
+.edit-per:hover .edit-icon {
+  transition: 0.75s;
+  width: 35px;
+  right: 0;
+}
+.edit-icon {
+  transition: 0.75s;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+}
+/*td style for when edit icon clicked*/
+.edit-pro-icon-clicked {
+  background-color: rgba(0,204,255,0.15);
+}
+
 
 </style>
-
 </head>
  
 <body>
@@ -97,11 +146,7 @@ li {
 
     <div class="row">
       <div id="prompt-info" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
-        Assignment: <br>
-<<<<<<< HEAD
-        Prompt: <br>
-=======
->>>>>>> master
+        Assignment:
       </div>
     </div>
 
@@ -111,28 +156,33 @@ li {
 
     <div class="row tab-pad-row" ng-if="anyCheck(passedConcat.allReading)">
       <table border="1" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
-        <tr class="reading-sub">
+        <tr class="reading-bg">
           <th class="stand-head">Reading Standards</th>
           <th class="criteria-head">Criteria for Proficiency</th>
           <th class="performance-head">Performace Level</th>
         </tr>
-        <tr ng-repeat="x in scoringData.reading" ng-if="passedConcat.allReading[$index]">
+        <tr class="reading-bg" ng-repeat="x in scoringData.reading" ng-if="passedConcat.allReading[$index]">
         	<td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-<<<<<<< HEAD
-        	<td>{{x.pro}}</td>
-        	<td>
+        	<td contentEditable="{{ !!isEditablePro[$index] }}" class="edit-pro" ng-class="{'edit-pro-icon-clicked': isEditablePro[$index] }">
+            <strong>{{x.focus}}</strong>. {{x.pro}}
+            <div class="edit-icon btn-group-vertical" role="group">
+              <button type="button" class="btn btn-default"><i ng-click="isEditablePro[$index] = !isEditablePro[$index]" class="glyphicon glyphicon-pencil"></i></button>
+              <button type="button" class="btn btn-default"><i ng-click="" ng-class="" class="glyphicon glyphicon-ok"></i></button>
+              <button type="button" class="btn btn-default"><i ng-click="" ng-class="" class="glyphicon glyphicon-remove"></i></button>
+            </div>
+          </td>
+        	<td contentEditable="{{ !!isEditablePer[$index] }}" class="edit-per" ng-class="{'edit-pro-icon-clicked': isEditablePer[$index] }">
             <ul>
-              <li>Exceeds proficiency</li>
-=======
-        	<td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
-        	<td>
-            <ul>
->>>>>>> master
               <li>Proficient</li>
               <li>Developing</li>
               <li>Emerging</li>
               <li>Insufficient evidence</li>
             </ul>
+            <div class="edit-icon btn-group-vertical" role="group">
+              <button type="button" class="btn btn-default"><i ng-click="isEditablePer[$index] = !isEditablePer[$index]" class="glyphicon glyphicon-pencil"></i></button>
+              <button type="button" class="btn btn-default"><i ng-click="" ng-class="" class="glyphicon glyphicon-ok"></i></button>
+              <button type="button" class="btn btn-default"><i ng-click="" ng-class="" class="glyphicon glyphicon-remove"></i></button>
+            </div>
           </td>
         </tr>
       </table>
@@ -140,28 +190,33 @@ li {
 
     <div class="row tab-pad-row" ng-if="anyCheck(passedConcat.allWriting)">
       <table border="1" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
-        <tr class="writing-sub">
+        <tr class="writing-bg">
           <th class="stand-head">Writing Standards</th>
           <th class="criteria-head">Criteria for Proficiency</th>
           <th class="performance-head">Performace Level</th>
         </tr>
-        <tr ng-repeat="x in scoringData.writing" ng-if="passedConcat.allWriting[$index]">
+        <tr class="writing-bg" ng-repeat="x in scoringData.writing" ng-if="passedConcat.allWriting[$index]">
           <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-<<<<<<< HEAD
-          <td>{{x.pro}}</td>
-          <td>
+          <td contentEditable="{{ !!isEditablePro[$index] }}" class="edit-pro" ng-class="{'edit-pro-icon-clicked': isEditablePro[$index] }">
+            <strong>{{x.focus}}</strong>. {{x.pro}}
+            <div class="edit-icon btn-group-vertical" role="group">
+              <button type="button" class="btn btn-default"><i ng-click="isEditablePro[$index] = !isEditablePro[$index]" class="glyphicon glyphicon-pencil"></i></button>
+              <button type="button" class="btn btn-default"><i ng-click="" ng-class="" class="glyphicon glyphicon-ok"></i></button>
+              <button type="button" class="btn btn-default"><i ng-click="" ng-class="" class="glyphicon glyphicon-remove"></i></button>
+            </div>
+          </td>
+          <td contentEditable="{{ !!isEditablePer[$index] }}" class="edit-per" ng-class="{'edit-pro-icon-clicked': isEditablePer[$index] }">
             <ul>
-              <li>Exceeds proficiency</li>
-=======
-          <td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
-          <td>
-            <ul>
->>>>>>> master
               <li>Proficient</li>
               <li>Developing</li>
               <li>Emerging</li>
               <li>Insufficient evidence</li>
             </ul>
+            <div class="edit-icon btn-group-vertical" role="group">
+              <button type="button" class="btn btn-default"><i ng-click="isEditablePer[$index] = !isEditablePer[$index]" class="glyphicon glyphicon-pencil"></i></button>
+              <button type="button" class="btn btn-default"><i ng-click="" ng-class="" class="glyphicon glyphicon-ok"></i></button>
+              <button type="button" class="btn btn-default"><i ng-click="" ng-class="" class="glyphicon glyphicon-remove"></i></button>
+            </div>
           </td>
         </tr>
       </table>
@@ -176,16 +231,9 @@ li {
         </tr>
         <tr ng-repeat="x in scoringData.speakingListening" ng-if="passedConcat.allSpeakingListening[$index]">
           <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-<<<<<<< HEAD
-          <td>{{x.pro}}</td>
-          <td>
-            <ul>
-              <li>Exceeds proficiency</li>
-=======
           <td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
           <td>
             <ul>
->>>>>>> master
               <li>Proficient</li>
               <li>Developing</li>
               <li>Emerging</li>
@@ -205,16 +253,9 @@ li {
         </tr>
         <tr ng-repeat="x in scoringData.language" ng-if="passedConcat.allLanguage[$index]">
           <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-<<<<<<< HEAD
-          <td>{{x.pro}}</td>
-          <td>
-            <ul>
-              <li>Exceeds proficiency</li>
-=======
           <td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
           <td>
             <ul>
->>>>>>> master
               <li>Proficient</li>
               <li>Developing</li>
               <li>Emerging</li>
@@ -234,16 +275,9 @@ li {
         </tr>
         <tr ng-repeat="x in scoringData.creative" ng-if="passedConcat.allCreative[$index]">
           <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-<<<<<<< HEAD
-          <td>{{x.pro}}</td>
-          <td>
-            <ul>
-              <li>Exceeds proficiency</li>
-=======
           <td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
           <td>
             <ul>
->>>>>>> master
               <li>Proficient</li>
               <li>Developing</li>
               <li>Emerging</li>
@@ -263,16 +297,9 @@ li {
         </tr>
         <tr ng-repeat="x in scoringData.responsibility" ng-if="passedConcat.allResponsibility[$index]">
           <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-<<<<<<< HEAD
-          <td>{{x.pro}}</td>
-          <td>
-            <ul>
-              <li>Exceeds proficiency</li>
-=======
           <td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
           <td>
             <ul>
->>>>>>> master
               <li>Proficient</li>
               <li>Developing</li>
               <li>Emerging</li>
@@ -294,11 +321,7 @@ li {
             COMMENTS:
           </th>
           <th style="padding-bottom:50px" width="35%">
-<<<<<<< HEAD
-            FINAL SCORE TOTAL: _____________ / 
-=======
             FINAL SCORE: 
->>>>>>> master
           </th>
         </tr>
       </table>
@@ -307,14 +330,9 @@ li {
 
   <nav class="navbar navbar-fixed-bottom navbar-inverse">
     <div class="container">
-<<<<<<< HEAD
-      <a class="btn navbar-btn" ng-click="" type="button" href="#/planning">Generate planning guide</a>
-      <a class="btn navbar-btn" ng-click="" type="button" href="#">Print</a>
-=======
       <a class="btn navbar-btn" ng-click="" type="button" href="#/planning">Generate Planning Guide</a>
       <a class="btn navbar-btn" ng-click="" type="button" ng-disabled=true href="#">Print</a>
       <a class="btn navbar-btn" ng-click="" type="button" href="#/">Start Over</a>
->>>>>>> master
     </div>
   </nav>
 
