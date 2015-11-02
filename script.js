@@ -141,7 +141,8 @@ app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
 });
 
 app.controller('ScoringCtrl', function($scope, $http, FetchStandards) {
-	$scope.isEditable = [];
+	$scope.isEditablePro = [];
+	$scope.isEditablePer = [];
 
 	FetchStandards.getScoringList(function(det){
 		//put everything in scoring.json into scoringData 

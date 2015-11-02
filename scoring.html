@@ -61,27 +61,58 @@ li {
   text-align: center;
 }
 
-.hover-edit {
+.edit-pro {
   position: relative;
   padding-right: 30px;
+  overflow: hidden;
 }
-
-.hover-edit:hover .edit {
-  display: block;
+.edit-per {
+  position: relative;
+  padding-right: 30px;
+  overflow: hidden;
 }
-.edit {
-  padding-top: 7px; 
-  padding-right: 5px;
+tr.reading-bg th{
+  background-color: rgb(0,204,255);
+}
+tr.reading-bg td.edit-pro:hover {
+  background-color: rgba(0,204,255,0.15);
+}
+tr.reading-bg td.edit-per:hover {
+  background-color: rgba(0,204,255,0.15);
+}
+tr.writing-bg th{
+  background-color: rgb(0,255,255);
+}
+tr.writing-bg td.edit-pro:hover {
+  background-color: rgba(0,255,255,0.15);
+}
+tr.writing-bg td.edit-per:hover {
+  background-color: rgba(0,255,255,0.15);
+}
+.edit-pro:hover .edit-icon {
+  transition: 0.75s;
+  width: 35px;
+  right: 0;
+}
+.edit-per:hover .edit-icon {
+  transition: 0.75s;
+  width: 35px;
+  right: 0;
+}
+.edit-icon {
+  transition: 0.75s;
   position: absolute;
   right: 0;
   top: 0;
-  display: none;
+  width: 0;
+}
+/*td style for when edit icon clicked*/
+.edit-pro-icon-clicked {
+  background-color: rgba(0,204,255,0.15);
 }
 
 
-
 </style>
-
 </head>
  
 <body>
@@ -115,7 +146,7 @@ li {
 
     <div class="row">
       <div id="prompt-info" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
-        Assignment: <br>
+        Assignment:
       </div>
     </div>
 
@@ -125,21 +156,33 @@ li {
 
     <div class="row tab-pad-row" ng-if="anyCheck(passedConcat.allReading)">
       <table border="1" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
-        <tr class="reading-sub">
+        <tr class="reading-bg">
           <th class="stand-head">Reading Standards</th>
           <th class="criteria-head">Criteria for Proficiency</th>
           <th class="performance-head">Performace Level</th>
         </tr>
-        <tr ng-repeat="x in scoringData.reading" ng-if="passedConcat.allReading[$index]">
+        <tr class="reading-bg" ng-repeat="x in scoringData.reading" ng-if="passedConcat.allReading[$index]">
         	<td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-        	<td contentEditable="{{ !!isEditable[$index] }}" class="hover-edit"><strong>{{x.focus}}</strong>. {{x.pro}}<div class="edit"><a><i ng-click="isEditable[$index] = !isEditable[$index]" class="fa fa-pencil-square-o fa-lg"></i></a></div></td>
-        	<td>
+        	<td contentEditable="{{ !!isEditablePro[$index] }}" class="edit-pro" ng-class="{'edit-pro-icon-clicked': isEditablePro[$index] }">
+            <strong>{{x.focus}}</strong>. {{x.pro}}
+            <div class="edit-icon btn-group-vertical" role="group">
+              <button type="button" class="btn btn-default"><i ng-click="isEditablePro[$index] = !isEditablePro[$index]" class="glyphicon glyphicon-pencil"></i></button>
+              <button type="button" class="btn btn-default"><i ng-click="" ng-class="" class="glyphicon glyphicon-ok"></i></button>
+              <button type="button" class="btn btn-default"><i ng-click="" ng-class="" class="glyphicon glyphicon-remove"></i></button>
+            </div>
+          </td>
+        	<td contentEditable="{{ !!isEditablePer[$index] }}" class="edit-per" ng-class="{'edit-pro-icon-clicked': isEditablePer[$index] }">
             <ul>
               <li>Proficient</li>
               <li>Developing</li>
               <li>Emerging</li>
               <li>Insufficient evidence</li>
             </ul>
+            <div class="edit-icon btn-group-vertical" role="group">
+              <button type="button" class="btn btn-default"><i ng-click="isEditablePer[$index] = !isEditablePer[$index]" class="glyphicon glyphicon-pencil"></i></button>
+              <button type="button" class="btn btn-default"><i ng-click="" ng-class="" class="glyphicon glyphicon-ok"></i></button>
+              <button type="button" class="btn btn-default"><i ng-click="" ng-class="" class="glyphicon glyphicon-remove"></i></button>
+            </div>
           </td>
         </tr>
       </table>
@@ -147,21 +190,33 @@ li {
 
     <div class="row tab-pad-row" ng-if="anyCheck(passedConcat.allWriting)">
       <table border="1" class="col-md-10 col-md-offset-1 col-xs-offset-0 col-xs-12">
-        <tr class="writing-sub">
+        <tr class="writing-bg">
           <th class="stand-head">Writing Standards</th>
           <th class="criteria-head">Criteria for Proficiency</th>
           <th class="performance-head">Performace Level</th>
         </tr>
-        <tr ng-repeat="x in scoringData.writing" ng-if="passedConcat.allWriting[$index]">
+        <tr class="writing-bg" ng-repeat="x in scoringData.writing" ng-if="passedConcat.allWriting[$index]">
           <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-          <td><strong>{{x.focus}}</strong>. {{x.pro}}</td>
-          <td>
+          <td contentEditable="{{ !!isEditablePro[$index] }}" class="edit-pro" ng-class="{'edit-pro-icon-clicked': isEditablePro[$index] }">
+            <strong>{{x.focus}}</strong>. {{x.pro}}
+            <div class="edit-icon btn-group-vertical" role="group">
+              <button type="button" class="btn btn-default"><i ng-click="isEditablePro[$index] = !isEditablePro[$index]" class="glyphicon glyphicon-pencil"></i></button>
+              <button type="button" class="btn btn-default"><i ng-click="" ng-class="" class="glyphicon glyphicon-ok"></i></button>
+              <button type="button" class="btn btn-default"><i ng-click="" ng-class="" class="glyphicon glyphicon-remove"></i></button>
+            </div>
+          </td>
+          <td contentEditable="{{ !!isEditablePer[$index] }}" class="edit-per" ng-class="{'edit-pro-icon-clicked': isEditablePer[$index] }">
             <ul>
               <li>Proficient</li>
               <li>Developing</li>
               <li>Emerging</li>
               <li>Insufficient evidence</li>
             </ul>
+            <div class="edit-icon btn-group-vertical" role="group">
+              <button type="button" class="btn btn-default"><i ng-click="isEditablePer[$index] = !isEditablePer[$index]" class="glyphicon glyphicon-pencil"></i></button>
+              <button type="button" class="btn btn-default"><i ng-click="" ng-class="" class="glyphicon glyphicon-ok"></i></button>
+              <button type="button" class="btn btn-default"><i ng-click="" ng-class="" class="glyphicon glyphicon-remove"></i></button>
+            </div>
           </td>
         </tr>
       </table>
