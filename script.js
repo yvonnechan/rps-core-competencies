@@ -80,6 +80,15 @@ app.controller('HomeCtrl', function($scope, $http, FetchStandards) {
 });
 
 app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
+
+
+	$scope.isEditableRDet = [];
+	$scope.isEditableWDet = [];
+	$scope.isEditableSLDet = [];
+	$scope.isEditableLDet= [];
+	$scope.isEditableCPSDet = [];
+	$scope.isEditableCSRDet = [];
+
 	
 	//get the array object of selected standards
 	$scope.passed = FetchStandards.retrieve();
@@ -141,8 +150,24 @@ app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
 });
 
 app.controller('ScoringCtrl', function($scope, $http, FetchStandards) {
-	$scope.isEditablePro = [];
-	$scope.isEditablePer = [];
+	//arrays to keep track of when edit function for standard is enabled 
+	$scope.isEditableRPro = [];
+	$scope.isEditableRPer = [];
+
+	$scope.isEditableWPro = [];
+	$scope.isEditableWPer = [];
+
+	$scope.isEditableSLPro = [];
+	$scope.isEditableSLPer = [];
+
+	$scope.isEditableLPro = [];
+	$scope.isEditableLPer = [];
+
+	$scope.isEditableCPSPro = [];
+	$scope.isEditableCPSPer = [];
+
+	$scope.isEditableCSRPro = [];
+	$scope.isEditableCSRPer = [];
 
 	FetchStandards.getScoringList(function(det){
 		//put everything in scoring.json into scoringData 
