@@ -80,18 +80,13 @@ app.controller('HomeCtrl', function($scope, $http, FetchStandards) {
 });
 
 app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
-
-
-	$scope.isEditableRDet = [];
-	$scope.isEditableWDet = [];
-	$scope.isEditableSLDet = [];
-	$scope.isEditableLDet= [];
-	$scope.isEditableCPSDet = [];
-	$scope.isEditableCSRDet = [];
-
 	
 	//get the array object of selected standards
 	$scope.passed = FetchStandards.retrieve();
+	//set new scope to that array for editing purposes 
+	//function parameter referrences are passed by value 
+	$scope.toEdit = _.cloneDeep($scope.passed);
+
 	/* eugene code 
 	$scope.containsAny = function(key) {
 		return !_.isEmpty($scope.passed[key]);	
@@ -145,8 +140,6 @@ app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
 		return !_.isEmpty(_.compact($scope.passed[key])); 
 	}
 		
-
-
 });
 
 app.controller('ScoringCtrl', function($scope, $http, FetchStandards) {
