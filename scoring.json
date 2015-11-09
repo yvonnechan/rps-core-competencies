@@ -56,9 +56,9 @@
         },
         {
             "sub": "R10",
-            "focus": "",
+            "focus": "Independent Reading",
             "text": "Read and comprehend complex literary and informational texts independently and proficiently.",
-            "pro": ""
+            "pro": "I can demonstrate progress in reading increasingly complex texts with less scaffolding and greater independence. I read frequently and self-select appropriate texts for information and enjoyment. I transfer knowledge gained from independent reading to my assigned work or to new situations and contexts."
         }
     ],
     "writing": [
@@ -118,9 +118,9 @@
         },
         {
             "sub": "W10",
-            "focus": "",
+            "focus": "Routine",
             "text": "Write routinely over extended time frames (time for research, reflection, and revision) and shorter time frames (a single sitting or a day or two) for a range of tasks, purposes, and audiences.",
-            "pro": ""
+            "pro": "I can demonstrate the habit of writing often to record, analyze, and communicate increasingly complex information, ideas, events, and themes. I persevere in the development, drafting, revision, and production of an extended writing task."
         }
     ],
     "speakingListening" : [

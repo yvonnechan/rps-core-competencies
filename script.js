@@ -83,6 +83,10 @@ app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
 	
 	//get the array object of selected standards
 	$scope.passed = FetchStandards.retrieve();
+	//set new scope to that array for editing purposes 
+	//function parameter referrences are passed by value 
+	$scope.toEdit = _.cloneDeep($scope.passed);
+
 	/* eugene code 
 	$scope.containsAny = function(key) {
 		return !_.isEmpty($scope.passed[key]);	
@@ -136,13 +140,27 @@ app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
 		return !_.isEmpty(_.compact($scope.passed[key])); 
 	}
 		
-
-
 });
 
 app.controller('ScoringCtrl', function($scope, $http, FetchStandards) {
-	$scope.isEditablePro = [];
-	$scope.isEditablePer = [];
+	//arrays to keep track of when edit function for standard is enabled 
+	$scope.isEditableRPro = [];
+	$scope.isEditableRPer = [];
+
+	$scope.isEditableWPro = [];
+	$scope.isEditableWPer = [];
+
+	$scope.isEditableSLPro = [];
+	$scope.isEditableSLPer = [];
+
+	$scope.isEditableLPro = [];
+	$scope.isEditableLPer = [];
+
+	$scope.isEditableCPSPro = [];
+	$scope.isEditableCPSPer = [];
+
+	$scope.isEditableCSRPro = [];
+	$scope.isEditableCSRPer = [];
 
 	FetchStandards.getScoringList(function(det){
 		//put everything in scoring.json into scoringData 
