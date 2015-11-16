@@ -21,6 +21,8 @@ table {
 }
 th{
 	padding: 5px;
+  overflow: hidden;
+  position: relative;
 }
 td {
   padding: 5px 50px 5px 5px;
@@ -34,31 +36,6 @@ td {
 }
 .tab-pad-row{
   padding-top:25px;
-}
-/*table subhead colors*/
-.reading-bg {
-  background-color: rgb(0, 204, 255);
-  font-weight: bold;
-}
-.writing-bg {
-  background-color: rgb(0, 255, 255);
-  font-weight: bold;
-}
-.speakinglistening-bg {
-  background-color: rgb(204, 0, 255);
-  font-weight: bold;
-}
-.language-bg {
-  background-color: rgb(255, 255, 51);
-  font-weight: bold;
-}
-.problemsolving-bg {
-  background-color: rgb(255, 153, 0);
-  font-weight: bold;
-  }
-.responsibility-bg {
-  background-color: rgb(255, 51, 51);
-  font-weight: bold;
 }
 
 .edit-det:hover {
@@ -88,10 +65,10 @@ td {
 }
 /*td style for when edit icon clicked*/
 .edit-reading-bg {
-  background-color: rgba(0,204,255,0.15);
+  background-color: rgba(0,204,255,0.20);
 }
 .edit-writing-bg {
-  background-color: rgba(0,255,255,0.15);
+  background-color: rgba(0,255,255,0.20);
 }
 .edit-speakinglistening-bg {
   background-color: rgba(204, 0, 255, 0.15);
@@ -100,7 +77,7 @@ td {
   background-color: rgba(255, 255, 51, 0.35);
 }
 .edit-problemsolving-bg {
-  background-color: rgba(255, 153, 0, 0.15);
+  background-color: rgba(255, 153, 0, 0.35);
 }
 .edit-responsibility-bg {
   background-color: rgba(255, 51, 51, 0.15);
@@ -118,12 +95,24 @@ td {
   background-color:#333333;
 }
 .navbar-btn{
-
   background-color:red;
   color:#fff;
 }
 #info-pad{
   padding-bottom: 25px;
+}
+label{
+  text-align: right;
+  width:100px;
+}
+#info-tab{
+  vertical-align: top;
+}
+#study-input{
+  width:250px;
+}
+.info-input{
+  font-weight: normal;
 }
 </style>
 
@@ -135,34 +124,42 @@ td {
     <h4>College and Career Readiness Anchor Standards | Revere High School Core Competencies</h4>
   </div>
 </nav>
-
 <!--Reading table -->
 
 <div class="container-fluid">
 
   <div class="row" id="info-pad">
-    <table border="1" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12">
-      <tr>
-        <th width="50%">
+    <table border="1" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10">
+      <tr id="info-tab">
+        <th width="40%" >
           Planning Guide<br>
           Adapted from the RHS Core Competencies
         </th>
-        <th width="25%" style="border-right: 0">
-          Teacher Name: <br>
-          Unit of Study:
-        </th>
-        <th width="25%" style="border-left: 0">
-          <br>
-          Date: 
+        <th width="60%" ng-class="{'edit-det' : infoEditable}">
+          <label>Teacher Name:</label> <span class="info-input" ng-if="infoEditable">{{infoHeader[0]}}</span> <input ng-show="!infoEditable" type="text" ng-model="infoHeader[0]"> <br>
+          <label>Unit of Study:</label> <span class="info-input" ng-if="infoEditable">{{infoHeader[1]}}</span>  <input ng-show="!infoEditable" type="text" id="study-input" ng-model="infoHeader[1]"> <br>
+          <label>Date:</label> <span class="info-input" ng-if="infoEditable">{{infoHeader[3] | date: 'MMM dd, yyyy'}}</span> <input ng-show="!infoEditable" type="date" ng-model="infoHeader[3]">
+
+          <div class="btn-group-vertical" role="group" ng-class="{'edit-icon-clicked': !infoEditable, 'edit-menu' : infoEditable}">
+            <button type="button" class="btn btn-default" ng-click="infoEditable = !infoEditable" ng-disabled="!infoEditable"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" onclick="clickCheck()" ng-click="infoEditable = !infoEditable" ng-disabled="infoEditable"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="infoEditable = !infoEditable; infoReset()" ng-disabled="infoEditable"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+
+
         </th>
       </tr>
     </table>
+
+
+
   </div>
 
 
   <div class="row tab-pad-row">
 	<!--print table if there is any true value in array of reading standards -->
-  	<table border="1" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" id="reading-tab" ng-if="anyReading()">
+
+    <table border="1" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" id="reading-tab" ng-if="anyReading()">
   		<th class="tab-head">READING</th>
       <tr><td style="padding-right:5px"><strong><em>Throughout this document, the term “text” refers not only to literary and informational texts, including primary and secondary sources and science and technical texts, but also to images, graphics, audio-video, mathematical, and technological communications.</em></strong></td></tr>
       <!--print subhead if there is any true value in array of reading standards sub-sections -->
@@ -173,19 +170,20 @@ td {
       <tr ng-if="passed.ki[$index]" ng-repeat="x in planningData.ki">
       	<td ng-class="{'edit-det' : toEdit.ki[$index]}">
         	<strong>{{x.id}}</strong>. {{x.text}}<br />
-        	<ul contentEditable="{{!toEdit.ki[$index]}}" ng-class="{'edit-reading-bg': !toEdit.ki[$index]}">
-          	<li ng-repeat="y in x.det">{{y}}</li>
+        	<ul ng-class="{'edit-reading-bg': !toEdit.ki[$index]}" contentEditable="{{!toEdit.ki[$index]}}">
+          	<li ng-repeat="y in x.det" ng-model="y">{{y}}</li>
           </ul>
           <div ng-if="x.det1112">
             <em>In addition, students in grades 11-12 will be able to:</em>
-            <ul contentEditable="{{!toEdit.ki[$index]}}" ng-class="{'edit-reading-bg': !toEdit.ki[$index]}">
-            	<li ng-repeat="z in x.det1112">{{z}}</li>
+            <ul ng-class="{'edit-reading-bg': !toEdit.ki[$index]}" contentEditable="{{!toEdit.ki[$index]}}">
+            	<li ng-repeat="z in x.det1112" ng-model="z">{{z}}</li>
             </ul>
           </div>
+
           <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.ki[$index], 'edit-menu': toEdit.ki[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.ki[$index] = !toEdit.ki[$index]" ng-disabled="!toEdit.ki[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.ki[$index] = !toEdit.ki[$index]" ng-disabled="toEdit.ki[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.ki[$index] = !toEdit.ki[$index]" ng-disabled="toEdit.ki[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.ki[$index] = !toEdit.ki[$index]; planningEditsSave('ki', $index);" ng-disabled="toEdit.ki[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.ki[$index] = !toEdit.ki[$index]; planningEditsReset('ki', $index);" ng-disabled="toEdit.ki[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
   		</tr>
@@ -205,10 +203,10 @@ td {
             	<li ng-repeat="z in x.det1112">{{z}}</li>
             </ul>
           </div>
-            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.cs[$index], 'edit-menu': toEdit.cs[$index] }">
-            <button type="button" class="btn btn-default" ng-click="toEdit.cs[$index] = !toEdit.cs[$index]" ng-disabled="toEdit.cs[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.cs[$index] = !toEdit.cs[$index]" ng-disabled="!toEdit.cs[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.cs[$index] = !toEdit.cs[$index]" ng-disabled="!toEdit.cs[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.cs[$index], 'edit-menu': toEdit.cs[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.cs[$index] = !toEdit.cs[$index]" ng-disabled="!toEdit.cs[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.cs[$index] = !toEdit.cs[$index]" ng-disabled="toEdit.cs[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.cs[$index] = !toEdit.cs[$index]; planningEditsReset('cs', $index);" ng-disabled="toEdit.cs[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
   		</tr>
@@ -231,7 +229,7 @@ td {
           <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.ik[$index], 'edit-menu': toEdit.ik[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.ik[$index] = !toEdit.ik[$index]" ng-disabled="!toEdit.ik[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.ik[$index] = !toEdit.ik[$index]" ng-disabled="toEdit.ik[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.ik[$index] = !toEdit.ik[$index]" ng-disabled="toEdit.ik[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.ik[$index] = !toEdit.ik[$index]; planningEditsReset('ik', $index);" ng-disabled="toEdit.ik[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
   		</tr>
@@ -254,7 +252,7 @@ td {
             <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.rr[$index], 'edit-menu': toEdit.rr[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.rr[$index] = !toEdit.rr[$index]" ng-disabled="!toEdit.rr[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.rr[$index] = !toEdit.rr[$index]" ng-disabled="toEdit.rr[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.rr[$index] = !toEdit.rr[$index]" ng-disabled="toEdit.rr[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.rr[$index] = !toEdit.rr[$index]; planningEditsReset('rr', $index);" ng-disabled="toEdit.rr[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
   		</tr>
@@ -264,7 +262,7 @@ td {
   
 <!--Writing table -->
 <div class="row tab-pad-row">
-  <table border="1" id="writing-tab" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" ng-if="anyWriting()">
+  <table border="1" id="writing-tab" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" ng-if="anyWriting()">
 		<th class="tab-head">WRITING</th>
    	<tr ng-if="subCheck('tt')">
    		<td class="writing-bg">Text Types and Purpose</td>
@@ -284,7 +282,7 @@ td {
             <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.tt[$index], 'edit-menu': toEdit.tt[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.tt[$index] = !toEdit.tt[$index]" ng-disabled="!toEdit.tt[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.tt[$index] = !toEdit.tt[$index]" ng-disabled="toEdit.tt[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.tt[$index] = !toEdit.tt[$index]" ng-disabled="toEdit.tt[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.tt[$index] = !toEdit.tt[$index]; planningEditsReset('tt', $index);" ng-disabled="toEdit.tt[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
 		</tr>
@@ -303,10 +301,10 @@ td {
         	<li ng-repeat="z in x.det1112">{{z}}</li>
         </ul>
           </div>
-            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.pd[$index], 'edit-menu': toEdit.pd[$index] }">
+            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.pd[$index], 'edit-menu': toEdit.pd[$index]}">
             <button type="button" class="btn btn-default" ng-click="toEdit.pd[$index] = !toEdit.pd[$index]" ng-disabled="!toEdit.pd[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.pd[$index] = !toEdit.pd[$index]" ng-disabled="toEdit.pd[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.pd[$index] = !toEdit.pd[$index]" ng-disabled="toEdit.pd[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.pd[$index] = !toEdit.pd[$index]; planningEditsReset('pd', $index);" ng-disabled="toEdit.pd[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
 		</tr>
@@ -328,7 +326,7 @@ td {
             <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.rb[$index], 'edit-menu': toEdit.rb[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.rb[$index] = !toEdit.rb[$index]" ng-disabled="!toEdit.rb[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.rb[$index] = !toEdit.rb[$index]" ng-disabled="toEdit.rb[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.rb[$index] = !toEdit.rb[$index]" ng-disabled="toEdit.rb[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.rb[$index] = !toEdit.rb[$index]; planningEditsReset('rb', $index);" ng-disabled="toEdit.rb[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
 		</tr>
@@ -351,7 +349,7 @@ td {
             <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.rw[$index], 'edit-menu': toEdit.rw[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.rw[$index] = !toEdit.rw[$index]" ng-disabled="!toEdit.rw[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.rw[$index] = !toEdit.rw[$index]" ng-disabled="toEdit.rw[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.rw[$index] = !toEdit.rw[$index]" ng-disabled="toEdit.rw[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.rw[$index] = !toEdit.rw[$index]; planningEditsReset('rw', $index);" ng-disabled="toEdit.rw[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
 		</tr>
@@ -360,7 +358,7 @@ td {
 
 <div class="row tab-pad-row">
   <!--Speaking and Listening table -->
-    <table  class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" border="1" id="speakinglistening-tab" ng-if="anySpeakingListening()">
+    <table  class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" border="1" id="speakinglistening-tab" ng-if="anySpeakingListening()">
   		<th class="tab-head">SPEAKING and LISTENING</th>
      	<tr ng-if="subCheck('cc')">
      		<td class="speakinglistening-bg">Comprehension and Collaboration</td>
@@ -374,14 +372,14 @@ td {
           </ul>
           <div ng-if="x.det1112">
           <em>In addition, students in grades 11-12 will be able to:</em>
-          <ul contentEditable="{{!toEdit.cc[$index]}}" ng-class="{'edit-speakinglistening-bg': !toEdit.[$index]}">
+          <ul contentEditable="{{!toEdit.cc[$index]}}" ng-class="{'edit-speakinglistening-bg': !toEdit.cc[$index]}">
           	<li ng-repeat="z in x.det1112">{{z}}</li>
           </ul>
           </div>
             <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.cc[$index], 'edit-menu': toEdit.cc[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.cc[$index] = !toEdit.cc[$index]" ng-disabled="!toEdit.cc[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.cc[$index] = !toEdit.cc[$index]" ng-disabled="toEdit.cc[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.cc[$index] = !toEdit.cc[$index]" ng-disabled="toEdit.cc[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.cc[$index] = !toEdit.cc[$index]; planningEditsReset('cc', $index);" ng-disabled="toEdit.cc[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
   		</tr>
@@ -403,7 +401,7 @@ td {
             <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.pk[$index], 'edit-menu': toEdit.pk[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.pk[$index] = !toEdit.pk[$index]" ng-disabled="!toEdit.pk[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.pk[$index] = !toEdit.pk[$index]" ng-disabled="toEdit.pk[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.pk[$index] = !toEdit.pk[$index]" ng-disabled="toEdit.pk[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.pk[$index] = !toEdit.pk[$index]; planningEditsReset('pk', $index);" ng-disabled="toEdit.pk[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
   		</tr>
@@ -411,7 +409,7 @@ td {
 </div>
 <div class="row tab-pad-row">
   <!--Language table --> 
-    <table border="1"  class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" id="language-tab" ng-if="anyLanguage()">
+    <table border="1"  class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" id="language-tab" ng-if="anyLanguage()">
   		<th class="tab-head">LANGUAGE</th>
      	<tr ng-if="subCheck('sl')">
      		<td class="language-bg">Standard Language Conventions</td>
@@ -431,7 +429,7 @@ td {
             <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.sl[$index], 'edit-menu': toEdit.sl[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.sl[$index] = !toEdit.sl[$index]" ng-disabled="!toEdit.sl[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.sl[$index] = !toEdit.sl[$index]" ng-disabled="toEdit.sl[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.sl[$index] = !toEdit.sl[$index]" ng-disabled="toEdit.sl[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.sl[$index] = !toEdit.sl[$index]; planningEditsReset('sl', $index);" ng-disabled="toEdit.sl[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
   		</tr>
@@ -453,7 +451,7 @@ td {
             <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.kl[$index], 'edit-menu': toEdit.kl[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.kl[$index] = !toEdit.kl[$index]" ng-disabled="!toEdit.kl[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.kl[$index] = !toEdit.kl[$index]" ng-disabled="toEdit.kl[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.kl[$index] = !toEdit.kl[$index]" ng-disabled="toEdit.kl[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.kl[$index] = !toEdit.kl[$index]; planningEditsReset('kl', $index);" ng-disabled="toEdit.kl[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
   		</tr>
@@ -475,7 +473,7 @@ td {
             <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.va[$index], 'edit-menu': toEdit.va[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.va[$index] = !toEdit.va[$index]" ng-disabled="!toEdit.va[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.va[$index] = !toEdit.va[$index]" ng-disabled="toEdit.va[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.va[$index] = !toEdit.va[$index]" ng-disabled="toEdit.va[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.va[$index] = !toEdit.va[$index]; planningEditsReset('va', $index);" ng-disabled="toEdit.va[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
   		</tr>
@@ -484,7 +482,7 @@ td {
 
   <!--Creative Problem Solving table -->  
   <div class="row tab-pad-row">
-    <table border="1"  class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" id="problemsolving-tab" ng-if="anyCreative()">
+    <table border="1"  class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" id="problemsolving-tab" ng-if="anyCreative()">
   		<th class="tab-head">CREATIVE PROBLEM SOLVING</th>
      	<tr ng-if="subCheck('kn')">
      		<td class="problemsolving-bg">Knowledge</td>
@@ -504,7 +502,7 @@ td {
             <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.kn[$index], 'edit-menu': toEdit.kn[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.kn[$index] = !toEdit.kn[$index]" ng-disabled="!toEdit.kn[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.kn[$index] = !toEdit.kn[$index]" ng-disabled="toEdit.kn[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.kn[$index] = !toEdit.kn[$index]" ng-disabled="toEdit.kn[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.kn[$index] = !toEdit.kn[$index]; planningEditsReset('kn', $index);" ng-disabled="toEdit.kn[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
   		</tr>
@@ -526,7 +524,7 @@ td {
             <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.pr[$index], 'edit-menu': toEdit.pr[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.pr[$index] = !toEdit.pr[$index]" ng-disabled="!toEdit.pr[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.pr[$index] = !toEdit.pr[$index]" ng-disabled="toEdit.pr[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.pr[$index] = !toEdit.pr[$index]" ng-disabled="toEdit.pr[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.pr[$index] = !toEdit.pr[$index]; planningEditsReset('pr', $index);" ng-disabled="toEdit.pr[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
   		</tr>
@@ -548,7 +546,7 @@ td {
             <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.co[$index], 'edit-menu': toEdit.co[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.co[$index] = !toEdit.co[$index]" ng-disabled="!toEdit.co[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.co[$index] = !toEdit.co[$index]" ng-disabled="toEdit.co[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.co[$index] = !toEdit.co[$index]" ng-disabled="toEdit.co[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.co[$index] = !toEdit.co[$index]; planningEditsReset('co', $index);" ng-disabled="toEdit.co[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
   		</tr>
@@ -556,7 +554,7 @@ td {
     </div>
   <!--Civic and Social Responsibility table -->  
   <div class="row tab-pad-row">
-    <table  class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12" border="1" id="responsibility-tab" ng-if="anyResponsibility()">
+    <table  class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" border="1" id="responsibility-tab" ng-if="anyResponsibility()">
   		<th class="tab-head">CIVIC and SOCIAL RESPONSIBILITY</th>
      	<tr ng-if="subCheck('cr')">
      		<td class="responsibility-bg">Civic Responsibility</td>
@@ -576,7 +574,7 @@ td {
             <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.cr[$index], 'edit-menu': toEdit.cr[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.cr[$index] = !toEdit.cr[$index]" ng-disabled="!toEdit.cr[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.cr[$index] = !toEdit.cr[$index]" ng-disabled="toEdit.cr[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.cr[$index] = !toEdit.cr[$index]" ng-disabled="toEdit.cr[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.cr[$index] = !toEdit.cr[$index]; planningEditsReset('cr', $index);" ng-disabled="toEdit.cr[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
   		</tr>
@@ -598,7 +596,7 @@ td {
             <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.sr[$index], 'edit-menu': toEdit.sr[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.sr[$index] = !toEdit.sr[$index]" ng-disabled="!toEdit.sr[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.sr[$index] = !toEdit.sr[$index]" ng-disabled="toEdit.sr[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.sr[$index] = !toEdit.sr[$index]" ng-disabled="toEdit.sr[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.sr[$index] = !toEdit.sr[$index]; planningEditsReset('sr', $index);" ng-disabled="toEdit.sr[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
   		</tr>
@@ -620,7 +618,7 @@ td {
           <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.ir[$index], 'edit-menu': toEdit.ir[$index] }">
             <button type="button" class="btn btn-default" ng-click="toEdit.ir[$index] = !toEdit.ir[$index]" ng-disabled="!toEdit.ir[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
             <button type="button" class="btn btn-default" ng-click="toEdit.ir[$index] = !toEdit.ir[$index]" ng-disabled="toEdit.ir[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-            <button type="button" class="btn btn-default" ng-click="toEdit.ir[$index] = !toEdit.ir[$index]" ng-disabled="toEdit.ir[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.ir[$index] = !toEdit.ir[$index]; planningEditsReset('ir', $index);" ng-disabled="toEdit.ir[$index]"><i class="glyphicon glyphicon-remove"></i></button>
           </div>
         </td>
   		</tr>

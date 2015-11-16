@@ -40,8 +40,13 @@ tr{
 	vertical-align: top;
 }
 th, td{
-
+  overflow: hidden;
+  position: relative;
 	padding:5px;
+}
+
+td:nth-child(2), td:nth-child(3){
+  padding-right: 40px;
 }
 
 ul{
@@ -70,25 +75,8 @@ li {
   position: relative;
   overflow: hidden;
 }
-tr.reading-bg th{
-  background-color: rgb(0, 204, 255);
-}
-tr.writing-bg th{
-  background-color: rgb(0, 255, 255);
-}
-tr.speakinglistening-bg th{
-  background-color: rgb(204, 0, 255);
-}
-tr.language-bg th{
-  background-color: rgb(255, 255, 51);
-}
-tr.problemsolving-bg th{
-  background-color: rgb(255, 153, 0);
-  }
-tr.responsibility-bg th{
-  background-color: rgb(255, 51, 51);
-}
-tr td.edit-pro:hover, td.edit-per:hover{
+
+.edit-pro:hover, .edit-per:hover, .edit-info:hover{
   background-color:#d3d3d3;
 }
 
@@ -118,31 +106,50 @@ tr td.edit-pro:hover, td.edit-per:hover{
   top: 0;
   width:35px;
 }
+/*info box edit styles; edit menu appears when hover over edit-info <th>*/
+.edit-info:hover .edit-menu {
+  transition: 0.75s;
+  width: 120px;
+  right: 0;
+}
+/*edit menu stays shown when edit button clicked*/
+.edit-info-icon-clicked {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width:120px;
+}
 /*td style for when edit icon clicked*/
 .edit-reading-bg {
-  background-color: rgba(0,204,255,0.15);
+  background-color: rgba(0,204,255,0.20);
 }
 .edit-writing-bg {
-  background-color: rgba(0,255,255,0.15);
+  background-color: rgba(0,255,255,0.20);
 }
 .edit-speakinglistening-bg {
   background-color: rgba(204, 0, 255, 0.15);
 }
 .edit-language-bg {
-  background-color: rgba(255, 255, 51, 0.15);
+  background-color: rgba(255, 255, 51, 0.35);
 }
 .edit-problemsolving-bg {
-  background-color: rgba(255, 153, 0, 0.15);
+  background-color: rgba(255, 153, 0, 0.35);
 }
 .edit-responsibility-bg {
   background-color: rgba(255, 51, 51, 0.15);
 }
 
+input{
+  width: 500px;
+}
+.info-input{
+  font-weight: normal;
+}
 
 </style>
 </head>
  
-<body>
+<body ng-controller="ScoringCtrl">
 
   <nav class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
@@ -153,52 +160,54 @@ tr td.edit-pro:hover, td.edit-per:hover{
   <div class = "container-fluid">
   
     <div class="row">
-      <table border="1" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12">
+      <table border="1" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10">
         <tr>
-          <th width="50%">
+          <th width="40%">
           	Scoring Guide<br>
           	Adapted from the RHS Core Competencies
           </th>
-          <th width="25%" style="border-right: 0">
+          <th width="30%" style="border-right: 0">
           	Student Name: <br>
           	Grade:
           </th>
-          <th width="25%" style="border-left: 0">
+          <th width="30%" style="border-left: 0">
             <br>
             Date: 
           </th>
         </tr>
+        <tr>
+          <th colspan="3" ng-class="{'edit-info' : infoEditable}"><label>Assignment:</label> <span class="info-input" ng-if="infoEditable">{{assignment}}</span> <input ng-show="!infoEditable" type="text" ng-model="assignment">
+            <div class="btn-group" role="group" ng-class="{'edit-info-icon-clicked': !infoEditable, 'edit-menu' : infoEditable}">
+              <button type="button" class="btn btn-default" ng-click="infoEditable = !infoEditable" ng-disabled="!infoEditable"><i class="glyphicon glyphicon-pencil"></i></button>
+              <button type="button" class="btn btn-default" onclick="clickCheck()" ng-click="infoEditable = !infoEditable" ng-disabled="infoEditable"><i class="glyphicon glyphicon-ok"></i></button>
+              <button type="button" class="btn btn-default" ng-click="infoEditable = !infoEditable; assignmentReset()" ng-disabled="infoEditable"><i class="glyphicon glyphicon-remove"></i></button>
+            </div>
+          </th>
+        </tr>
       </table>
     </div>
-
-    <div class="row">
-      <div id="prompt-info" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12">
-        Assignment:
-      </div>
-    </div>
-
   </div>
 
   <div class="container-fluid">
 
     <div class="row tab-pad-row" ng-if="anyCheck(passedConcat.allReading)">
-      <table border="1" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12">
+      <table border="1" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10">
         <tr class="reading-bg">
           <th class="stand-head">Reading Standards</th>
           <th class="pro-head">Criteria for Proficiency</th>
           <th class="per-head">Performace Level</th>
         </tr>
-        <tr class="reading-bg" ng-repeat="x in scoringData.reading" ng-if="passedConcat.allReading[$index]">
+        <tr ng-repeat="x in scoringData.reading" ng-if="passedConcat.allReading[$index]">
         	<td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-        	<td class="edit-pro" contentEditable="{{ !!isEditableRPro[$index] }}" ng-class="{ 'edit-reading-bg': isEditableRPro[$index] }">
+        	<td contentEditable="{{ !!isEditableRPro[$index] }}" ng-class="{ 'edit-reading-bg': isEditableRPro[$index], 'edit-pro': !isEditableRPro[$index]  }">
             <strong>{{x.focus}}</strong>. {{x.pro}}
             <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': isEditableRPro[$index], 'edit-menu': !isEditableRPro[$index] }">
               <button type="button" class="btn btn-default" ng-click="isEditableRPro[$index] = !isEditableRPro[$index]" ng-disabled="isEditableRPro[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
               <button type="button" class="btn btn-default" ng-click="isEditableRPro[$index] = !isEditableRPro[$index]" ng-disabled="!isEditableRPro[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-              <button type="button" class="btn btn-default" ng-click="isEditableRPro[$index] = !isEditableRPro[$index]" ng-disabled="!isEditableRPro[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+              <button type="button" class="btn btn-default" ng-click="isEditableRPro[$index] = !isEditableRPro[$index]; scoringProEditsReset('reading', $index)" ng-disabled="!isEditableRPro[$index]"><i class="glyphicon glyphicon-remove"></i></button>
             </div>
           </td>
-        	<td contentEditable="{{ !!isEditableRPer[$index] }}" class="edit-per" ng-class="{'edit-reading-bg': isEditableRPer[$index] }">
+        	<td contentEditable="{{ !!isEditableRPer[$index] }}" ng-class="{'edit-reading-bg': isEditableRPer[$index], 'edit-per': !isEditableRPer[$index]}">
             <ul>
               <li>Proficient</li>
               <li>Developing</li>
@@ -216,23 +225,23 @@ tr td.edit-pro:hover, td.edit-per:hover{
     </div>
 
     <div class="row tab-pad-row" ng-if="anyCheck(passedConcat.allWriting)">
-      <table border="1" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12">
+      <table border="1" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10">
         <tr class="writing-bg">
           <th class="stand-head">Writing Standards</th>
           <th class="pro-head">Criteria for Proficiency</th>
           <th class="per-head">Performace Level</th>
         </tr>
-        <tr class="writing-bg" ng-repeat="x in scoringData.writing" ng-if="passedConcat.allWriting[$index]">
+        <tr ng-repeat="x in scoringData.writing" ng-if="passedConcat.allWriting[$index]">
           <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-          <td contentEditable="{{ !!isEditableWPro[$index] }}" class="edit-pro" ng-class="{'edit-writing-bg': isEditableWPro[$index] }">
+          <td contentEditable="{{ !!isEditableWPro[$index] }}"ng-class="{'edit-writing-bg': isEditableWPro[$index], 'edit-pro': !isEditableWPro[$index]}">
             <strong>{{x.focus}}</strong>. {{x.pro}}
             <div class="edit-menu btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': isEditableWPro[$index], 'edit-menu': !isEditableWPro[$index] }">
               <button type="button" class="btn btn-default" ng-click="isEditableWPro[$index] = !isEditableWPro[$index]" ng-disabled="isEditableWPro[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
               <button type="button" class="btn btn-default" ng-click="isEditableWPro[$index] = !isEditableWPro[$index]" ng-disabled="!isEditableWPro[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-              <button type="button" class="btn btn-default" ng-click="isEditableWPro[$index] = !isEditableWPro[$index]" ng-disabled="!isEditableWPro[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+              <button type="button" class="btn btn-default" ng-click="isEditableWPro[$index] = !isEditableWPro[$index]; scoringProEditsReset('writing', $index)" ng-disabled="!isEditableWPro[$index]"><i class="glyphicon glyphicon-remove"></i></button>
             </div>
           </td>
-          <td contentEditable="{{ !!isEditableWPer[$index] }}" class="edit-per" ng-class="{'edit-writing-bg': isEditableWPer[$index] }">
+          <td contentEditable="{{ !!isEditableWPer[$index] }}" ng-class="{'edit-writing-bg': isEditableWPer[$index], 'edit-per': !isEditableWPer[$index]}">
             <ul>
               <li>Proficient</li>
               <li>Developing</li>
@@ -250,23 +259,23 @@ tr td.edit-pro:hover, td.edit-per:hover{
     </div>
 
     <div class="row tab-pad-row" ng-if="anyCheck(passedConcat.allSpeakingListening)">
-      <table border="1" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12">
+      <table border="1" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10">
         <tr class="speakinglistening-bg">
           <th class="stand-head">Speaking and Listening Standards</th>
           <th class="pro-head">Criteria for Proficiency</th>
           <th class="per-head">Performace Level</th>
         </tr>
-        <tr class="speakinglistening-bg" ng-repeat="x in scoringData.speakingListening" ng-if="passedConcat.allSpeakingListening[$index]">
+        <tr ng-repeat="x in scoringData.speakingListening" ng-if="passedConcat.allSpeakingListening[$index]">
           <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-          <td contentEditable="{{ !!isEditableSLPro[$index] }}" class="edit-pro" ng-class="{'edit-speakinglistening-bg': isEditableSLPro[$index] }">
+          <td contentEditable="{{ !!isEditableSLPro[$index] }}" ng-class="{'edit-speakinglistening-bg': isEditableSLPro[$index], 'edit-pro': !isEditableSLPro[$index]}">
             <strong>{{x.focus}}</strong>. {{x.pro}}
             <div class="edit-menu btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': isEditableSLPro[$index], 'edit-menu': !isEditableSLPro[$index] }">
               <button type="button" class="btn btn-default" ng-click="isEditableSLPro[$index] = !isEditableSLPro[$index]" ng-disabled="isEditableSLPro[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
               <button type="button" class="btn btn-default" ng-click="isEditableSLPro[$index] = !isEditableSLPro[$index]" ng-disabled="!isEditableSLPro[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-              <button type="button" class="btn btn-default" ng-click="isEditableSLPro[$index] = !isEditableSLPro[$index]" ng-disabled="!isEditableSLPro[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+              <button type="button" class="btn btn-default" ng-click="isEditableSLPro[$index] = !isEditableSLPro[$index]; scoringProEditsReset('speakingListening', $index)" ng-disabled="!isEditableSLPro[$index]"><i class="glyphicon glyphicon-remove"></i></button>
             </div>
           </td>
-          <td contentEditable="{{ !!isEditableSLPer[$index] }}" class="edit-per" ng-class="{'edit-speakinglistening-bg': isEditableSLPer[$index] }">
+          <td contentEditable="{{ !!isEditableSLPer[$index] }}" ng-class="{'edit-speakinglistening-bg': isEditableSLPer[$index], 'edit-per': !isEditableSLPer[$index]}">
             <ul>
               <li>Proficient</li>
               <li>Developing</li>
@@ -284,23 +293,23 @@ tr td.edit-pro:hover, td.edit-per:hover{
     </div>
 
     <div class="row tab-pad-row" ng-if="anyCheck(passedConcat.allLanguage)">
-      <table border="1" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12">
+      <table border="1" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10">
         <tr class="language-bg">
           <th class="stand-head">Language Standards</th>
           <th class="pro-head">Criteria for Proficiency</th>
           <th class="per-head">Performace Level</th>
         </tr>
-        <tr class="language-bg" ng-repeat="x in scoringData.language" ng-if="passedConcat.allLanguage[$index]">
+        <tr ng-repeat="x in scoringData.language" ng-if="passedConcat.allLanguage[$index]">
           <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-          <td contentEditable="{{ !!isEditableLPro[$index] }}" class="edit-pro" ng-class="{'edit-language-bg': isEditableLPro[$index] }">
+          <td contentEditable="{{ !!isEditableLPro[$index] }}" ng-class="{'edit-language-bg': isEditableLPro[$index], 'edit-pro': !isEditableLPro[$index]}">
             <strong>{{x.focus}}</strong>. {{x.pro}}
             <div class="edit-menu btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': isEditableLPro[$index], 'edit-menu': !isEditableLPro[$index] }">
               <button type="button" class="btn btn-default" ng-click="isEditableLPro[$index] = !isEditableLPro[$index]" ng-disabled="isEditableLPro[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
               <button type="button" class="btn btn-default" ng-click="isEditableLPro[$index] = !isEditableLPro[$index]" ng-disabled="!isEditableLPro[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-              <button type="button" class="btn btn-default" ng-click="isEditableLPro[$index] = !isEditableLPro[$index]" ng-disabled="!isEditableLPro[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+              <button type="button" class="btn btn-default" ng-click="isEditableLPro[$index] = !isEditableLPro[$index]; scoringProEditsReset('language', $index)" ng-disabled="!isEditableLPro[$index]"><i class="glyphicon glyphicon-remove"></i></button>
             </div>
           </td>
-          <td contentEditable="{{ !!isEditableLPer[$index] }}" class="edit-per" ng-class="{'edit-language-bg': isEditableLPer[$index] }">
+          <td contentEditable="{{ !!isEditableLPer[$index] }}" ng-class="{'edit-language-bg': isEditableLPer[$index], 'edit-per': !isEditableLPer[$index]}">
             <ul>
               <li>Proficient</li>
               <li>Developing</li>
@@ -318,23 +327,23 @@ tr td.edit-pro:hover, td.edit-per:hover{
     </div>
 
     <div class="row tab-pad-row" ng-if="anyCheck(passedConcat.allCreative)">
-      <table border="1" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12">
+      <table border="1" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10">
         <tr class="problemsolving-bg">
           <th class="stand-head">Creative Problem Solving Standards</th>
           <th class="pro-head">Criteria for Proficiency</th>
           <th class="per-head">Performace Level</th>
         </tr>
-        <tr class="problemsolving-bg" ng-repeat="x in scoringData.creative" ng-if="passedConcat.allCreative[$index]">
+        <tr ng-repeat="x in scoringData.creative" ng-if="passedConcat.allCreative[$index]">
           <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-          <td contentEditable="{{ !!isEditableCPSPro[$index] }}" class="edit-pro" ng-class="{'edit-problemsolving-bg': isEditableCPSPro[$index] }">
+          <td contentEditable="{{ !!isEditableCPSPro[$index] }}" ng-class="{'edit-problemsolving-bg': isEditableCPSPro[$index], 'edit-pro': !isEditableCPSPro[$index]}">
             <strong>{{x.focus}}</strong>. {{x.pro}}
             <div class="edit-menu btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': isEditableCPSPro[$index], 'edit-menu': !isEditableCPSPro[$index] }">
               <button type="button" class="btn btn-default" ng-click="isEditableCPSPro[$index] = !isEditableCPSPro[$index]" ng-disabled="isEditableCPSPro[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
               <button type="button" class="btn btn-default" ng-click="isEditableCPSPro[$index] = !isEditableCPSPro[$index]" ng-disabled="!isEditableCPSPro[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-              <button type="button" class="btn btn-default" ng-click="isEditableCPSPro[$index] = !isEditableCPSPro[$index]" ng-disabled="!isEditableCPSPro[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+              <button type="button" class="btn btn-default" ng-click="isEditableCPSPro[$index] = !isEditableCPSPro[$index]; scoringProEditsReset('creative', $index)" ng-disabled="!isEditableCPSPro[$index]"><i class="glyphicon glyphicon-remove"></i></button>
             </div>
           </td>
-          <td contentEditable="{{ !!isEditableCPSPer[$index] }}" class="edit-per" ng-class="{'edit-problemsolving-bg': isEditableCPSPer[$index] }">
+          <td contentEditable="{{ !!isEditableCPSPer[$index] }}" ng-class="{'edit-problemsolving-bg': isEditableCPSPer[$index], 'edit-per': !isEditableCPSPer[$index]}">
             <ul>
               <li>Proficient</li>
               <li>Developing</li>
@@ -352,23 +361,23 @@ tr td.edit-pro:hover, td.edit-per:hover{
     </div>
 
     <div class="row tab-pad-row" ng-if="anyCheck(passedConcat.allResponsibility)">
-      <table border="1" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12">
+      <table border="1" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10">
         <tr class="responsibility-bg">
           <th class="stand-head">Civic and Social Responsibility Standards</th>
           <th class="pro-head">Criteria for Proficiency</th>
           <th class="per-head">Performace Level</th>
         </tr>
-        <tr class="responsibility-bg" ng-repeat="x in scoringData.responsibility" ng-if="passedConcat.allResponsibility[$index]">
+        <tr ng-repeat="x in scoringData.responsibility" ng-if="passedConcat.allResponsibility[$index]">
           <td><strong>{{x.sub}}</strong>. {{x.text}}</td>
-          <td contentEditable="{{ !!isEditableCSRPro[$index] }}" class="edit-pro" ng-class="{'edit-responsibility-bg': isEditableCSRPro[$index] }">
+          <td contentEditable="{{ !!isEditableCSRPro[$index] }}" ng-class="{'edit-responsibility-bg': isEditableCSRPro[$index], 'edit-pro': !isEditableCSRPro[$index]}">
             <strong>{{x.focus}}</strong>. {{x.pro}}
             <div class="edit-menu btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': isEditableCSRPro[$index], 'edit-menu': !isEditableCSRPro[$index] }">
               <button type="button" class="btn btn-default" ng-click="isEditableCSRPro[$index] = !isEditableCSRPro[$index]" ng-disabled="isEditableCSRPro[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
               <button type="button" class="btn btn-default" ng-click="isEditableCSRPro[$index] = !isEditableCSRPro[$index]" ng-disabled="!isEditableCSRPro[$index]"><i class="glyphicon glyphicon-ok"></i></button>
-              <button type="button" class="btn btn-default" ng-click="isEditableCSRPro[$index] = !isEditableCSRPro[$index]" ng-disabled="!isEditableCSRPro[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+              <button type="button" class="btn btn-default" ng-click="isEditableCSRPro[$index] = !isEditableCSRPro[$index]; scoringProEditsReset('responsibility', $index)" ng-disabled="!isEditableCSRPro[$index]"><i class="glyphicon glyphicon-remove"></i></button>
             </div>
           </td>
-          <td contentEditable="{{ !!isEditableCSRPer[$index] }}" class="edit-per" ng-class="{'edit-responsibility-bg': isEditableCSRPer[$index] }">
+          <td contentEditable="{{ !!isEditableCSRPer[$index] }}" ng-class="{'edit-responsibility-bg': isEditableCSRPer[$index], 'edit-per': !isEditableCSRPer[$index]}">
             <ul>
               <li>Proficient</li>
               <li>Developing</li>
@@ -390,7 +399,7 @@ tr td.edit-pro:hover, td.edit-per:hover{
   <div class = "container-fluid">
   
     <div id="lastrow" class="row tab-pad-row">
-      <table border="1" class="col-md-7 col-md-offset-1 col-xs-offset-0 col-xs-12">
+      <table border="1" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10">
         <tr>
           <th style="padding-bottom:50px" width="65%">
             COMMENTS:

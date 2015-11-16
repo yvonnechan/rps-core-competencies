@@ -2,7 +2,7 @@
 
 // JavaScript Document
 
-var app = angular.module('BonMod', ['ngRoute']);
+var app = angular.module('BonMod', ['ngRoute', 'contenteditable']);
 
 app.config(
 	function($routeProvider){
@@ -19,11 +19,41 @@ app.config(
 				templateUrl: 'scoring.html',
 				controller: 'ScoringCtrl'
 			}).
+			when('/help', {
+				templateUrl: 'help.html',
+				controller: 'HelpCtrl'
+			}).						
 			otherwise ({
 				redirectTo: '/'
 			});	
 	});
 
+app.controller('HelpCtrl', function($scope){
+	$scope.items = [{name:"first"}, {name:"second"}]
+});
+/*
+app.directive('contenteditable', function(){
+    return {
+        require: 'ngModel',
+        link: function(scope, elm, attrs, ctrl) {
+            // view -> model
+            elm.bind('blur', function() {
+                scope.$apply(function() {
+                    ctrl.$setViewValue(elm.html());
+                });
+            });
+
+            // model -> view
+            ctrl.$render = function() {
+                elm.html(ctrl.$viewValue);
+            };
+
+            // load init value from DOM
+            //ctrl.$setViewValue(elm.html());
+        }
+    };
+})
+*/
 app.controller('HomeCtrl', function($scope, $http, FetchStandards) {
 
 	//google : initialize js array of a certain value
@@ -62,6 +92,8 @@ app.controller('HomeCtrl', function($scope, $http, FetchStandards) {
 	$scope.standardClicked =  function(key, index) {
 		$scope.selectedStandards[key][index] = !$scope.selectedStandards[key][index];
 	}
+
+	
 	$scope.navClicked = function() {
 		FetchStandards.save($scope.selectedStandards);
 	}
@@ -87,24 +119,29 @@ app.controller('PlanningCtrl', function($scope, $http, FetchStandards) {
 	//function parameter referrences are passed by value 
 	$scope.toEdit = _.cloneDeep($scope.passed);
 
-	/* eugene code 
-	$scope.containsAny = function(key) {
-		return !_.isEmpty($scope.passed[key]);	
-	};
-	
-	$scope.anyCategory = function(subcat) {
-		
-		return containsAny('ki') || 
-	};
-	*/
+	//boolean for editing info bar
+	$scope.infoEditable = [true];
+
+	//scope variables for teacher input
+	$scope.infoHeader = ["","",""];
+
+	$scope.infoReset = function () {
+		$scope.infoHeader = ["","",""];
+	}
 
 	FetchStandards.getPlanningList(function(det){
 		//put everything in planning.json into planningData 
 		$scope.planningData = det;
+		//duplicate that .json data for cancel purposes
+		$scope.planningEdited = _.cloneDeep($scope.planningData);
 	});
-
-
 	
+
+	$scope.planningEditsReset = function(key, index){
+		//revert to originals
+		$scope.planningData[key][index] = _.cloneDeep($scope.planningEdited[key][index]);
+		//what happens if a person wants to go back and edit again...?
+	}
 
 	//check if any of the reading subhead arrays contain true
 	$scope.anyReading = function(){
@@ -165,8 +202,36 @@ app.controller('ScoringCtrl', function($scope, $http, FetchStandards) {
 	FetchStandards.getScoringList(function(det){
 		//put everything in scoring.json into scoringData 
 		$scope.scoringData = det;
+		//duplicate that .json data for cancel purposes
+		$scope.scoringEdited = _.cloneDeep($scope.scoringData);
 	});
 
+	$scope.perLevels = ["Proficient", "Developing", "Emerging", "Insufficient evidence"];
+
+	$scope.perLevelsClean = _.cloneDeep($scope.perLevels);
+
+
+	$scope.scoringProEditsReset = function(key, index){
+		//revert to originals
+		$scope.scoringData[key][index] = _.cloneDeep($scope.scoringEdited[key][index]);
+	}
+
+	$scope.scoringPerEditsReset = function(key, index){
+		//revert to originals
+		$scope.perLevels[key][index] = _.cloneDeep($scope.scoringEdited[key][index]);
+	}
+
+	//boolean for editing info bar
+	$scope.infoEditable = [true];
+
+	//scope variables for teacher input
+	$scope.assignment = "";
+
+	$scope.assignmentReset = function () {
+		$scope.assignment = "";
+	}
+
+	//scope object with user selected standards 
 	$scope.passed = FetchStandards.retrieve();
 	//concatinate all substandards of the same standard together (to match with scoring.json structure)
 	$scope.passedConcat = {
@@ -209,3 +274,4 @@ app.factory('FetchStandards', function($http){
 		}
 	}
 });
+
