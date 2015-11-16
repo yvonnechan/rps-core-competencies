@@ -202,8 +202,36 @@ app.controller('ScoringCtrl', function($scope, $http, FetchStandards) {
 	FetchStandards.getScoringList(function(det){
 		//put everything in scoring.json into scoringData 
 		$scope.scoringData = det;
+		//duplicate that .json data for cancel purposes
+		$scope.scoringEdited = _.cloneDeep($scope.scoringData);
 	});
 
+	$scope.perLevels = ["Proficient", "Developing", "Emerging", "Insufficient evidence"];
+
+	$scope.perLevelsClean = _.cloneDeep($scope.perLevels);
+
+
+	$scope.scoringProEditsReset = function(key, index){
+		//revert to originals
+		$scope.scoringData[key][index] = _.cloneDeep($scope.scoringEdited[key][index]);
+	}
+
+	$scope.scoringPerEditsReset = function(key, index){
+		//revert to originals
+		$scope.perLevels[key][index] = _.cloneDeep($scope.scoringEdited[key][index]);
+	}
+
+	//boolean for editing info bar
+	$scope.infoEditable = [true];
+
+	//scope variables for teacher input
+	$scope.assignment = "";
+
+	$scope.assignmentReset = function () {
+		$scope.assignment = "";
+	}
+
+	//scope object with user selected standards 
 	$scope.passed = FetchStandards.retrieve();
 	//concatinate all substandards of the same standard together (to match with scoring.json structure)
 	$scope.passedConcat = {

@@ -95,7 +95,6 @@ td {
   background-color:#333333;
 }
 .navbar-btn{
-
   background-color:red;
   color:#fff;
 }
@@ -132,11 +131,11 @@ label{
   <div class="row" id="info-pad">
     <table border="1" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10">
       <tr id="info-tab">
-        <th width="35%" >
+        <th width="40%" >
           Planning Guide<br>
           Adapted from the RHS Core Competencies
         </th>
-        <th width="65%"  ng-class="{'edit-det' : infoEditable}">
+        <th width="60%" ng-class="{'edit-det' : infoEditable}">
           <label>Teacher Name:</label> <span class="info-input" ng-if="infoEditable">{{infoHeader[0]}}</span> <input ng-show="!infoEditable" type="text" ng-model="infoHeader[0]"> <br>
           <label>Unit of Study:</label> <span class="info-input" ng-if="infoEditable">{{infoHeader[1]}}</span>  <input ng-show="!infoEditable" type="text" id="study-input" ng-model="infoHeader[1]"> <br>
           <label>Date:</label> <span class="info-input" ng-if="infoEditable">{{infoHeader[3] | date: 'MMM dd, yyyy'}}</span> <input ng-show="!infoEditable" type="date" ng-model="infoHeader[3]">
