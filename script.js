@@ -2,7 +2,7 @@
 
 // JavaScript Document
 
-var app = angular.module('BonMod', ['ngRoute', 'contenteditable']);
+var app = angular.module('BonMod', ['ngRoute']);
 
 app.config(
 	function($routeProvider){
