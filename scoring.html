@@ -7,7 +7,7 @@
 <style>
 body{
 
-  padding-top: 75px;
+  padding-top: 100px;
 }
 .navbar-fixed-top {
   color:#fff;
@@ -45,10 +45,6 @@ th, td{
 	padding:5px;
 }
 
-td:nth-child(2), td:nth-child(3){
-  padding-right: 40px;
-}
-
 ul{
   list-style: none;
   padding:0;
@@ -67,23 +63,11 @@ li {
 }
 
 .edit-pro {
-  position: relative;
   padding-right: 50px;
-  overflow: hidden;
-}
-.edit-per {
-  position: relative;
-  overflow: hidden;
 }
 
-.edit-pro:hover, .edit-per:hover, .edit-info:hover{
+.edit-pro:hover, .edit-per:hover, .edit-assignment:hover, .edit-grade-date:hover{
   background-color:#d3d3d3;
-}
-
-.edit-pro:hover .edit-menu {
-  transition: 0.75s;
-  width: 35px;
-  right: 0;
 }
 /*edit menu hidden when td isn't hovered over*/
 .edit-menu {
@@ -99,6 +83,21 @@ li {
   width: 35px;
   right: 0;
 }
+.edit-pro:hover .edit-menu {
+  transition: 0.75s;
+  width: 35px;
+  right: 0;
+}
+.edit-assignment:hover .edit-menu {
+  transition: 0.75s;
+  width: 120px;
+  right: 0;
+}
+.edit-grade-date:hover .edit-menu {
+  transition: 0.75s;
+  width: 35px;
+  right: 0;
+}
 /*div style for when edit icon clicked; button stay shown*/
 .edit-icon-clicked {
   position: absolute;
@@ -106,13 +105,6 @@ li {
   top: 0;
   width:35px;
 }
-/*info box edit styles; edit menu appears when hover over edit-info <th>*/
-.edit-info:hover .edit-menu {
-  transition: 0.75s;
-  width: 120px;
-  right: 0;
-}
-/*edit menu stays shown when edit button clicked*/
 .edit-info-icon-clicked {
   position: absolute;
   right: 0;
@@ -138,14 +130,20 @@ li {
 .edit-responsibility-bg {
   background-color: rgba(255, 51, 51, 0.15);
 }
-
 input{
-  width: 500px;
+  width: 250px;
 }
 .info-input{
   font-weight: normal;
 }
-
+label{
+  text-align: right;
+  width:100px;
+}
+#assign-lab{
+  vertical-align: top;
+  text-align: left;
+}
 </style>
 </head>
  
@@ -154,6 +152,7 @@ input{
   <nav class="navbar navbar-fixed-top navbar-inverse">
     <div class="container">
       <h4>College and Career Readiness Anchor Standards | Revere High School Core Competencies</h4>
+      <button style="float:right" type="button" class="btn btn-link" data-container="body" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="That means you can edit it! To edit, click the pencil icon. To keep the changes, click the check icon. To revert to the original text, click the x icon.">Why do some things turn gray when I hover over them?</button>
     </div>
   </nav>
 
@@ -166,21 +165,25 @@ input{
           	Scoring Guide<br>
           	Adapted from the RHS Core Competencies
           </th>
-          <th width="30%" style="border-right: 0">
-          	Student Name: <br>
-          	Grade:
-          </th>
-          <th width="30%" style="border-left: 0">
-            <br>
-            Date: 
+          <th width="60%" ng-class="{'edit-grade-date' : gradeDateEditable}">
+          	<label>Student Name: </label><br>
+          	<label>Grade: </label>  <span class="info-input" ng-if="gradeDateEditable">{{gradeDate[0]}}</span> <input ng-show="!gradeDateEditable" type="text" ng-model="gradeDate[0]"> <br>
+            <label>Date: </label>  <span class="info-input" ng-if="gradeDateEditable">{{gradeDate[1] | date: 'MMM dd, yyyy'}}</span> <input ng-show="!gradeDateEditable" type="date" ng-model="gradeDate[1]">
+
+          <div class="btn-group-vertical" role="group" ng-class="{'edit-icon-clicked': !gradeDateEditable, 'edit-menu' : gradeDateEditable}">
+            <button type="button" class="btn btn-default" ng-click="gradeDateEditable = !gradeDateEditable" ng-disabled="!gradeDateEditable"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="gradeDateEditable = !gradeDateEditable" ng-disabled="gradeDateEditable"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="gradeDateEditable = !gradeDateEditable; gradeDateReset()" ng-disabled="gradeDateEditable"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
           </th>
         </tr>
         <tr>
-          <th colspan="3" ng-class="{'edit-info' : infoEditable}"><label>Assignment:</label> <span class="info-input" ng-if="infoEditable">{{assignment}}</span> <input ng-show="!infoEditable" type="text" ng-model="assignment">
-            <div class="btn-group" role="group" ng-class="{'edit-info-icon-clicked': !infoEditable, 'edit-menu' : infoEditable}">
-              <button type="button" class="btn btn-default" ng-click="infoEditable = !infoEditable" ng-disabled="!infoEditable"><i class="glyphicon glyphicon-pencil"></i></button>
-              <button type="button" class="btn btn-default" onclick="clickCheck()" ng-click="infoEditable = !infoEditable" ng-disabled="infoEditable"><i class="glyphicon glyphicon-ok"></i></button>
-              <button type="button" class="btn btn-default" ng-click="infoEditable = !infoEditable; assignmentReset()" ng-disabled="infoEditable"><i class="glyphicon glyphicon-remove"></i></button>
+          <th colspan="2" ng-class="{'edit-assignment' : assignmentEditable}">
+            <span id="assign-lab">Assignment:</span> <span class="info-input" ng-if="assignmentEditable">{{assignment}}</span> <textarea ng-show="!assignmentEditable" type="text" ng-model="assignment" rows="2" cols="85"></textarea>
+            <div class="btn-group" role="group" ng-class="{'edit-info-icon-clicked': !assignmentEditable, 'edit-menu' : assignmentEditable}">
+              <button type="button" class="btn btn-default" ng-click="assignmentEditable = !assignmentEditable" ng-disabled="!assignmentEditable"><i class="glyphicon glyphicon-pencil"></i></button>
+              <button type="button" class="btn btn-default" onclick="clickCheck()" ng-click="assignmentEditable = !assignmentEditable" ng-disabled="assignmentEditable"><i class="glyphicon glyphicon-ok"></i></button>
+              <button type="button" class="btn btn-default" ng-click="assignmentEditable = !assignmentEditable; assignmentReset()" ng-disabled="assignmentEditable"><i class="glyphicon glyphicon-remove"></i></button>
             </div>
           </th>
         </tr>
@@ -420,6 +423,14 @@ input{
     </div>
   </nav>
 
+<script type="text/javascript">
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
 
 </body>
 </html>

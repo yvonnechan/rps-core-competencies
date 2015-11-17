@@ -222,13 +222,19 @@ app.controller('ScoringCtrl', function($scope, $http, FetchStandards) {
 	}
 
 	//boolean for editing info bar
-	$scope.infoEditable = [true];
+	$scope.assignmentEditable = [true];
+	$scope.gradeDateEditable = [true];
 
 	//scope variables for teacher input
 	$scope.assignment = "";
+	$scope.gradeDate = ["", ""];
 
+	//functions to reset the text on clear
 	$scope.assignmentReset = function () {
 		$scope.assignment = "";
+	}
+	$scope.gradeDateReset = function () {
+		$scope.gradeDate = ["", ""];
 	}
 
 	//scope object with user selected standards 
