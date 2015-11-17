@@ -122,6 +122,8 @@ label{
 <nav class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
     <h4>College and Career Readiness Anchor Standards | Revere High School Core Competencies</h4>
+    <button style="float:right" type="button" class="btn btn-link" data-container="body" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="That means you can edit it! To edit, click the pencil icon. To keep the changes, click the check icon. To revert to the original text, click the x icon.">Why do some things turn gray when I hover over them?</button>
+  
   </div>
 </nav>
 <!--Reading table -->
@@ -136,9 +138,9 @@ label{
           Adapted from the RHS Core Competencies
         </th>
         <th width="60%" ng-class="{'edit-det' : infoEditable}">
-          <label>Teacher Name:</label> <span class="info-input" ng-if="infoEditable">{{infoHeader[0]}}</span> <input ng-show="!infoEditable" type="text" ng-model="infoHeader[0]"> <br>
-          <label>Unit of Study:</label> <span class="info-input" ng-if="infoEditable">{{infoHeader[1]}}</span>  <input ng-show="!infoEditable" type="text" id="study-input" ng-model="infoHeader[1]"> <br>
-          <label>Date:</label> <span class="info-input" ng-if="infoEditable">{{infoHeader[3] | date: 'MMM dd, yyyy'}}</span> <input ng-show="!infoEditable" type="date" ng-model="infoHeader[3]">
+          <label>Teacher Name:</label>  <span class="info-input" ng-if="infoEditable">{{infoHeader[0]}}</span> <input ng-show="!infoEditable" type="text" ng-model="infoHeader[0]"> <br>
+          <label>Unit of Study:</label>  <span class="info-input" ng-if="infoEditable">{{infoHeader[1]}}</span>  <input ng-show="!infoEditable" type="text" id="study-input" ng-model="infoHeader[1]"> <br>
+          <label>Date:</label>  <span class="info-input" ng-if="infoEditable">{{infoHeader[3] | date: 'MMM dd, yyyy'}}</span> <input ng-show="!infoEditable" type="date" ng-model="infoHeader[3]">
 
           <div class="btn-group-vertical" role="group" ng-class="{'edit-icon-clicked': !infoEditable, 'edit-menu' : infoEditable}">
             <button type="button" class="btn btn-default" ng-click="infoEditable = !infoEditable" ng-disabled="!infoEditable"><i class="glyphicon glyphicon-pencil"></i></button>
@@ -635,5 +637,14 @@ label{
     <a class="btn navbar-btn" ng-click="" type="button" href="#/">Start Over</a>
   </div>
 </nav>
+
+<script type="text/javascript">
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
 </body>
 </html>
