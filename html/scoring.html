@@ -3,148 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>My Scoring Guide</title>
-
-<style>
-body{
-
-  padding-top: 100px;
-}
-.navbar-fixed-top {
-  color:#fff;
-  background-color:#333333;
-  text-align: center;
-}
-
-.navbar-fixed-bottom {
-  color:#fff;
-  text-align: center;
-  margin: auto;
-  background-color:#333333;
-}
-
-.navbar-btn{
-
-  background-color:red;
-  color:#fff;
-}
-#prompt-info{
-  padding: 10px 10px 10px 5px;
-}
-#lastrow{
-	  padding-bottom: 65px ;
-}
-.tab-pad-row{
-  padding-top:25px;
-}
-tr{
-	vertical-align: top;
-}
-th, td{
-  overflow: hidden;
-  position: relative;
-	padding:5px;
-}
-
-ul{
-  list-style: none;
-  padding:0;
-}
-li {
-  margin-bottom: 5px;
-}
-.stand-head, .per-head{
-  width:25%;
-  text-align: left;
-
-}
-.pro-head{
-  width:50%;
-  text-align: center;
-}
-
-.edit-pro {
-  padding-right: 50px;
-}
-
-.edit-pro:hover, .edit-per:hover, .edit-assignment:hover, .edit-grade-date:hover{
-  background-color:#d3d3d3;
-}
-/*edit menu hidden when td isn't hovered over*/
-.edit-menu {
-  transition: 0.75s;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 0;
-}
-/*edit menu appears when td hovered over*/
-.edit-per:hover .edit-menu {
-  transition: 0.75s;
-  width: 35px;
-  right: 0;
-}
-.edit-pro:hover .edit-menu {
-  transition: 0.75s;
-  width: 35px;
-  right: 0;
-}
-.edit-assignment:hover .edit-menu {
-  transition: 0.75s;
-  width: 120px;
-  right: 0;
-}
-.edit-grade-date:hover .edit-menu {
-  transition: 0.75s;
-  width: 35px;
-  right: 0;
-}
-/*div style for when edit icon clicked; button stay shown*/
-.edit-icon-clicked {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width:35px;
-}
-.edit-info-icon-clicked {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width:120px;
-}
-/*td style for when edit icon clicked*/
-.edit-reading-bg {
-  background-color: rgba(0,204,255,0.20);
-}
-.edit-writing-bg {
-  background-color: rgba(0,255,255,0.20);
-}
-.edit-speakinglistening-bg {
-  background-color: rgba(204, 0, 255, 0.15);
-}
-.edit-language-bg {
-  background-color: rgba(255, 255, 51, 0.35);
-}
-.edit-problemsolving-bg {
-  background-color: rgba(255, 153, 0, 0.35);
-}
-.edit-responsibility-bg {
-  background-color: rgba(255, 51, 51, 0.15);
-}
-input{
-  width: 250px;
-}
-.info-input{
-  font-weight: normal;
-}
-label{
-  text-align: right;
-  width:100px;
-}
-#assign-lab{
-  vertical-align: top;
-  text-align: left;
-}
-</style>
 </head>
  
 <body ng-controller="ScoringCtrl">
@@ -401,7 +259,7 @@ label{
 
   <div class = "container-fluid">
   
-    <div id="lastrow" class="row tab-pad-row">
+    <div id="last-row" class="row tab-pad-row">
       <table border="1" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10">
         <tr>
           <th style="padding-bottom:50px" width="65%">
@@ -418,7 +276,7 @@ label{
   <nav class="navbar navbar-fixed-bottom navbar-inverse">
     <div class="container">
       <a class="btn navbar-btn" ng-click="" type="button" href="#/planning">Generate Planning Guide</a>
-      <a class="btn navbar-btn" ng-click="" type="button" ng-disabled=true href="#">Print</a>
+      <a class="btn navbar-btn" onclick="" type="button" href="javascript:window.print()">Print</a>
       <a class="btn navbar-btn" ng-click="" type="button" href="#/">Start Over</a>
     </div>
   </nav>

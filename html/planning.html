@@ -3,119 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>My Planning Guide</title>
-
-<style>
-* {
-	font-family:Calibri;
-}
-table {
-  border-collapse:collapse;
-  margin-top: 0px;
-
-}
-.tab-head {
-	font-size:24px;
-	color: #fff;
-	background-color:black;
-  text-align: center;
-}
-th{
-	padding: 5px;
-  overflow: hidden;
-  position: relative;
-}
-td {
-  padding: 5px 50px 5px 5px;
-  overflow: hidden;
-  position: relative;
-}
-
-#last-row{
-  width:100%;
-  padding-bottom: 100px ;
-}
-.tab-pad-row{
-  padding-top:25px;
-}
-
-.edit-det:hover {
-  background-color:#d3d3d3;
-}
-
-.edit-det:hover .edit-menu {
-  transition: 0.75s;
-  width: 35px;
-  right: 0;
-}
-/*edit menu hidden when td isn't hovered over*/
-.edit-menu {
-  transition: 0.75s;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 0;
-}
-
-/*div style for when edit icon clicked; button stay shown*/
-.edit-icon-clicked {
-  position: absolute;
-  right: 0;
-  top: 0;
-  width:35px;
-}
-/*td style for when edit icon clicked*/
-.edit-reading-bg {
-  background-color: rgba(0,204,255,0.20);
-}
-.edit-writing-bg {
-  background-color: rgba(0,255,255,0.20);
-}
-.edit-speakinglistening-bg {
-  background-color: rgba(204, 0, 255, 0.15);
-}
-.edit-language-bg {
-  background-color: rgba(255, 255, 51, 0.35);
-}
-.edit-problemsolving-bg {
-  background-color: rgba(255, 153, 0, 0.35);
-}
-.edit-responsibility-bg {
-  background-color: rgba(255, 51, 51, 0.15);
-}
-
-.navbar-fixed-top {
-  color:#fff;
-  background-color:#333333;
-  text-align: center;
-}
-.navbar-fixed-bottom {
-  color:#fff;
-  text-align: center;
-  margin: auto;
-  background-color:#333333;
-}
-.navbar-btn{
-  background-color:red;
-  color:#fff;
-}
-#info-pad{
-  padding-bottom: 25px;
-}
-label{
-  text-align: right;
-  width:100px;
-}
-#info-tab{
-  vertical-align: top;
-}
-#study-input{
-  width:250px;
-}
-.info-input{
-  font-weight: normal;
-}
-</style>
-
 </head>
 
 <body ng-controller="PlanningCtrl">
@@ -126,7 +13,6 @@ label{
   
   </div>
 </nav>
-<!--Reading table -->
 
 <div class="container-fluid">
 
@@ -139,7 +25,7 @@ label{
         </th>
         <th width="60%" ng-class="{'edit-det' : infoEditable}">
           <label>Teacher Name:</label>  <span class="info-input" ng-if="infoEditable">{{infoHeader[0]}}</span> <input ng-show="!infoEditable" type="text" ng-model="infoHeader[0]"> <br>
-          <label>Unit of Study:</label>  <span class="info-input" ng-if="infoEditable">{{infoHeader[1]}}</span>  <input ng-show="!infoEditable" type="text" id="study-input" ng-model="infoHeader[1]"> <br>
+          <label>Unit of Study:</label>  <span class="info-input" ng-if="infoEditable">{{infoHeader[1]}}</span>  <input ng-show="!infoEditable" type="text" ng-model="infoHeader[1]"> <br>
           <label>Date:</label>  <span class="info-input" ng-if="infoEditable">{{infoHeader[3] | date: 'MMM dd, yyyy'}}</span> <input ng-show="!infoEditable" type="date" ng-model="infoHeader[3]">
 
           <div class="btn-group-vertical" role="group" ng-class="{'edit-icon-clicked': !infoEditable, 'edit-menu' : infoEditable}">
@@ -157,11 +43,11 @@ label{
 
   </div>
 
+<!--Reading table -->
+  <div class="row tab-pad-row" ng-if="anyReading()">
+	<!--print div if there is any true value in array of reading standards -->
 
-  <div class="row tab-pad-row">
-	<!--print table if there is any true value in array of reading standards -->
-
-    <table border="1" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" id="reading-tab" ng-if="anyReading()">
+    <table border="1" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" id="reading-tab">
   		<th class="tab-head">READING</th>
       <tr><td style="padding-right:5px"><strong><em>Throughout this document, the term “text” refers not only to literary and informational texts, including primary and secondary sources and science and technical texts, but also to images, graphics, audio-video, mathematical, and technological communications.</em></strong></td></tr>
       <!--print subhead if there is any true value in array of reading standards sub-sections -->
@@ -263,8 +149,8 @@ label{
   
   
 <!--Writing table -->
-<div class="row tab-pad-row">
-  <table border="1" id="writing-tab" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" ng-if="anyWriting()">
+<div class="row tab-pad-row" ng-if="anyWriting()">
+  <table border="1" id="writing-tab" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10">
 		<th class="tab-head">WRITING</th>
    	<tr ng-if="subCheck('tt')">
    		<td class="writing-bg">Text Types and Purpose</td>
@@ -358,9 +244,9 @@ label{
 	</table>
 </div>
 
-<div class="row tab-pad-row">
+<div class="row tab-pad-row" ng-if="anySpeakingListening()">
   <!--Speaking and Listening table -->
-    <table  class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" border="1" id="speakinglistening-tab" ng-if="anySpeakingListening()">
+    <table  class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" border="1" id="speakinglistening-tab">
   		<th class="tab-head">SPEAKING and LISTENING</th>
      	<tr ng-if="subCheck('cc')">
      		<td class="speakinglistening-bg">Comprehension and Collaboration</td>
@@ -409,9 +295,9 @@ label{
   		</tr>
   	</table>
 </div>
-<div class="row tab-pad-row">
+<div class="row tab-pad-row" ng-if="anyLanguage()">
   <!--Language table --> 
-    <table border="1"  class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" id="language-tab" ng-if="anyLanguage()">
+    <table border="1"  class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" id="language-tab">
   		<th class="tab-head">LANGUAGE</th>
      	<tr ng-if="subCheck('sl')">
      		<td class="language-bg">Standard Language Conventions</td>
@@ -483,8 +369,8 @@ label{
   </div>
 
   <!--Creative Problem Solving table -->  
-  <div class="row tab-pad-row">
-    <table border="1"  class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" id="problemsolving-tab" ng-if="anyCreative()">
+  <div class="row tab-pad-row" ng-if="anyCreative()">
+    <table border="1"  class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" id="problemsolving-tab">
   		<th class="tab-head">CREATIVE PROBLEM SOLVING</th>
      	<tr ng-if="subCheck('kn')">
      		<td class="problemsolving-bg">Knowledge</td>
@@ -555,8 +441,8 @@ label{
   	</table>  
     </div>
   <!--Civic and Social Responsibility table -->  
-  <div class="row tab-pad-row">
-    <table  class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" border="1" id="responsibility-tab" ng-if="anyResponsibility()">
+  <div class="row tab-pad-row" ng-if="anyResponsibility()">
+    <table  class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" border="1" id="responsibility-tab">
   		<th class="tab-head">CIVIC and SOCIAL RESPONSIBILITY</th>
      	<tr ng-if="subCheck('cr')">
      		<td class="responsibility-bg">Civic Responsibility</td>
@@ -633,7 +519,7 @@ label{
 <nav class="navbar navbar-fixed-bottom navbar-inverse">
   <div class="container">
     <a class="btn navbar-btn" ng-click="" type="button" href="#/scoring">Generate Scoring Guide</a>
-    <a class="btn navbar-btn" ng-click="" type="button" ng-disabled=true href="#">Print</a>
+    <a class="btn navbar-btn" ng-click="" type="button" href="javascript:window.print()">Print</a>
     <a class="btn navbar-btn" ng-click="" type="button" href="#/">Start Over</a>
   </div>
 </nav>

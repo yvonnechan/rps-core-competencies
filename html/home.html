@@ -3,78 +3,6 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>Untitled Document</title>
-
-<style>
-
-
-.navbar-fixed-bottom {
-  color:#fff;
-  text-align: center;
-  margin: auto;
-  background-color:#333333;
-  clear:both;
-}
-
-.navbar-fixed-top {
-  color:#fff;
-  background-color:#333333;
-  text-align: center;
-}
-
-.navbar-btn {
-  background-color:red;
-  color:#fff;
-}
-
-th {
-  font-size:24px;
-  color:white;
-  background-color:black;
-  padding: .25em;
-  text-align: center;
-}
-
-td{
-  padding: 5px;
-}
-
-#footer {
-  position:fixed;
-  clear:both;
-  bottom:0;
-  width:100%;
-}
-
-#lastrow {
-  padding-bottom: 65px ;
-}
-
-.row-highlight {
-  background-color:#ffff00;
-}
-
-.row-clear {
-  background-color:#ffffff;
-}
-
-.table-hover > tbody > tr.selectable:hover {
-  background-color:#d3d3d3;
-  font-style: italic;
-  cursor: pointer;
-  /*
-  default style: 
-  background-color: #f5f5f5;
-  */
-}
-
-.table {
-  border-color:black;
-}
-
-</style>
-
-
-
 </head>
 
 <body ng-controller="HomeCtrl">
@@ -90,8 +18,8 @@ td{
   <div class="container-fluid">
     <div class="row">
     	<div class="col-md-5 col-md-offset-1 col-xs-12">
-      	<table border="1" id="reading-tab" class="table table-hover  table-bordered">
-      		<th>READING</th>
+      	<table border="1" id="reading-tab" class="table table-hover table-bordered">
+      		<th class="tab-head">READING</th>
          	<tr>
          		<td class="reading-bg"><strong>Key Ideas and Details</strong></td>
           </tr>
@@ -125,7 +53,7 @@ td{
 
       <div class="col-md-5 col-xs-12"> 
       	<table border="1" id="writing-tab" class="table  table-hover table-bordered">
-      		<th>WRITING</th>
+      		<th class="tab-head">WRITING</th>
          	<tr>
          		<td class="writing-bg"><strong>Text Types and Purpose</strong></td>
           </tr>
@@ -161,7 +89,7 @@ td{
     <div class="row"> 
       <div class="col-md-5 col-md-offset-1 col-xs-12"> 
         <table border="1" id="speakinglistening-tab" class="table  table-hover table-bordered">
-      		<th>SPEAKING and LISTENING</th>
+      		<th class="tab-head">SPEAKING and LISTENING</th>
          	<tr>
          		<td class="speakinglistening-bg"><strong>Comprehension and Collaboration</strong></td>
           </tr>
@@ -181,7 +109,7 @@ td{
 
       <div class="col-md-5 col-xs-12">
         <table border="1" id="language-tab" class="table  table-hover table-bordered">
-      		<th>LANGUAGE</th>
+      		<th class="tab-head">LANGUAGE</th>
          	<tr>
          		<td class="language-bg"><strong>Standard Language Conventions</strong></td>
           </tr>
@@ -210,7 +138,7 @@ td{
     <div class="row" id="lastrow">
       <div class="col-md-5 col-md-offset-1 col-xs-12">
         <table border="1" id="problemsolving-tab" class="table  table-hover table-bordered">
-      		<th>CREATIVE PROBLEM SOLVING</th>
+      		<th class="tab-head">CREATIVE PROBLEM SOLVING</th>
          	<tr>
          		<td class="problemsolving-bg"><strong>Knowledge</strong></td>
           </tr>
@@ -237,7 +165,7 @@ td{
 
       <div class="col-md-5 col-xs-12">
         <table border="1" id="responsibility-tab" class="table  table-hover table-bordered">
-      		<th>CIVIC and SOCIAL RESPONSIBILITY</th>
+      		<th class="tab-head">CIVIC and SOCIAL RESPONSIBILITY</th>
          	<tr>
          		<td class="responsibility-bg"><strong>Civic Responsibility</strong></td>
           </tr>
