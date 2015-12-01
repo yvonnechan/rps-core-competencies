@@ -1,0 +1,536 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" ng-app="BonMod">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>My Planning Guide</title>
+</head>
+
+<body ng-controller="PlanningCtrl">
+<nav class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <h4>College and Career Readiness Anchor Standards | Revere High School Core Competencies</h4>
+    <button style="float:right" type="button" class="btn btn-link" data-container="body" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="That means you can edit it! To edit, click the pencil icon. To keep the changes, click the check icon. To revert to the original text, click the x icon.">Why do some things turn gray when I hover over them?</button>
+  
+  </div>
+</nav>
+
+<div class="container-fluid">
+
+  <div class="row" id="info-pad">
+    <table border="1" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10">
+      <tr id="info-tab">
+        <th width="40%" >
+          Planning Guide<br>
+          Adapted from the RHS Core Competencies
+        </th>
+        <th width="60%" ng-class="{'edit-det' : infoEditable}">
+          <label>Teacher Name:</label>  <span class="info-input" ng-if="infoEditable">{{infoHeader[0]}}</span> <input ng-show="!infoEditable" type="text" ng-model="infoHeader[0]"> <br>
+          <label>Unit of Study:</label>  <span class="info-input" ng-if="infoEditable">{{infoHeader[1]}}</span>  <input ng-show="!infoEditable" type="text" ng-model="infoHeader[1]"> <br>
+          <label>Date:</label>  <span class="info-input" ng-if="infoEditable">{{infoHeader[3] | date: 'MMM dd, yyyy'}}</span> <input ng-show="!infoEditable" type="date" ng-model="infoHeader[3]">
+
+          <div class="btn-group-vertical" role="group" ng-class="{'edit-icon-clicked': !infoEditable, 'edit-menu' : infoEditable}">
+            <button type="button" class="btn btn-default" ng-click="infoEditable = !infoEditable" ng-disabled="!infoEditable"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" onclick="clickCheck()" ng-click="infoEditable = !infoEditable" ng-disabled="infoEditable"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="infoEditable = !infoEditable; infoReset()" ng-disabled="infoEditable"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+
+
+        </th>
+      </tr>
+    </table>
+
+
+
+  </div>
+
+<!--Reading table -->
+  <div class="row tab-pad-row" ng-if="anyReading()">
+	<!--print div if there is any true value in array of reading standards -->
+
+    <table border="1" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" id="reading-tab">
+  		<th class="tab-head">READING</th>
+      <tr><td style="padding-right:5px"><strong><em>Throughout this document, the term “text” refers not only to literary and informational texts, including primary and secondary sources and science and technical texts, but also to images, graphics, audio-video, mathematical, and technological communications.</em></strong></td></tr>
+      <!--print subhead if there is any true value in array of reading standards sub-sections -->
+     	<tr ng-if="subCheck('ki')">
+     		<td class="reading-bg">Key Ideas and Details</td>
+      </tr>
+      <!--print standards for that have been selected, or true in array -->
+      <tr ng-if="passed.ki[$index]" ng-repeat="x in planningData.ki">
+      	<td ng-class="{'edit-det' : toEdit.ki[$index]}">
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
+        	<ul ng-class="{'edit-reading-bg': !toEdit.ki[$index]}" contentEditable="{{!toEdit.ki[$index]}}">
+          	<li ng-repeat="y in x.det" ng-model="y">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+            <em>In addition, students in grades 11-12 will be able to:</em>
+            <ul ng-class="{'edit-reading-bg': !toEdit.ki[$index]}" contentEditable="{{!toEdit.ki[$index]}}">
+            	<li ng-repeat="z in x.det1112" ng-model="z">{{z}}</li>
+            </ul>
+          </div>
+
+          <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.ki[$index], 'edit-menu': toEdit.ki[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.ki[$index] = !toEdit.ki[$index]" ng-disabled="!toEdit.ki[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.ki[$index] = !toEdit.ki[$index]; planningEditsSave('ki', $index);" ng-disabled="toEdit.ki[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.ki[$index] = !toEdit.ki[$index]; planningEditsReset('ki', $index);" ng-disabled="toEdit.ki[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+  		</tr>
+      
+     	<tr ng-if="subCheck('cs')">
+     		<td class="reading-bg">Craft and Structure</td>
+      </tr>
+      <tr ng-if="passed.cs[$index]" ng-repeat="x in planningData.cs">
+      	<td ng-class="{'edit-det' : toEdit.cs[$index]}">
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
+        	<ul contentEditable="{{!toEdit.cs[$index]}}" ng-class="{'edit-reading-bg': !toEdit.cs[$index]}">
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+            <em>In addition, students in grades 11-12 will be able to:</em>
+            <ul contentEditable="{{!toEdit.cs[$index]}}" ng-class="{'edit-reading-bg': !toEdit.cs[$index]}">
+            	<li ng-repeat="z in x.det1112">{{z}}</li>
+            </ul>
+          </div>
+          <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.cs[$index], 'edit-menu': toEdit.cs[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.cs[$index] = !toEdit.cs[$index]" ng-disabled="!toEdit.cs[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.cs[$index] = !toEdit.cs[$index]" ng-disabled="toEdit.cs[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.cs[$index] = !toEdit.cs[$index]; planningEditsReset('cs', $index);" ng-disabled="toEdit.cs[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+  		</tr>
+    
+     	<tr ng-if="subCheck('ik')">
+     		<td class="reading-bg">Integration of Knowledge and Ideas</td>
+      </tr>
+      <tr ng-if="passed.ik[$index]" ng-repeat="x in planningData.ik">
+      	<td ng-class="{'edit-det' : toEdit.ik[$index]}">
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
+        	<ul contentEditable="{{!toEdit.ik[$index]}}" ng-class="{'edit-reading-bg': !toEdit.ik[$index]}">
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+            <em>In addition, students in grades 11-12 will be able to:</em>
+            <ul contentEditable="{{!toEdit.ik[$index]}}" ng-class="{'edit-reading-bg': !toEdit.ik[$index]}">
+            	<li ng-repeat="z in x.det1112">{{z}}</li>
+            </ul>
+          </div>
+          <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.ik[$index], 'edit-menu': toEdit.ik[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.ik[$index] = !toEdit.ik[$index]" ng-disabled="!toEdit.ik[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.ik[$index] = !toEdit.ik[$index]" ng-disabled="toEdit.ik[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.ik[$index] = !toEdit.ik[$index]; planningEditsReset('ik', $index);" ng-disabled="toEdit.ik[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+  		</tr>
+      
+      <tr ng-if="subCheck('rr')">
+     		<td class="reading-bg">Range of Reading and Level of Text Complexity</td>
+      </tr>
+      <tr ng-if="passed.rr[$index]" ng-repeat="x in planningData.rr">
+      	<td ng-class="{'edit-det' : toEdit.rr[$index]}">
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
+        	<ul contentEditable="{{!toEdit.rr[$index]}}" ng-class="{'edit-reading-bg': !toEdit.rr[$index]}">
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+            <em>In addition, students in grades 11-12 will be able to:</em>
+            <ul contentEditable="{{!toEdit.rr[$index]}}" ng-class="{'edit-reading-bg': !toEdit.rr[$index]}">
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+            </ul>
+          </div>
+            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.rr[$index], 'edit-menu': toEdit.rr[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.rr[$index] = !toEdit.rr[$index]" ng-disabled="!toEdit.rr[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.rr[$index] = !toEdit.rr[$index]" ng-disabled="toEdit.rr[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.rr[$index] = !toEdit.rr[$index]; planningEditsReset('rr', $index);" ng-disabled="toEdit.rr[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+  		</tr>
+  	</table>
+  </div>
+  
+  
+<!--Writing table -->
+<div class="row tab-pad-row" ng-if="anyWriting()">
+  <table border="1" id="writing-tab" class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10">
+		<th class="tab-head">WRITING</th>
+   	<tr ng-if="subCheck('tt')">
+   		<td class="writing-bg">Text Types and Purpose</td>
+    </tr>
+    <tr ng-if="passed.tt[$index]" ng-repeat="x in planningData.tt">
+    	<td ng-class="{'edit-det' : toEdit.tt[$index]}">
+      	<strong>{{x.id}}</strong>. {{x.text}}<br />
+      	<ul contentEditable="{{!toEdit.tt[$index]}}" ng-class="{'edit-writing-bg': !toEdit.tt[$index]}">
+        	<li ng-repeat="y in x.det">{{y}}</li>
+        </ul>
+        <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul contentEditable="{{!toEdit.tt[$index]}}" ng-class="{'edit-writing-bg': !toEdit.tt[$index]}">
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.tt[$index], 'edit-menu': toEdit.tt[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.tt[$index] = !toEdit.tt[$index]" ng-disabled="!toEdit.tt[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.tt[$index] = !toEdit.tt[$index]" ng-disabled="toEdit.tt[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.tt[$index] = !toEdit.tt[$index]; planningEditsReset('tt', $index);" ng-disabled="toEdit.tt[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+		</tr>
+    <tr ng-if="subCheck('pd')">
+   		<td class="writing-bg">Production and Distribution of Writing</td>
+    </tr>
+    <tr ng-if="passed.pd[$index]" ng-repeat="x in planningData.pd">
+    	<td ng-class="{'edit-det' : toEdit.pd[$index]}">
+      	<strong>{{x.id}}</strong>. {{x.text}}<br />
+      	<ul contentEditable="{{!toEdit.pd[$index]}}" ng-class="{'edit-writing-bg': !toEdit.pd[$index]}">
+        	<li ng-repeat="y in x.det">{{y}}</li>
+        </ul>
+        <div ng-if="x.det1112">
+        <em>In addition, students in grades 11-12 will be able to:</em>
+        <ul contentEditable="{{!toEdit.pd[$index]}}" ng-class="{'edit-writing-bg': !toEdit.pd[$index]}">
+        	<li ng-repeat="z in x.det1112">{{z}}</li>
+        </ul>
+          </div>
+            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.pd[$index], 'edit-menu': toEdit.pd[$index]}">
+            <button type="button" class="btn btn-default" ng-click="toEdit.pd[$index] = !toEdit.pd[$index]" ng-disabled="!toEdit.pd[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.pd[$index] = !toEdit.pd[$index]" ng-disabled="toEdit.pd[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.pd[$index] = !toEdit.pd[$index]; planningEditsReset('pd', $index);" ng-disabled="toEdit.pd[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+		</tr>
+    <tr ng-if="subCheck('rb')">
+   		<td class="writing-bg">Research to Build and Present Knowledge</td>
+    </tr>
+    <tr ng-if="passed.rb[$index]" ng-repeat="x in planningData.rb">
+    	<td ng-class="{'edit-det' : toEdit.rb[$index]}">
+      	<strong>{{x.id}}</strong>. {{x.text}}<br />
+      	<ul contentEditable="{{!toEdit.rb[$index]}}" ng-class="{'edit-writing-bg': !toEdit.rb[$index]}">
+        	<li ng-repeat="y in x.det">{{y}}</li>
+        </ul>
+        <div ng-if="x.det1112">
+        <em>In addition, students in grades 11-12 will be able to:</em>
+        <ul contentEditable="{{!toEdit.rb[$index]}}" ng-class="{'edit-writing-bg': !toEdit.rb[$index]}">
+        	<li ng-repeat="z in x.det1112">{{z}}</li>
+        </ul>
+          </div>
+            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.rb[$index], 'edit-menu': toEdit.rb[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.rb[$index] = !toEdit.rb[$index]" ng-disabled="!toEdit.rb[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.rb[$index] = !toEdit.rb[$index]" ng-disabled="toEdit.rb[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.rb[$index] = !toEdit.rb[$index]; planningEditsReset('rb', $index);" ng-disabled="toEdit.rb[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+		</tr>
+    <tr ng-if="subCheck('rw')">
+   		<td class="writing-bg">Range of Writing</td>
+    </tr>
+    </tr>
+    <tr ng-if="passed.rw[$index]" ng-repeat="x in planningData.rw">
+    	<td ng-class="{'edit-det' : toEdit.rw[$index]}">
+      	<strong>{{x.id}}</strong>. {{x.text}}<br />
+      	<ul contentEditable="{{!toEdit.rw[$index]}}" ng-class="{'edit-writing-bg': !toEdit.rw[$index]}">
+        	<li ng-repeat="y in x.det">{{y}}</li>
+        </ul>
+        <div ng-if="x.det1112">
+        <em>In addition, students in grades 11-12 will be able to:</em>
+        <ul contentEditable="{{!toEdit.rw[$index]}}" ng-class="{'edit-writing-bg': !toEdit.rw[$index]}">
+        	<li ng-repeat="z in x.det1112">{{z}}</li>
+        </ul>
+          </div>
+            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.rw[$index], 'edit-menu': toEdit.rw[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.rw[$index] = !toEdit.rw[$index]" ng-disabled="!toEdit.rw[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.rw[$index] = !toEdit.rw[$index]" ng-disabled="toEdit.rw[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.rw[$index] = !toEdit.rw[$index]; planningEditsReset('rw', $index);" ng-disabled="toEdit.rw[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+		</tr>
+	</table>
+</div>
+
+<div class="row tab-pad-row" ng-if="anySpeakingListening()">
+  <!--Speaking and Listening table -->
+    <table  class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" border="1" id="speakinglistening-tab">
+  		<th class="tab-head">SPEAKING and LISTENING</th>
+     	<tr ng-if="subCheck('cc')">
+     		<td class="speakinglistening-bg">Comprehension and Collaboration</td>
+      </tr>
+      </tr>
+      <tr ng-if="passed.cc[$index]" ng-repeat="x in planningData.cc">
+      	<td ng-class="{'edit-det' : toEdit.cc[$index]}">
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
+        	<ul contentEditable="{{!toEdit.cc[$index]}}" ng-class="{'edit-speakinglistening-bg': !toEdit.cc[$index]}">
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul contentEditable="{{!toEdit.cc[$index]}}" ng-class="{'edit-speakinglistening-bg': !toEdit.cc[$index]}">
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.cc[$index], 'edit-menu': toEdit.cc[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.cc[$index] = !toEdit.cc[$index]" ng-disabled="!toEdit.cc[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.cc[$index] = !toEdit.cc[$index]" ng-disabled="toEdit.cc[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.cc[$index] = !toEdit.cc[$index]; planningEditsReset('cc', $index);" ng-disabled="toEdit.cc[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('pk')">
+     		<td class="speakinglistening-bg">Presentation of Knowledge and Ideas</td>
+      </tr>
+      <tr ng-if="passed.pk[$index]" ng-repeat="x in planningData.pk">
+      	<td ng-class="{'edit-det' : toEdit.pk[$index]}">
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
+        	<ul contentEditable="{{!toEdit.pk[$index]}}" ng-class="{'edit-speakinglistening-bg': !toEdit.pk[$index]}">
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul contentEditable="{{!toEdit.pk[$index]}}" ng-class="{'edit-speakinglistening-bg': !toEdit.pk[$index]}">
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.pk[$index], 'edit-menu': toEdit.pk[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.pk[$index] = !toEdit.pk[$index]" ng-disabled="!toEdit.pk[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.pk[$index] = !toEdit.pk[$index]" ng-disabled="toEdit.pk[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.pk[$index] = !toEdit.pk[$index]; planningEditsReset('pk', $index);" ng-disabled="toEdit.pk[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+  		</tr>
+  	</table>
+</div>
+<div class="row tab-pad-row" ng-if="anyLanguage()">
+  <!--Language table --> 
+    <table border="1"  class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" id="language-tab">
+  		<th class="tab-head">LANGUAGE</th>
+     	<tr ng-if="subCheck('sl')">
+     		<td class="language-bg">Standard Language Conventions</td>
+      </tr>
+      <tr ng-if="passed.sl[$index]" ng-repeat="x in planningData.sl">
+      	<td ng-class="{'edit-det' : toEdit.sl[$index]}">
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
+        	<ul contentEditable="{{!toEdit.sl[$index]}}" ng-class="{'edit-language-bg': !toEdit.sl[$index]}">
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul contentEditable="{{!toEdit.sl[$index]}}" ng-class="{'edit-language-bg': !toEdit.sl[$index]}">
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.sl[$index], 'edit-menu': toEdit.sl[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.sl[$index] = !toEdit.sl[$index]" ng-disabled="!toEdit.sl[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.sl[$index] = !toEdit.sl[$index]" ng-disabled="toEdit.sl[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.sl[$index] = !toEdit.sl[$index]; planningEditsReset('sl', $index);" ng-disabled="toEdit.sl[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('kl')">
+     		<td class="language-bg">Knowledge of Lanaguage</td>
+      </tr>
+      <tr ng-if="passed.kl[$index]" ng-repeat="x in planningData.kl">
+      	<td ng-class="{'edit-det' : toEdit.kl[$index]}">
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
+        	<ul contentEditable="{{!toEdit.kl[$index]}}" ng-class="{'edit-language-bg': !toEdit.kl[$index]}">
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul contentEditable="{{!toEdit.kl[$index]}}" ng-class="{'edit-language-bg': !toEdit.kl[$index]}">
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.kl[$index], 'edit-menu': toEdit.kl[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.kl[$index] = !toEdit.kl[$index]" ng-disabled="!toEdit.kl[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.kl[$index] = !toEdit.kl[$index]" ng-disabled="toEdit.kl[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.kl[$index] = !toEdit.kl[$index]; planningEditsReset('kl', $index);" ng-disabled="toEdit.kl[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('va')">
+     		<td class="language-bg">Vocabulary Acquisition and Use</td>
+      </tr>
+      <tr ng-if="passed.va[$index]" ng-repeat="x in planningData.va">
+      	<td ng-class="{'edit-det' : toEdit.va[$index]}">
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
+        	<ul contentEditable="{{!toEdit.va[$index]}}" ng-class="{'edit-language-bg': !toEdit.va[$index]}">
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul contentEditable="{{!toEdit.va[$index]}}" ng-class="{'edit-language-bg': !toEdit.va[$index]}">
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.va[$index], 'edit-menu': toEdit.va[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.va[$index] = !toEdit.va[$index]" ng-disabled="!toEdit.va[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.va[$index] = !toEdit.va[$index]" ng-disabled="toEdit.va[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.va[$index] = !toEdit.va[$index]; planningEditsReset('va', $index);" ng-disabled="toEdit.va[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+  		</tr>
+  	</table>
+  </div>
+
+  <!--Creative Problem Solving table -->  
+  <div class="row tab-pad-row" ng-if="anyCreative()">
+    <table border="1"  class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" id="problemsolving-tab">
+  		<th class="tab-head">CREATIVE PROBLEM SOLVING</th>
+     	<tr ng-if="subCheck('kn')">
+     		<td class="problemsolving-bg">Knowledge</td>
+      </tr>
+      <tr ng-if="passed.kn[$index]" ng-repeat="x in planningData.kn">
+      	<td ng-class="{'edit-det' : toEdit.kn[$index]}">
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
+        	<ul contentEditable="{{!toEdit.kn[$index]}}" ng-class="{'edit-problemsolving-bg': !toEdit.kn[$index]}">
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul contentEditable="{{!toEdit.kn[$index]}}" ng-class="{'edit-problemsolving-bg': !toEdit.kn[$index]}">
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.kn[$index], 'edit-menu': toEdit.kn[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.kn[$index] = !toEdit.kn[$index]" ng-disabled="!toEdit.kn[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.kn[$index] = !toEdit.kn[$index]" ng-disabled="toEdit.kn[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.kn[$index] = !toEdit.kn[$index]; planningEditsReset('kn', $index);" ng-disabled="toEdit.kn[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('pr')">
+     		<td class="problemsolving-bg">Process</td>
+      </tr>
+      <tr ng-if="passed.pr[$index]" ng-repeat="x in planningData.pr">
+      	<td ng-class="{'edit-det' : toEdit.pr[$index]}">
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
+        	<ul contentEditable="{{!toEdit.pr[$index]}}" ng-class="{'edit-problemsolving-bg': !toEdit.pr[$index]}">
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul contentEditable="{{!toEdit.pr[$index]}}" ng-class="{'edit-problemsolving-bg': !toEdit.pr[$index]}">
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.pr[$index], 'edit-menu': toEdit.pr[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.pr[$index] = !toEdit.pr[$index]" ng-disabled="!toEdit.pr[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.pr[$index] = !toEdit.pr[$index]" ng-disabled="toEdit.pr[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.pr[$index] = !toEdit.pr[$index]; planningEditsReset('pr', $index);" ng-disabled="toEdit.pr[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('co')">
+     		<td class="problemsolving-bg">Communication</td>
+      </tr>
+      <tr ng-if="passed.co[$index]" ng-repeat="x in planningData.co">
+      	<td ng-class="{'edit-det' : toEdit.co[$index]}">
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
+        	<ul contentEditable="{{!toEdit.co[$index]}}" ng-class="{'edit-problemsolving-bg': !toEdit.co[$index]}">
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul contentEditable="{{!toEdit.co[$index]}}" ng-class="{'edit-problemsolving-bg': !toEdit.co[$index]}">
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.co[$index], 'edit-menu': toEdit.co[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.co[$index] = !toEdit.co[$index]" ng-disabled="!toEdit.co[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.co[$index] = !toEdit.co[$index]" ng-disabled="toEdit.co[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.co[$index] = !toEdit.co[$index]; planningEditsReset('co', $index);" ng-disabled="toEdit.co[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+  		</tr>
+  	</table>  
+    </div>
+  <!--Civic and Social Responsibility table -->  
+  <div class="row tab-pad-row" ng-if="anyResponsibility()">
+    <table  class="col-md-8 col-md-offset-2 col-xs-offset-1 col-xs-10" border="1" id="responsibility-tab">
+  		<th class="tab-head">CIVIC and SOCIAL RESPONSIBILITY</th>
+     	<tr ng-if="subCheck('cr')">
+     		<td class="responsibility-bg">Civic Responsibility</td>
+      </tr>
+      <tr ng-if="passed.cr[$index]" ng-repeat="x in planningData.cr">
+      	<td ng-class="{'edit-det' : toEdit.cr[$index]}">
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
+        	<ul contentEditable="{{!toEdit.cr[$index]}}" ng-class="{'edit-responsibility-bg': !toEdit.cr[$index]}">
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul contentEditable="{{!toEdit.cr[$index]}}" ng-class="{'edit-responsibility-bg': !toEdit.cr[$index]}">
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.cr[$index], 'edit-menu': toEdit.cr[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.cr[$index] = !toEdit.cr[$index]" ng-disabled="!toEdit.cr[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.cr[$index] = !toEdit.cr[$index]" ng-disabled="toEdit.cr[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.cr[$index] = !toEdit.cr[$index]; planningEditsReset('cr', $index);" ng-disabled="toEdit.cr[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('sr')">
+     		<td class="responsibility-bg">Social Responsibilty</td>
+      </tr>
+      <tr ng-if="passed.sr[$index]" ng-repeat="x in planningData.sr">
+      	<td ng-class="{'edit-det' : toEdit.sr[$index]}">
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
+        	<ul contentEditable="{{!toEdit.sr[$index]}}" ng-class="{'edit-responsibility-bg': !toEdit.sr[$index]}">
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+          <em>In addition, students in grades 11-12 will be able to:</em>
+          <ul contentEditable="{{!toEdit.sr[$index]}}" ng-class="{'edit-responsibility-bg': !toEdit.sr[$index]}">
+          	<li ng-repeat="z in x.det1112">{{z}}</li>
+          </ul>
+          </div>
+            <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.sr[$index], 'edit-menu': toEdit.sr[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.sr[$index] = !toEdit.sr[$index]" ng-disabled="!toEdit.sr[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.sr[$index] = !toEdit.sr[$index]" ng-disabled="toEdit.sr[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.sr[$index] = !toEdit.sr[$index]; planningEditsReset('sr', $index);" ng-disabled="toEdit.sr[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+  		</tr>
+      <tr ng-if="subCheck('ir')">
+     		<td class="responsibility-bg">Individual Responsibility</td>
+      </tr>
+      <tr ng-if="passed.ir[$index]" ng-repeat="x in planningData.ir">
+      	<td ng-class="{'edit-det' : toEdit.ir[$index]}">
+        	<strong>{{x.id}}</strong>. {{x.text}}<br />
+        	<ul contentEditable="{{!toEdit.ir[$index]}}" ng-class="{'edit-responsibility-bg': !toEdit.ir[$index]}">
+          	<li ng-repeat="y in x.det">{{y}}</li>
+          </ul>
+          <div ng-if="x.det1112">
+            <em>In addition, students in grades 11-12 will be able to:</em>
+            <ul contentEditable="{{!toEdit.ir[$index]}}" ng-class="{'edit-responsibility-bg': !toEdit.ir[$index]}">
+            	<li ng-repeat="z in x.det1112">{{z}}</li>
+            </ul>
+          </div>
+          <div class="btn-group-vertical" role="group" ng-class="{ 'edit-icon-clicked': !toEdit.ir[$index], 'edit-menu': toEdit.ir[$index] }">
+            <button type="button" class="btn btn-default" ng-click="toEdit.ir[$index] = !toEdit.ir[$index]" ng-disabled="!toEdit.ir[$index]"><i class="glyphicon glyphicon-pencil"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.ir[$index] = !toEdit.ir[$index]" ng-disabled="toEdit.ir[$index]"><i class="glyphicon glyphicon-ok"></i></button>
+            <button type="button" class="btn btn-default" ng-click="toEdit.ir[$index] = !toEdit.ir[$index]; planningEditsReset('ir', $index);" ng-disabled="toEdit.ir[$index]"><i class="glyphicon glyphicon-remove"></i></button>
+          </div>
+        </td>
+  		</tr>
+  	</table> 
+
+  </div> 
+</div>
+</div> 
+<div class="row" id="last-row"></div>
+<nav class="navbar navbar-fixed-bottom navbar-inverse">
+  <div class="container">
+    <a class="btn navbar-btn" ng-click="" type="button" href="#/scoring">Generate Scoring Guide</a>
+    <a class="btn navbar-btn" ng-click="" type="button" href="javascript:window.print()">Print</a>
+    <a class="btn navbar-btn" ng-click="" type="button" href="#/">Start Over</a>
+  </div>
+</nav>
+
+<script type="text/javascript">
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+</body>
+</html>

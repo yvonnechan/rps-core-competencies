@@ -1,0 +1,216 @@
+ <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"  ng-app="BonMod">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body ng-controller="HomeCtrl">
+<nav class="navbar navbar-fixed-top navbar-inverse">
+<div class="container">
+    <h3>College and Career Readiness Anchor Standards | Revere High School Core Competencies</h3>
+     <button style="float:right" type="button" class="btn btn-link" data-container="body" data-trigger="focus" data-toggle="popover" data-placement="bottom" data-content="Select the core skills in a unit of study by clicking each one. To unselect a core skill, click again. To print, click the 'Generate Planning Guide' button at the bottom.">How does this work?</button>
+
+</div>
+</nav>
+
+
+  <div class="container-fluid">
+    <div class="row">
+    	<div class="col-md-5 col-md-offset-1 col-xs-12">
+      	<table border="1" id="reading-tab" class="table table-hover table-bordered">
+      		<th class="tab-head">READING</th>
+         	<tr>
+         		<td class="reading-bg"><strong>Key Ideas and Details</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.reading.ki">
+          	<td ng-class="{ 'row-highlight': selectedStandards.ki[$index] }" ng-click="standardClicked('ki', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+      		</tr>
+          <tr>
+         		<td class="reading-bg"><strong>Craft and Structure</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.reading.cs">
+          	<td  ng-class="{'row-highlight': selectedStandards.cs[$index]}" ng-click="standardClicked('cs', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+          <tr>
+         		<td class="reading-bg"><strong>Integration of Knowledge and Ideas</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.reading.ik">
+
+          	<td  ng-class="{'row-highlight': selectedStandards.ik[$index]}" ng-click="standardClicked('ik', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+          <tr>
+         		<td class="reading-bg"><strong>Range of Reading and Level of Text Complexity</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.reading.rr">
+          	<td ng-class="{'row-highlight': selectedStandards.rr[$index]}" ng-click="standardClicked('rr', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+      	</table>
+      </div> 
+
+      <div class="col-md-5 col-xs-12"> 
+      	<table border="1" id="writing-tab" class="table  table-hover table-bordered">
+      		<th class="tab-head">WRITING</th>
+         	<tr>
+         		<td class="writing-bg"><strong>Text Types and Purpose</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.writing.tt">
+          	<td ng-class="{'row-highlight': selectedStandards.tt[$index]}" ng-click="standardClicked('tt', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+          <tr>
+         		<td class="writing-bg"><strong>Production and Distribution of Writing</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.writing.pd">
+          	<td ng-class="{'row-highlight': selectedStandards.pd[$index]}" ng-click="standardClicked('pd', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+          <tr>
+         		<td class="writing-bg"><strong>Research to Build and Present Knowledge</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.writing.rb">
+          	<td ng-class="{'row-highlight': selectedStandards.rb[$index]}" ng-click="standardClicked('rb', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+          <tr>
+         		<td class="writing-bg"><strong>Range of Writing</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.writing.rw">
+          	<td ng-class="{'row-highlight': selectedStandards.rw[$index]}" ng-click="standardClicked('rw', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+      	</table>
+      </div>
+    </div>
+
+    <div class="row"> 
+      <div class="col-md-5 col-md-offset-1 col-xs-12"> 
+        <table border="1" id="speakinglistening-tab" class="table  table-hover table-bordered">
+      		<th class="tab-head">SPEAKING and LISTENING</th>
+         	<tr>
+         		<td class="speakinglistening-bg"><strong>Comprehension and Collaboration</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.speakingListening.cc">
+          	<td ng-class="{'row-highlight': selectedStandards.cc[$index]}" ng-click="standardClicked('cc', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+          <tr>
+         		<td class="speakinglistening-bg"><strong>Presentation of Knowledge and Ideas</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.speakingListening.pk">
+          	<td ng-class="{'row-highlight': selectedStandards.pk[$index]}" ng-click="standardClicked('pk', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+      	</table>
+      </div>
+
+      <div class="col-md-5 col-xs-12">
+        <table border="1" id="language-tab" class="table  table-hover table-bordered">
+      		<th class="tab-head">LANGUAGE</th>
+         	<tr>
+         		<td class="language-bg"><strong>Standard Language Conventions</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.language.sl">
+          	<td ng-class="{'row-highlight': selectedStandards.sl[$index]}" ng-click="standardClicked('sl', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+          <tr>
+         		<td class="language-bg"><strong>Knowledge of Language</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.language.kl">
+          	<td ng-class="{'row-highlight': selectedStandards.kl[$index]}" ng-click="standardClicked('kl', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+          <tr>
+         		<td class="language-bg"><strong>Vocabulary Acquisition and Use</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.language.va">
+          	<td ng-class="{'row-highlight': selectedStandards.va[$index]}" ng-click="standardClicked('va', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+      	</table>
+      </div>
+    </div>
+
+    <div class="row" id="lastrow">
+      <div class="col-md-5 col-md-offset-1 col-xs-12">
+        <table border="1" id="problemsolving-tab" class="table  table-hover table-bordered">
+      		<th class="tab-head">CREATIVE PROBLEM SOLVING</th>
+         	<tr>
+         		<td class="problemsolving-bg"><strong>Knowledge</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.problemSolving.kn">
+          	<td ng-class="{'row-highlight': selectedStandards.kn[$index]}" ng-click="standardClicked('kn', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+          <tr>
+         		<td class="problemsolving-bg"><strong>Process</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.problemSolving.pr">
+          	<td ng-class="{'row-highlight': selectedStandards.pr[$index]}" ng-click="standardClicked('pr', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+          <tr>
+         		<td class="problemsolving-bg"><strong>Communication</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.problemSolving.co">
+          	<td ng-class="{'row-highlight': selectedStandards.co[$index]}" ng-click="standardClicked('co', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+      	</table>  
+      </div>
+
+      <div class="col-md-5 col-xs-12">
+        <table border="1" id="responsibility-tab" class="table  table-hover table-bordered">
+      		<th class="tab-head">CIVIC and SOCIAL RESPONSIBILITY</th>
+         	<tr>
+         		<td class="responsibility-bg"><strong>Civic Responsibility</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.responsibility.cr">
+          	<td ng-class="{'row-highlight': selectedStandards.cr[$index]}" ng-click="standardClicked('cr', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+          <tr>
+         		<td class="responsibility-bg"><strong>Social Responsibilty</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.responsibility.sr">
+          	<td ng-class="{'row-highlight': selectedStandards.sr[$index]}" ng-click="standardClicked('sr', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+          <tr>
+         		<td class="responsibility-bg"><strong>Individual Responsibility</strong></td>
+          </tr>
+          <tr class="selectable" ng-repeat="x in core.responsibility.ir">
+          	<td ng-class="{'row-highlight': selectedStandards.ir[$index]}" ng-click="standardClicked('ir', $index);"><strong>{{x.id}}</strong>. {{x.text}}</td>
+
+      		</tr>
+      	</table> 
+      </div>
+    </div> 
+  </div>
+
+
+<nav class="navbar navbar-fixed-bottom navbar-inverse">
+  <div class="container">
+
+    <a class="btn navbar-btn" ng-click="navClicked()" ng-disabled="anyClicked()" type="button" href="#/planning">Generate Planning Guide</a>
+    <a class="btn navbar-btn" ng-click="navClicked()" ng-disabled="anyClicked()" type="button" href="#/scoring">Generate Scoring Guide</a>
+    <a class="btn navbar-btn" ng-click="clearButton()"  type="button" href="#/">Clear selections</a>
+
+</div>
+</nav>
+
+<script type="text/javascript">
+$(function () {
+  $('[data-toggle="popover"]').popover()
+})
+$(function () {
+  $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+</body>
+</html>

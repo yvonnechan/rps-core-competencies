@@ -1,0 +1,239 @@
+/*BODY + NAV*/
+* {
+  font-family: Calibri;
+}
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    padding-top:100px;
+}
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+.navbar-fixed-bottom, .navbar-fixed-top {
+  color:#fff;
+  text-align: center;
+  background-color:#333333;
+}
+.navbar-btn {
+  background-color:red;
+  color:#fff;
+}
+#footer {
+  position:fixed;
+  clear:both;
+  bottom:0;
+  width:100%;
+}
+#last-row{
+  width:100%;
+  padding-bottom: 100px ;
+}
+label{
+  text-align: right;
+  width: 100px;
+}
+#info-tab{
+  vertical-align: top;
+}
+.info-input{
+  font-weight: normal;
+}
+
+/*TABLE STATIC*/
+table {
+  border-collapse:collapse;
+  border-spacing: 0;
+  border: 1px  black solid;
+}
+.reading-bg {
+  background-color: rgb(0, 204, 255);
+  font-weight: bold;
+}
+.writing-bg {
+  background-color: rgb(0, 255, 255);
+  font-weight: bold;
+}
+.speakinglistening-bg {
+  background-color: rgb(204, 0, 255);
+  font-weight: bold;
+}
+.language-bg {
+  background-color: rgb(255, 255, 51);
+  font-weight: bold;
+}
+.problemsolving-bg {
+  background-color: rgb(255, 153, 0);
+  font-weight: bold;
+  }
+.responsibility-bg {
+  background-color: rgb(255, 51, 51);
+  font-weight: bold;
+}
+.tab-head {
+  font-size: 24px;
+  color: #fff;
+  background-color: #000;
+  text-align: center;
+}
+td, th{
+  padding: 5px;
+  overflow: hidden;
+  position: relative;
+}
+.tab-pad-row{
+  padding-top:25px;
+}
+tr{
+  vertical-align: top;
+}
+input{
+  width: 250px;
+}
+/*planning*/
+.edit-det {
+  padding-right: 50px;
+}
+/*scoring*/
+ul{
+  list-style: none;
+  padding:0;
+}
+li {
+  margin-bottom: 5px;
+}
+.stand-head, .per-head{
+  width:25%;
+  text-align: left;
+}
+.pro-head{
+  width:50%;
+  text-align: center;
+}
+.edit-pro {
+  padding-right: 50px;
+}
+#assign-lab{
+  vertical-align: top;
+  text-align: left;
+}
+/*TABLE DYNAMIC*/
+/*home*/
+.row-highlight {
+  background-color:#ffff00;
+}
+.row-clear {
+  background-color:#ffffff;
+}
+.table-hover > tbody > tr.selectable:hover {
+  background-color:#d3d3d3;
+  font-style: italic;
+  cursor: pointer;
+}
+/*td style for when edit icon clicked*/
+.edit-reading-bg {
+  background-color: rgba(0,204,255,0.20);
+}
+.edit-writing-bg {
+  background-color: rgba(0,255,255,0.20);
+}
+.edit-speakinglistening-bg {
+  background-color: rgba(204, 0, 255, 0.15);
+}
+.edit-language-bg {
+  background-color: rgba(255, 255, 51, 0.35);
+}
+.edit-problemsolving-bg {
+  background-color: rgba(255, 153, 0, 0.35);
+}
+.edit-responsibility-bg {
+  background-color: rgba(255, 51, 51, 0.15);
+}
+/*edit menu hidden when td isn't hovered over*/
+.edit-menu {
+  transition: 0.75s;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 0;
+}
+/*div style for when edit icon clicked; button stay shown*/
+.edit-icon-clicked {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width:35px;
+}
+/*planning*/
+.edit-det:hover {
+  background-color:#d3d3d3;
+}
+.edit-det:hover .edit-menu {
+  transition: 0.75s;
+  width: 35px;
+  right: 0;
+}
+/*scoring*/
+.edit-pro:hover, .edit-per:hover, .edit-assignment:hover, .edit-grade-date:hover{
+  background-color:#d3d3d3;
+}
+.edit-per:hover .edit-menu {
+  transition: 0.75s;
+  width: 35px;
+  right: 0;
+}
+.edit-pro:hover .edit-menu {
+  transition: 0.75s;
+  width: 35px;
+  right: 0;
+}
+.edit-assignment:hover .edit-menu {
+  transition: 0.75s;
+  width: 120px;
+  right: 0;
+}
+.edit-grade-date:hover .edit-menu {
+  transition: 0.75s;
+  width: 35px;
+  right: 0;
+}
+.edit-info-icon-clicked {
+  position: absolute;
+  right: 0;
+  top: 0;
+  width:120px;
+}
+
+/*PRINT*/
+@media print {
+  body {
+    font-size: 11px;
+    padding-top: 0px;
+  }
+  .row {
+    page-break-inside: avoid;
+  }
+  #last-row {
+    padding-bottom: 0px;
+  }
+  .tab-pad-row {
+    padding-top: 10px;
+  }
+  .edit-pro, .edit-det {
+  padding-right: 5px;
+  } 
+  .tab-head {
+    font-size:12px;
+    color: #000;
+    background-color: #fff;
+  }
+  td {
+    padding: 5px 5px 5px 5px;
+  }
+  #info-pad {
+    page-break-after: avoid; 
+  }
+}

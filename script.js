@@ -8,52 +8,22 @@ app.config(
 	function($routeProvider){
 		$routeProvider.
 			when('/', {
-				templateUrl: 'home.html',
+				templateUrl: 'html/home.html',
 				controller: 'HomeCtrl'
 			}).
 			when('/planning', {
-				templateUrl: 'planning.html',
+				templateUrl: 'html/planning.html',
 				controller: 'PlanningCtrl'
 			}).
 			when('/scoring', {
-				templateUrl: 'scoring.html',
+				templateUrl: 'html/scoring.html',
 				controller: 'ScoringCtrl'
-			}).
-			when('/help', {
-				templateUrl: 'help.html',
-				controller: 'HelpCtrl'
-			}).						
+			}).					
 			otherwise ({
 				redirectTo: '/'
 			});	
 	});
 
-app.controller('HelpCtrl', function($scope){
-	$scope.items = [{name:"first"}, {name:"second"}]
-});
-/*
-app.directive('contenteditable', function(){
-    return {
-        require: 'ngModel',
-        link: function(scope, elm, attrs, ctrl) {
-            // view -> model
-            elm.bind('blur', function() {
-                scope.$apply(function() {
-                    ctrl.$setViewValue(elm.html());
-                });
-            });
-
-            // model -> view
-            ctrl.$render = function() {
-                elm.html(ctrl.$viewValue);
-            };
-
-            // load init value from DOM
-            //ctrl.$setViewValue(elm.html());
-        }
-    };
-})
-*/
 app.controller('HomeCtrl', function($scope, $http, FetchStandards) {
 
 	//google : initialize js array of a certain value
@@ -252,6 +222,7 @@ app.controller('ScoringCtrl', function($scope, $http, FetchStandards) {
 	$scope.anyCheck = function (head){
 		return !_.isEmpty(_.compact(head));
 	}
+
 });
 
 app.factory('FetchStandards', function($http){
@@ -260,7 +231,7 @@ app.factory('FetchStandards', function($http){
 	return {
 		//getting standards.json
 		getStandardsList: function(callback){
-			$http.get('standards.json').success(callback);
+			$http.get('json/standards.json').success(callback);
 		},
 		//saving what user clicked
 		save: function(selection) {
@@ -272,11 +243,11 @@ app.factory('FetchStandards', function($http){
 		},
 		//getting planning.json
 		getPlanningList: function(callback){
-			$http.get('planning.json').success(callback);
+			$http.get('json/planning.json').success(callback);
 		},
 		//getting scoring.json
 		getScoringList: function(callback){
-			$http.get('scoring.json').success(callback);
+			$http.get('json/scoring.json').success(callback);
 		}
 	}
 });
